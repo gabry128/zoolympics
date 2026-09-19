@@ -1,8 +1,8 @@
 # Zoolympics — architecture map
 
 Upload **this file** (plus the one or two modules a task touches) instead of the
-whole `index.html`. The built file is ~195 KB, nearly half of it vendor code;
-this map is ~10 KB.
+whole `index.html`. The built file is ~205 KB, nearly half of it vendor code;
+this map is ~11 KB.
 
 ---
 
@@ -44,21 +44,21 @@ Things to know about `BUILD`:
 | file | lines | size | what's in it |
 |---|---|---|---|
 | `src/01-testa.html` | 18 | 1 KB | `<head>`, meta, manifest, icons |
-| `src/02-stile.css` | 179 | 15 KB | all CSS, design tokens in `:root`, per-arena palettes |
+| `src/02-stile.css` | 191 | 16 KB | all CSS, design tokens in `:root`, 8 per-arena palettes |
 | `src/03-corpo.html` | 132 | 7 KB | the 8 `.schermo` sections |
 | `vendor/peerjs.js` | 8 | 91 KB | PeerJS 1.5.4 + WebRTC adapter, minified — **never read this** |
-| `src/10-dati.js` | 150 | 10 KB | `K` (10 stats), `ANIMALI` (88), `SPORT_TUTTI`, `STAT`, `GARE`, `ARENE` |
-| `src/11-testi.js` | 173 | 15 KB | `S` — every UI string as `[it, en]` |
-| `src/20-base.js` | 36 | 2 KB | `vai()`, `BUILD`, `PREFISSO`, `ICE`, `DURATA`, `$`, `MEM`, `t()` |
+| `src/10-dati.js` | 194 | 15 KB | `K` (15 stats), `ANIMALI` (94), `SPORT_TUTTI` (27), `RARITA`, `STAT`, `GARE`, `ARENE` |
+| `src/11-testi.js` | 176 | 15 KB | `S` — every UI string as `[it, en]` |
+| `src/20-base.js` | 43 | 3 KB | `vai()`, `BUILD`, `PREFISSO`, `ICE`, `DURATA`, `$`, `MEM`, `t()`, `mischiaRari` |
 | `src/21-punteggi.js` | 138 | 7 KB | `fit`, `costruisciPool`, `intesa`, `punteggio`, `MODIFICATORI`, `classifica` |
 | `src/22-stato.js` | 11 | 1 KB | all module-level game state |
 | `src/23-ai.js` | 36 | 2 KB | `motoreAPI().chiedi()`, `estraiJSON` |
-| `src/24-comunita.js` | 88 | 3 KB | `gradimento` — voti della comunità, **struttura pronta, spenta** |
+| `src/24-comunita.js` | 86 | 4 KB | `gradimento` — voti della comunità, **struttura pronta, spenta** |
 | `src/30-rete.js` | 148 | 6 KB | PeerJS host/guest, handshake, message handlers |
 | `src/31-lobby.js` | 44 | 3 KB | host settings panel, seat list |
 | `src/32-partita.js` | 43 | 2 KB | match & round lifecycle |
 | `src/33-asta.js` | 124 | 5 KB | **auction engine**, `eseguiAzione`, `salvaPartita` |
-| `src/40-disegno.js` | 247 | 15 KB | all rendering + AI verdict |
+| `src/40-disegno.js` | 255 | 15 KB | all rendering + AI verdict |
 | `src/41-info.js` | 81 | 4 KB | info screen, event cards, animal browser |
 | `src/42-avvio.js` | 176 | 10 KB | i18n apply, event wiring, boot, service worker registration |
 | `src/04-coda.html` | 2 | — | closing tags |
@@ -68,7 +68,7 @@ Two more source files that are **not** concatenated into the page:
 | file | lines | size | what's in it |
 |---|---|---|---|
 | `src/sw.js` | 50 | 2 KB | service worker; `BUILD` stamped by the build, cache named after it |
-| `statico/` | — | 25 KB | `manifest.json` + the three PNG icons, copied to `docs/` verbatim |
+| `statico/` | — | 24 KB | `manifest.json` + the three PNG icons, copied to `docs/` verbatim |
 
 The `lines` column is each module's own length — the number you see when you
 open it — not an offset into the built file. Treat it as an order of magnitude:
@@ -170,6 +170,14 @@ design decision first.
 - `tetto()` keeps **one credit per empty slot**, so every roster can always be
   filled. Anything touching money must preserve this or rosters deadlock.
 - Hard cap of **40 animals** introduced per round (`avviaGara`, `usaSkip`).
+- A sport's `req` gates **who may enter**; its `pesi` decide **who scores**. A
+  stat must never do both — the one exception is `vol` in `volo`, kept on
+  purpose. `strumenti/costruisci-tabelle.py` reports any new offender.
+- Every sport carries `gruppo`: `"classica"` or `"ghiaccio"`. The choice screen
+  renders one block per group, and skips an empty one.
+- `RARITA` (`10-dati.js`) holds the chance a rare animal actually makes it into
+  the lot supply; `mischiaRari` (`20-base.js`) applies it. The randomness lives
+  in the supply, never in the scoring chain.
 - `mioId === null` means **local hot-seat mode** — it's the flag half the
   renderer branches on.
 - `G.sim` (simultaneous bidding + 7 s timer) is on whenever `MODO !== "locale"`.

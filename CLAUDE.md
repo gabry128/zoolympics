@@ -69,7 +69,7 @@ a 40 gli animali introdotti in un round. Anche `gareDisponibili()` ci si appoggi
 
 **7. Il punteggio deve essere deterministico e derivabile da `V`.**
 `classifica()` gira **sia sull'host** (`src/32-partita.js:36`, `chiudiRound`)
-**sia su ogni client** (`src/40-disegno.js:158`, che la chiama su `v.sport` e
+**sia su ogni client** (`src/40-disegno.js:169`, che la chiama su `v.sport` e
 `v.giocatori`). Le due esecuzioni devono dare lo stesso risultato, quindi in
 tutta la catena `fit` → `intesa` → `punteggio` → `applicaModificatori` →
 `classifica`:
@@ -96,6 +96,9 @@ bloccano a metà.
   servono.
 - Le fini riga sono **LF** ovunque (`.gitattributes`): il build deve riprodurre
   `docs/index.html` byte per byte anche su Windows.
+- **`CAMBIAMENTI.md`** racconta cosa è cambiato e perché, sessione per
+  sessione. Se fai una modifica che sposta i punteggi o il catalogo, aggiungi
+  una voce lì: i messaggi dei commit hanno i dettagli, quel file ha il filo.
 - **Dentro `docs/` non si scrive mai a mano.** È tutta output: `index.html`,
   `versione.txt` e `sw.js` li genera il build, `manifest.json` e le icone
   arrivano da `statico/`. Si può cancellare per intero e `python3 build.py`
