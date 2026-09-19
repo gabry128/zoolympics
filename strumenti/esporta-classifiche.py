@@ -10,7 +10,7 @@ somigli a quella che hai scritto.
 """
 import io, json, re, sys
 
-QUANTI = 15   # quanti animali per gara: oltre diventa illeggibile da correggere
+QUANTI = None   # None = la classifica intera di ogni gara
 
 K10 = ['alt','frz','vel','agi','man','res','ter','acq','vol','mas']
 K5  = ['pre','equ','cor','int','rif']
@@ -60,10 +60,10 @@ def pool(g):
 righe = ["""# ─────────────────────────────────────────────────────────────────────
 # CALIBRAZIONE DELLE CLASSIFICHE
 #
-# Per ogni gara c'è la classifica che il gioco produce OGGI, dalla migliore
-# alla peggiore. Correggila: sposta le righe nell'ordine che secondo te è
-# giusto. Poi la rimando indietro e adatto le doti degli animali perché il
-# gioco produca quell'ordine.
+# Per ogni gara c'è la classifica INTERA che il gioco produce OGGI, dalla
+# migliore alla peggiore. Correggila: sposta le righe nell'ordine che secondo
+# te è giusto. Poi la rimando indietro e adatto le doti degli animali perché
+# il gioco produca quell'ordine.
 #
 # COME SI MODIFICA
 #   · Riordina le righe dentro un blocco. Conta solo l'ordine.
@@ -91,18 +91,22 @@ righe = ["""# ──────────────────────
 
 for g in GARE:
     dentro = pool(g)
-    ord_ = sorted(dentro, key=lambda a: -fit(a, g['pesi']))[:QUANTI]
+    ord_ = sorted(dentro, key=lambda a: -fit(a, g['pesi']))
+    if QUANTI: ord_ = ord_[:QUANTI]
     premia = ', '.join((f'{NOME[k]} x{w}' if w > 0 else f'{NOME[k]} penalizza {w}')
                        for k, w in g['pesi'].items())
     accesso = ' e '.join(f'{NOME[k]}>={v}' for k, v in g['req'].items())
     righe.append(f"=== {g['id']} · {g['emoji']} {g['nome']} ===")
     righe.append(f"#   accesso: {accesso}")
     righe.append(f"#   premia : {premia}")
-    righe.append(f"#   {len(dentro)} ammessi, qui i primi {len(ord_)}. Squadra da {g['size']}.")
+    quanti = 'tutti e %d' % len(ord_) if len(ord_) == len(dentro) else 'qui i primi %d' % len(ord_)
+    righe.append(f"#   {len(dentro)} ammessi, {quanti}. Squadra da {g['size']}.")
     for i, a in enumerate(ord_, 1):
-        righe.append(f"{i:>3}. {a['id']:<14}{a['emoji']} {a['it']:<18}{fit(a, g['pesi']):>5.1f}")
+        # lo spazio dopo l'id e' obbligatorio: "pescetropicale" riempie la
+        # colonna e senza resterebbe incollato all'emoji
+        righe.append(f"{i:>3}. {a['id']:<15} {a['emoji']} {a['it']:<18}{fit(a, g['pesi']):>5.1f}")
     righe.append("")
 
 io.open('CALIBRAZIONE.txt', 'w', encoding='utf-8', newline='\n').write('\n'.join(righe) + '\n')
-print(f"CALIBRAZIONE.txt: {len(GARE)} gare, i primi {QUANTI} di ognuna")
+print(f"CALIBRAZIONE.txt: {len(GARE)} gare, classifica " + ("intera" if not QUANTI else f"ai primi {QUANTI}"))
 print(f"  {sum(1 for r in righe if r and r[0].isdigit() or r[:4].strip().rstrip('.').isdigit())} righe da riordinare")

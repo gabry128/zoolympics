@@ -34,7 +34,14 @@ MARGINE_INVERTE = 0.05
 # senza, un sorpasso mancato per un decimo valeva meno del punto di dote che
 # serviva a sistemarlo, e l'ottimizzatore lasciava tutto com'era - a ragione.
 PENALITA    = 0.8
-COSTO_DRIFT = 0.10 # quanto pesa allontanarsi dai valori di oggi, per punto
+# Lo scostamento costa al QUADRATO, non in proporzione: un punto costa 0,10,
+# nove punti ne costano 8,1 e non 0,90. Con il costo lineare l'ottimizzatore
+# dava Velocita' 10 alla tartaruga per farla vincere in acqua - il conto
+# tornava, il gioco no. E comunque una dote non si sposta oltre MAX_SPOSTA:
+# se una classifica non si ottiene senza stravolgere un animale, preferisco
+# dirtelo che ottenerla.
+COSTO_DRIFT = 0.10 # per punto di scostamento, al quadrato
+MAX_SPOSTA  = 3    # di quanti punti al massimo puo' muoversi una dote
 COSTO_POOL  = 6.0  # quanto costa far entrare o uscire un animale da una gara
 GIRI        = 250000
 T0, T1      = 0.60, 0.004   # temperatura iniziale e finale del raffreddamento
@@ -92,13 +99,15 @@ def leggi(percorso):
             continue
         if not r or r.startswith('#') or corrente is None:
             continue
-        # "  3. ghepardo   🐆 Ghepardo   8.8"  oppure solo "ghepardo"
-        campi = re.sub(r'^\s*\d+\.\s*', '', r).split()
-        if not campi: continue
-        chiave = campi[0].lower()
+        # "  3. ghepardo   🐆 Ghepardo   8.8"  oppure solo "ghepardo".
+        # L'id si prende con un'espressione e non spezzando sugli spazi: un id
+        # lungo quanto la colonna resterebbe incollato all'emoji.
+        m = re.match(r'^\s*(?:\d+\.\s*)?([A-Za-z][A-Za-z0-9_]*)', r)
+        if not m: continue
+        chiave = m.group(1).lower()
         aid = chiave if chiave in ANIMALI else PER_NOME.get(chiave)
         if aid is None:
-            ignoti.append((n, campi[0])); continue
+            ignoti.append((n, m.group(1))); continue
         blocchi[corrente].append(aid)
     return blocchi, ignoti
 
@@ -133,21 +142,31 @@ for gid, elenco in corretto.items():
     for a in fuori:
         print(f"  nota: {ANIMALI[a]['it']} non supera l'accesso di {g['nome']} "
               f"({' e '.join(f'{NOME[k]}>={v}' for k,v in g['req'].items())})")
-    for i in range(len(elenco)):
-        for j in range(i + 1, len(elenco)):
-            A, B = elenco[i], elenco[j]
-            dA, dB = ANIMALI[A]['d'], ANIMALI[B]['d']
-            if all(dA[k] == dB[k] for k in g['pesi']):
-                impossibili.append((g['nome'], ANIMALI[A]['it'], ANIMALI[B]['it']))
-                continue
-            # l'hai invertita tu, o stava gia' cosi'?
-            pA = originale.index(A) if A in originale else 999
-            pB = originale.index(B) if B in originale else 999
-            m = MARGINE_INVERTE if pA > pB else MARGINE_TIENE
-            VINCOLI.append((A, B, gid, m))
+    # Quali coppie diventano vincoli. Prenderle TUTTE, su una gara da 79
+    # animali, farebbe 3081 vincoli per gara: l'ottimizzatore non finirebbe.
+    # Bastano le coppie vicine, che incatenano l'ordine per transitivita',
+    # piu' tutte quelle che hai davvero invertito, che sono la tua richiesta.
+    pos0 = {a: n for n, a in enumerate(originale)}
+    coppie = set()
+    for n in range(len(elenco) - 1):
+        coppie.add((elenco[n], elenco[n + 1], MARGINE_TIENE))
+    for n in range(len(elenco)):
+        for j in range(n + 1, len(elenco)):
+            A, B = elenco[n], elenco[j]
+            if pos0.get(A, 10**6) > pos0.get(B, 10**6):
+                coppie.discard((A, B, MARGINE_TIENE))
+                coppie.add((A, B, MARGINE_INVERTE))
+    for A, B, m in sorted(coppie):
+        dA, dB = ANIMALI[A]['d'], ANIMALI[B]['d']
+        if all(dA[k] == dB[k] for k in g['pesi']):
+            impossibili.append((g['nome'], ANIMALI[A]['it'], ANIMALI[B]['it']))
+            continue
+        VINCOLI.append((A, B, gid, m))
 
 print(f"gare corrette: {len(cambiate)}  {cambiate if cambiate else ''}")
-print(f"vincoli 'A sopra B': {len(VINCOLI)}")
+inv = sum(1 for v in VINCOLI if v[3] == MARGINE_INVERTE)
+print(f"vincoli 'A sopra B': {len(VINCOLI)}  ({inv} da sorpassi che hai chiesto tu, "
+      f"{len(VINCOLI)-inv} per tenere l'ordine intorno)")
 if impossibili:
     print(f"coppie inseparabili (doti identiche in cio' che la gara premia): {len(impossibili)}")
     for n, a, b in impossibili[:6]:
@@ -210,7 +229,7 @@ def costo_pool(i, k):
 
 
 def costo_locale(i, k):
-    c = COSTO_DRIFT * abs(D[i][k] - D0[i][k]) + costo_pool(i, k)
+    c = COSTO_DRIFT * (D[i][k] - D0[i][k]) ** 2 + costo_pool(i, k)
     for n in VINCOLI_DI.get(i, ()):
         c += costo_vincolo(n)
     return c
@@ -224,7 +243,7 @@ def costo_totale():
     c = sum(costo_vincolo(n) for n in range(len(VINCOLI)))
     for i in TOCCABILI:
         for k in DOTI_DI[i]:
-            c += COSTO_DRIFT * abs(D[i][k] - D0[i][k])
+            c += COSTO_DRIFT * (D[i][k] - D0[i][k]) ** 2
     for gid in GARE:
         dentro = {i for i in ANIMALI if ammesso(D[i], GARE[gid]['req'])}
         c += COSTO_POOL * len(dentro ^ POOL0[gid])
@@ -249,7 +268,7 @@ for giro in range(GIRI):
     i = random.choice(TOCCABILI)
     k = random.choice(DOTI_DI[i])
     nuovo_v = D[i][k] + random.choice((-1, 1))
-    if not (0 <= nuovo_v <= 10):
+    if not (0 <= nuovo_v <= 10) or abs(nuovo_v - D0[i][k]) > MAX_SPOSTA:
         continue
     prima = costo_locale(i, k)
     vecchio = D[i][k]
