@@ -129,3 +129,22 @@ const GARE={
   tuffi:["Tuffi a squadre","Stile e sincronia","Team diving","Style and timing"],
   nuoto:["Staffetta in acqua","Solo animali acquatici","Water relay","Aquatic animals only"],
   volo:["Slalom aereo","Solo chi vola","Aerial slalom","Flyers only"]};
+
+/* ─── arene ───────────────────────────────────────────────────────────
+   L'arena NON si sorteggia: si ricava dalla gara. Quasi tutte le gare
+   fissano già il terreno con req (il nuoto vuole acq>=7, il volo vol>=6),
+   quindi un'arena tirata a caso darebbe il nuoto nella savana.
+   Ricavandola da sport, che viaggia già dentro V, host e ospiti ci
+   arrivano da soli: niente stato nuovo, niente modifiche alla rete.
+   Le gare personalizzate non hanno id noto e restano sul tema di base. */
+const ARENE={
+  giungla:    ["basket3","basket5","tennis"],
+  savana:     ["calcetto","staffetta"],
+  paleolitico:["fune","scherma"],
+  spiaggia:   ["beach","volley"],
+  ghiacciaio: ["bob"],
+  oceano:     ["regata","tuffi","nuoto"],
+  cielo:      ["volo"]
+};
+const ARENA_DI=(function(){const m={};for(const a in ARENE)ARENE[a].forEach(id=>m[id]=a);return m;})();
+const arenaGara=sp=>(sp&&!sp.custom&&ARENA_DI[sp.id])||"base";

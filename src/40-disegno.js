@@ -1,6 +1,9 @@
 /* ─── disegno ─── */
 function disegna(){
   const v=V;if(!v)return;
+  /* L'arena è solo derivata da v.sport, non è stato: si può calcolare qui
+     senza violare la regola "niente stato dentro le funzioni di disegno". */
+  document.documentElement.dataset.arena=arenaGara(v.sport);
   if(v.fase==="lobby"){disegnaLobby();return;}
   if(v.fase==="scelta"){disegnaScelta(v);return;}
   if(v.fase==="fine"){disegnaFine(v);return;}

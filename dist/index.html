@@ -174,6 +174,23 @@ summary{cursor:pointer;font-weight:600;font-size:15px}
 .bandiere{display:flex;gap:8px;justify-content:center}
 .bandiere button{border:1.5px solid var(--bordo);border-radius:11px;padding:7px 15px;font-size:14px}
 .bandiere button[aria-pressed=true]{border-color:var(--oro);background:#20504C}
+/* ─── palette per arena ───────────────────────────────────────────────
+   L'attributo data-arena sta su <html> e non su #app: il fondo della
+   pagina usa --notte, che va ridefinita a livello di :root per coprire
+   anche la fascia fuori dal riquadro sui monitor larghi.
+   Si spostano solo i colori di ambiente. Avorio del testo, oro, rosa e
+   i cinque colori giocatore restano quelli di sempre: sono l'identità
+   del gioco e garantiscono la leggibilità su ogni arena. */
+html[data-arena]{transition:background-color .45s ease}
+html[data-arena] #app{transition:background-color .45s ease}
+html[data-arena="giungla"]    {--notte:#07190F;--fondo:#0E2A1A;--pannello:#153A25;--bordo:#265C3B;--fumo:#9BBFA6}
+html[data-arena="savana"]     {--notte:#1C1106;--fondo:#2E1E0C;--pannello:#3E2A12;--bordo:#6B4A1F;--fumo:#CBA97B}
+html[data-arena="paleolitico"]{--notte:#130E0D;--fondo:#221A18;--pannello:#2F2422;--bordo:#54403A;--fumo:#B6A49C}
+html[data-arena="spiaggia"]   {--notte:#0B1F26;--fondo:#123840;--pannello:#1B4C52;--bordo:#2E7076;--fumo:#A8CFCB}
+html[data-arena="ghiacciaio"] {--notte:#081722;--fondo:#0F2838;--pannello:#17384C;--bordo:#2B5D7E;--fumo:#A9C6DC}
+html[data-arena="oceano"]     {--notte:#04121F;--fondo:#0A2338;--pannello:#0F3350;--bordo:#1B5480;--fumo:#93B8D6}
+html[data-arena="cielo"]      {--notte:#0C1026;--fondo:#161C3C;--pannello:#212A52;--bordo:#3A467E;--fumo:#AEB6DC}
+
 </style>
 </head>
 <body>
@@ -452,6 +469,25 @@ const GARE={
   nuoto:["Staffetta in acqua","Solo animali acquatici","Water relay","Aquatic animals only"],
   volo:["Slalom aereo","Solo chi vola","Aerial slalom","Flyers only"]};
 
+/* ─── arene ───────────────────────────────────────────────────────────
+   L'arena NON si sorteggia: si ricava dalla gara. Quasi tutte le gare
+   fissano già il terreno con req (il nuoto vuole acq>=7, il volo vol>=6),
+   quindi un'arena tirata a caso darebbe il nuoto nella savana.
+   Ricavandola da sport, che viaggia già dentro V, host e ospiti ci
+   arrivano da soli: niente stato nuovo, niente modifiche alla rete.
+   Le gare personalizzate non hanno id noto e restano sul tema di base. */
+const ARENE={
+  giungla:    ["basket3","basket5","tennis"],
+  savana:     ["calcetto","staffetta"],
+  paleolitico:["fune","scherma"],
+  spiaggia:   ["beach","volley"],
+  ghiacciaio: ["bob"],
+  oceano:     ["regata","tuffi","nuoto"],
+  cielo:      ["volo"]
+};
+const ARENA_DI=(function(){const m={};for(const a in ARENE)ARENE[a].forEach(id=>m[id]=a);return m;})();
+const arenaGara=sp=>(sp&&!sp.custom&&ARENA_DI[sp.id])||"base";
+
 const S={
   tagline:["Scegliete una gara, comprate gli animali all'asta, si vede chi ha costruito la squadra giusta.",
            "Pick a contest, buy animals at auction, see who built the right team."],
@@ -629,7 +665,7 @@ S.punti=["Punti","Points"];
 function vai(id){document.querySelectorAll(".schermo").forEach(s=>s.classList.toggle("attivo",s.id===id));window.scrollTo(0,0);}
 "use strict";
 const COLORI=["var(--p1)","var(--p2)","var(--p3)","var(--p4)","var(--p5)"];
-const BUILD="2026-09-19a";
+const BUILD="2026-09-19b";
 const PREFISSO="zoolympics-";     // NON cambiarlo mai: chi ha la versione
                                   // vecchia non riuscirebbe più a entrare.
 /* Senza un TURN, due dispositivi su reti diverse (uno in WiFi, uno in 4G)
@@ -1217,6 +1253,9 @@ function salvaPartita(){
 /* ─── disegno ─── */
 function disegna(){
   const v=V;if(!v)return;
+  /* L'arena è solo derivata da v.sport, non è stato: si può calcolare qui
+     senza violare la regola "niente stato dentro le funzioni di disegno". */
+  document.documentElement.dataset.arena=arenaGara(v.sport);
   if(v.fase==="lobby"){disegnaLobby();return;}
   if(v.fase==="scelta"){disegnaScelta(v);return;}
   if(v.fase==="fine"){disegnaFine(v);return;}
