@@ -5,7 +5,8 @@ Rimette insieme i pezzi di src/ e vendor/ in un unico docs/index.html,
 il file che si mette online.
 
 Alza da solo BUILD in src/20-base.js: stesso giorno → lettera successiva,
-giorno nuovo → "a". Lo stesso valore finisce in docs/versione.txt, perche'
+giorno nuovo → "a". Lo stesso valore finisce in docs/versione.txt e in
+sw.js, perche'
 i due devono restare allineati: se divergono ogni client butta la cache e
 ricarica.
 
@@ -46,6 +47,12 @@ ORDINE = [
 # /docs: la cartella di uscita si chiama docs/ per questo.
 USCITA = "docs"
 SORGENTE_BUILD = "src/20-base.js"
+# Altri file che portano lo stesso BUILD e vanno tenuti allineati. sw.js
+# deve cambiare byte a ogni rilascio, altrimenti il browser non si accorge
+# che c'e' un service worker nuovo.
+SEGUONO_BUILD = ["src/sw.js"]
+# Copiati in USCITA cosi' come sono, dopo il timbro del BUILD.
+DA_COPIARE = ["src/sw.js"]
 RE_BUILD = re.compile(r'(const\s+BUILD\s*=\s*")(\d{4}-\d{2}-\d{2})([a-z]+)(")')
 
 
@@ -103,6 +110,21 @@ def alza_build(alza):
     return nuovo, True
 
 
+def allinea_seguaci(build):
+    """Riscrive BUILD nei file che lo seguono. Gira anche con --stessa, cosi'
+    se uno resta indietro il build dopo lo rimette in pari."""
+    for nome in SEGUONO_BUILD:
+        p = BASE / nome
+        if not p.exists():
+            sys.exit(f"manca {nome}")
+        testo = leggi(p)
+        m = RE_BUILD.search(testo)
+        if not m:
+            sys.exit(f'in {nome} non trovo const BUILD="AAAA-MM-GGx"')
+        if m.group(2) + m.group(3) != build:
+            scrivi(p, testo[: m.start()] + m.group(1) + build + m.group(4) + testo[m.end():])
+
+
 def main():
     argomenti = sys.argv[1:]
     ignoti = [a for a in argomenti if a != "--stessa"]
@@ -111,6 +133,7 @@ def main():
     alza = "--stessa" not in argomenti
 
     build, alzato = alza_build(alza)
+    allinea_seguaci(build)
 
     pezzi = []
     for tipo, cosa in ORDINE:
@@ -127,10 +150,14 @@ def main():
     uscita = fuori / "index.html"
     scrivi(uscita, "\n".join(pezzi))
     scrivi(fuori / "versione.txt", build + "\n")
+    for nome in DA_COPIARE:
+        scrivi(fuori / pathlib.Path(nome).name, leggi(BASE / nome))
 
     print(f"BUILD {build}{'' if alzato else ' (invariato)'}")
     print(f"{USCITA}/index.html · {uscita.stat().st_size} byte")
     print(f"{USCITA}/versione.txt allineato")
+    for nome in DA_COPIARE:
+        print(f"{USCITA}/{pathlib.Path(nome).name} aggiornato")
 
 
 main()

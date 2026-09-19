@@ -14,18 +14,25 @@ Deployment is still **one file**. `src/` and `vendor/` are just the source layou
 python3 build.py      # → docs/index.html
 ```
 
-`build.py` concatenates the pieces in a fixed order and reproduces the original
-file **byte for byte** (verified). `sw.js`, `manifest.json`, `versione.txt` and
-the icons sit next to `docs/index.html`. The output folder is called `docs/`
-because GitHub Pages, serving from a branch, only publishes the repo root or
-`/docs`.
+`build.py` concatenates the pieces in a fixed order. It also **bumps `BUILD`**
+in `src/20-base.js` (same day → next letter, new day → `a`), stamps that value
+into `src/sw.js`, writes `docs/versione.txt`, and copies `sw.js` next to the
+page. `--stessa` rebuilds without bumping — use it when nothing shipped, or
+every no-op build makes all clients drop their cache.
 
-Two things that must stay in sync by hand:
+`manifest.json` and the icons are static files that live in `docs/` and the
+build leaves them alone. The output folder is called `docs/` because GitHub
+Pages, serving from a branch, only publishes the repo root or `/docs`.
 
-- `BUILD` in `src/20-base.js` and the contents of `versione.txt` — a mismatch
-  makes every client wipe its cache and reload.
+Things to know about `BUILD`:
+
+- `versione.txt`, `sw.js` and `BUILD` must carry the same value — a mismatch
+  makes every client wipe its cache and reload. `build.py` keeps them in sync;
+  don't edit them by hand.
 - `BUILD` is also the multiplayer compatibility gate: a guest on a different
   build is refused at the handshake. Bump it whenever the network payload changes.
+- The browser only installs a new service worker when `sw.js` changes byte-wise,
+  which is the other reason the stamp is there.
 
 ---
 
@@ -51,6 +58,9 @@ Two things that must stay in sync by hand:
 | `src/41-info.js` | 1394–1475 | 4 KB | info screen, event cards, animal browser |
 | `src/42-avvio.js` | 1476–1652 | 10 KB | i18n apply, event wiring, boot, service worker |
 | `src/04-coda.html` | 1654–1656 | — | closing tags |
+
+`src/sw.js` is **not** part of the concatenation: it is copied to `docs/sw.js`
+as its own file, with `BUILD` stamped into it.
 
 Everything is one concatenated `<script>`, so there are no modules or imports:
 all top-level names are global and **load order is the order in `build.py`**.

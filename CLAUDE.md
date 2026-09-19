@@ -18,16 +18,21 @@ python3 build.py --stessa     # ricostruisce lasciando BUILD com'è
 
 ## Invarianti — non violarli
 
-**1. `BUILD` e `versione.txt` sempre allineati.**
-`BUILD` sta in `src/20-base.js`, il suo gemello in `docs/versione.txt`. Se i due
+**1. `BUILD`, `versione.txt` e `sw.js` sempre allineati.**
+`BUILD` sta in `src/20-base.js`, e lo stesso valore va in `docs/versione.txt`
+e in `src/sw.js`. Se i due
 valori divergono ogni client butta la cache e ricarica in continuazione. `BUILD`
 è anche il controllo di compatibilità del multigiocatore: un ospite con un build
 diverso viene rifiutato all'handshake.
 
 **Non si toccano a mano**: li allinea `build.py`, che alza `BUILD` a ogni build
-(stesso giorno → lettera successiva, giorno nuovo → `a`) e riscrive
-`versione.txt`. Per una ricostruzione che non deve far ricaricare nessuno usa
-`--stessa`.
+(stesso giorno → lettera successiva, giorno nuovo → `a`), lo timbra in
+`src/sw.js` e riscrive `versione.txt`. Per una ricostruzione che non deve far
+ricaricare nessuno usa `--stessa`.
+
+Il service worker ha bisogno del timbro per un motivo suo: il browser installa
+un SW nuovo solo se i byte del file cambiano. Se `sw.js` restasse identico, i
+client continuerebbero a servirsi dalla cache vecchia.
 
 **2. `PREFISSO` non si cambia mai.**
 `const PREFISSO="zoolympics-"` in `src/20-base.js:5` è il prefisso degli id
@@ -91,5 +96,5 @@ bloccano a metà.
   impostato su branch `main` e cartella `/docs`. Pages, servendo da un branch,
   pubblica solo dalla radice o da `/docs`: una cartella `dist/` non la
   vedrebbe. Dopo una modifica ai sorgenti, ricostruisci e committa anche
-  `docs/index.html` e `docs/versione.txt`, insieme al `BUILD` alzato in
-  `src/20-base.js`.
+  `docs/index.html`, `docs/versione.txt` e `docs/sw.js`, insieme al `BUILD`
+  alzato in `src/20-base.js` e `src/sw.js`.
