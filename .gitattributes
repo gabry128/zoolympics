@@ -1,3 +1,11 @@
-# Il build concatena i sorgenti e deve riprodurre dist/index.html byte per byte:
-# le fini riga restano LF ovunque, anche su Windows.
-* text eol=lf
+# Il build concatena i sorgenti e deve riprodurre docs/index.html byte per
+# byte: le fini riga restano LF ovunque, anche su Windows.
+# "text=auto" e non "text": con "text" git normalizza le fini riga dentro
+# qualunque file, PNG compresi, e li corrompe.
+* text=auto eol=lf
+
+# E per i binari lo diciamo esplicitamente, senza dipendere dall'euristica.
+*.png binary
+*.ico binary
+*.jpg binary
+*.woff2 binary
