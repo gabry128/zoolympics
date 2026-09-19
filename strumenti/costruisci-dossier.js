@@ -41,13 +41,12 @@ const leggiCoppie = s => Object.fromEntries((s || "").split("|").filter(Boolean)
 
 const gare = colonneGara.map(nome => {
   const reg = perNome[nome], sp = DAL_GIOCO[nome];
-  const g = {nome, gruppo: reg.gruppo, stato: reg.stato,
+  const g = {nome, gruppo: reg.gruppo,
              regola: reg.accesso, premio: reg.premio,
              req: leggiCoppie(reg["accesso (dati)"]),
              pesi: leggiCoppie(reg["premio (dati)"]),
-             ammessi: +reg["animali ammessi"], size: +reg.size,
+             ammessi: +reg["animali ammessi"], size: +reg.squadra,
              emoji: sp ? sp.emoji : null};
-  /* la sinergia esiste solo per le gare gia' nel gioco */
   if (sp && sp.sinergia) g.sinergia = sp.sinergia;
   return g;
 });
@@ -56,7 +55,7 @@ const animali = A.righe.map(a => {
   const doti = {};
   for (const k of K) doti[k] = +a[COL(k)];
   return {
-    id: a.id, it: a["nome (it)"], en: a["nome (en)"], emoji: a.emoji, nuovo: !!a.stato,
+    id: a.id, it: a["nome (it)"], en: a["nome (en)"], emoji: a.emoji, raro: !!a.raro,
     d: K.map(k => doti[k]),
     dentro: colonneGara.map(n => a[n] ? 1 : 0),
     fit: gare.map(g => Math.round(ctx.fit(doti, g.pesi) * 10) / 10)
@@ -77,5 +76,5 @@ fs.writeFileSync("dossier.html", modello.replace("__DATI__", dati));
 
 const kb = n => Math.round(fs.statSync(n).size / 1024);
 console.log(`dossier.html: ${animali.length} atleti, ${gare.length} gare, ${kb("dossier.html")} KB`);
-console.log(`  gare gia' nel gioco      : ${gare.filter(g => g.stato === "attuale").length}`);
+console.log(`  classiche / di ghiaccio  : ${gare.filter(g => g.gruppo === "classica").length} / ${gare.filter(g => g.gruppo === "ghiaccio").length}`);
 console.log(`  gare con sinergia        : ${gare.filter(g => g.sinergia).length}`);

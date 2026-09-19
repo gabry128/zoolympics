@@ -89,6 +89,12 @@ const ANIMALI=[
 ["drago","Drago","Dragon","🐉",[9,10,9,7,8,9,8,5,10,9,10,10,10,10,10]],
 ["trex","T-Rex","T-Rex","🦖",[8,10,7,5,3,6,8,2,0,10,6,4,9,5,5]],
 ["brontosauro","Brontosauro","Brontosaurus","🦕",[10,10,3,1,1,7,7,4,0,10,4,3,6,4,3]],
+["leopardo","Leopardo","Leopard","🐆",[4,8,8,9,5,5,8,3,0,7,6,8,7,7,8]],
+["pantera","Pantera","Panther","🐈‍⬛",[4,7,8,8,5,6,8,4,0,6,7,8,8,8,9]],
+["iena","Iena","Hyena","🐺",[3,8,8,6,7,9,8,2,0,6,5,6,8,9,6]],
+["gazzella","Gazzella","Gazelle","🦌",[4,3,9,9,1,6,8,1,0,3,4,8,5,5,9]],
+["bufalo","Bufalo","Water buffalo","🐃",[6,9,5,2,1,8,7,7,0,10,3,5,8,5,4]],
+["asino","Asino","Donkey","🫏",[4,7,4,3,1,10,9,1,0,7,4,9,6,7,4]],
 ].map(([id,it,en,emoji,s])=>{const o={id,it,en,emoji};K.forEach((k,i)=>o[k]=s[i]);return o;});
 
 /* ─── rarità ───
@@ -97,23 +103,36 @@ const ANIMALI=[
    lotti, ci entri davvero: 0,12 vuol dire circa una volta su otto.
    Sta qui perché è un dato, e perché il renderer deve poterlo ricavare
    da solo senza che viaggi dentro V. */
-const RARITA={drago:0.12};
+const RARITA={drago:0.06};
 const raro=a=>!!(a&&RARITA[a.id]);
 const SPORT_TUTTI=[
-{id:"basket3",size:3,emoji:"🏀",req:{"ter": 5},pesi:{"alt": 4, "agi": 3, "vel": 2, "man": 1, "frz": 1},sinergia:{tipo:"ruoli",stat:"alt",soglia:6,quota:0.60,max:0.12}},
-{id:"basket5",size:5,emoji:"🏀",req:{"ter": 5},pesi:{"alt": 4, "agi": 3, "vel": 2, "man": 1, "frz": 1},sinergia:{tipo:"ruoli",stat:"alt",soglia:6,quota:0.60,max:0.15}},
-{id:"beach",size:2,emoji:"🏐",req:{"ter": 5},pesi:{"alt": 3, "agi": 3, "rif": 2, "man": 1, "frz": 1},sinergia:{tipo:"ruoli",stat:"alt",soglia:6,quota:0.50,max:0.10}},
-{id:"volley",size:6,emoji:"🏐",req:{"ter": 5},pesi:{"alt": 3, "agi": 3, "rif": 2, "man": 1, "frz": 1},sinergia:{tipo:"ruoli",stat:"alt",soglia:6,quota:0.50,max:0.15}},
-{id:"calcetto",size:5,emoji:"⚽",req:{"ter": 6},pesi:{"vel": 4, "agi": 4, "res": 2, "frz": 1},sinergia:{tipo:"ruoli",stat:"vel",soglia:6,quota:0.60,max:0.10}},
-{id:"scherma",size:1,emoji:"🤺",req:{"ter": 5, "man": 4},pesi:{"int": 4, "vel": 3, "rif": 2, "agi": 1}},
-{id:"staffetta",size:4,emoji:"🏃",req:{"ter": 7},pesi:{"vel": 5, "agi": 2, "res": 1}},
-{id:"tennis",size:2,emoji:"🎾",req:{"ter": 5, "man": 4},pesi:{"agi": 4, "vel": 3, "int": 2, "rif": 2},sinergia:{tipo:"simili",stat:"agi",max:0.08}},
-{id:"bob",size:4,emoji:"🛷",req:{"ter": 5},pesi:{"mas": 3, "frz": 3, "vel": 2, "agi": 2},sinergia:{tipo:"ruoli",stat:"mas",soglia:6,quota:0.75,max:0.10}},
-{id:"fune",size:5,emoji:"🪢",req:{"ter": 4},pesi:{"frz": 4, "mas": 4, "man": 2}},
-{id:"regata",size:4,emoji:"🚣",req:{"man": 4},pesi:{"frz": 4, "res": 4, "acq": 1},sinergia:{tipo:"simili",stat:"res",max:0.10}},
-{id:"tuffi",size:3,emoji:"🤿",req:{"acq": 3},pesi:{"agi": 4, "equ": 3, "alt": 1, "mas": -2},sinergia:{tipo:"simili",stat:"mas",max:0.15}},
-{id:"nuoto",size:4,emoji:"🏊",req:{"acq": 7},pesi:{"vel": 4, "res": 3, "frz": 1}},
-{id:"volo",size:2,emoji:"🪂",req:{"vol": 6},pesi:{"vol": 4, "agi": 3, "vel": 3, "res": 1}},
+{id:"basket5",size:5,emoji:"🏀",gruppo:"classica",req:{"ter": 5},pesi:{"alt": 4, "agi": 3, "vel": 2, "man": 1, "frz": 1},sinergia:{tipo:"ruoli",stat:"alt",soglia:6,quota:0.60,max:0.15}},
+{id:"beach",size:2,emoji:"🏐",gruppo:"classica",req:{"ter": 5},pesi:{"alt": 3, "agi": 3, "rif": 2, "man": 1, "frz": 1},sinergia:{tipo:"ruoli",stat:"alt",soglia:6,quota:0.50,max:0.10}},
+{id:"calcetto",size:5,emoji:"⚽",gruppo:"classica",req:{"ter": 6},pesi:{"vel": 4, "agi": 4, "res": 2, "frz": 1},sinergia:{tipo:"ruoli",stat:"vel",soglia:6,quota:0.60,max:0.10}},
+{id:"scherma",size:2,emoji:"🤺",gruppo:"classica",req:{"ter": 5, "man": 4},pesi:{"int": 4, "vel": 3, "rif": 2, "agi": 1},sinergia:{tipo:"simili",stat:"rif",max:0.08}},
+{id:"staffetta",size:4,emoji:"🏃",gruppo:"classica",req:{"ter": 7},pesi:{"vel": 5, "agi": 2, "res": 1}},
+{id:"tennis",size:2,emoji:"🎾",gruppo:"classica",req:{"ter": 5, "man": 4},pesi:{"agi": 4, "vel": 3, "int": 2, "rif": 2},sinergia:{tipo:"simili",stat:"agi",max:0.08}},
+{id:"fune",size:5,emoji:"🪢",gruppo:"classica",req:{"ter": 4},pesi:{"frz": 4, "mas": 4, "man": 2}},
+{id:"regata",size:4,emoji:"🚣",gruppo:"classica",req:{"man": 4},pesi:{"frz": 4, "res": 4, "acq": 1},sinergia:{tipo:"simili",stat:"res",max:0.10}},
+{id:"tuffi",size:3,emoji:"🤿",gruppo:"classica",req:{"acq": 3},pesi:{"agi": 4, "equ": 3, "alt": 1, "mas": -2},sinergia:{tipo:"simili",stat:"mas",max:0.15}},
+{id:"nuoto",size:4,emoji:"🏊",gruppo:"classica",req:{"acq": 7},pesi:{"vel": 4, "res": 3, "frz": 1}},
+{id:"volo",size:2,emoji:"🪂",gruppo:"classica",req:{"vol": 6},pesi:{"vol": 4, "agi": 3, "vel": 3, "res": 1}},
+{id:"bob",size:4,emoji:"🛷",gruppo:"ghiaccio",req:{"ter": 5},pesi:{"mas": 3, "frz": 3, "vel": 2, "agi": 2},sinergia:{tipo:"ruoli",stat:"mas",soglia:6,quota:0.75,max:0.10}},
+{id:"ciclismo",size:4,emoji:"🚴",gruppo:"classica",req:{"ter": 6},pesi:{"res": 4, "vel": 3, "equ": 1},sinergia:{tipo:"simili",stat:"res",max:0.12}},
+{id:"ginnastica",size:4,emoji:"🤸",gruppo:"classica",req:{"ter": 5},pesi:{"agi": 4, "equ": 3, "frz": 2},sinergia:{tipo:"simili",stat:"agi",max:0.12}},
+{id:"arco",size:3,emoji:"🏹",gruppo:"classica",req:{"ter": 5, "man": 4},pesi:{"pre": 5, "equ": 2}},
+{id:"pesi",size:3,emoji:"🏋️",gruppo:"classica",req:{"ter": 5},pesi:{"frz": 5, "mas": 3}},
+{id:"judo",size:2,emoji:"🥋",gruppo:"classica",req:{"ter": 5, "man": 4},pesi:{"frz": 3, "agi": 3, "int": 2}},
+{id:"taekwondo",size:2,emoji:"🥋",gruppo:"classica",req:{"ter": 5},pesi:{"agi": 4, "rif": 3, "vel": 2}},
+{id:"pingpong",size:2,emoji:"🏓",gruppo:"classica",req:{"ter": 5, "man": 4},pesi:{"rif": 5, "pre": 3},sinergia:{tipo:"simili",stat:"rif",max:0.10}},
+{id:"lenta",size:3,emoji:"🐢",gruppo:"classica",req:{"ter": 4},pesi:{"res": 4, "vel": -3, "mas": -2}},
+{id:"saltosci",size:4,emoji:"🎿",gruppo:"ghiaccio",req:{"ter": 5},pesi:{"cor": 4, "equ": 3, "mas": -1},sinergia:{tipo:"ruoli",stat:"mas",soglia:6,quota:0.25,max:0.12}},
+{id:"slittino",size:2,emoji:"🛷",gruppo:"ghiaccio",req:{"ter": 5},pesi:{"cor": 4, "mas": 2, "equ": 2},sinergia:{tipo:"ruoli",stat:"mas",soglia:6,quota:0.50,max:0.10}},
+{id:"pattinaggio",size:2,emoji:"⛸️",gruppo:"ghiaccio",req:{"ter": 5},pesi:{"agi": 4, "equ": 4},sinergia:{tipo:"simili",stat:"equ",max:0.15}},
+{id:"fondo",size:4,emoji:"🎿",gruppo:"ghiaccio",req:{"ter": 6},pesi:{"res": 5, "vel": 1},sinergia:{tipo:"simili",stat:"res",max:0.12}},
+{id:"snowboard",size:3,emoji:"🏂",gruppo:"ghiaccio",req:{"ter": 5},pesi:{"equ": 4, "agi": 3, "cor": 2}},
+{id:"discesa",size:3,emoji:"⛷️",gruppo:"ghiaccio",req:{"ter": 5},pesi:{"vel": 4, "cor": 3, "equ": 2}},
+{id:"slalom",size:4,emoji:"⛷️",gruppo:"ghiaccio",req:{"ter": 5},pesi:{"agi": 4, "rif": 3}},
 ];
 /* Niente gare da un animale solo: il minimo è due contro due. */
 const SPORT=SPORT_TUTTI.filter(s=>s.size>=2);
@@ -126,20 +145,33 @@ const STAT={
   pre:["Precisione","Accuracy"],equ:["Equilibrio","Balance"],cor:["Coraggio","Nerve"],int:["Intelligenza","Wits"],rif:["Riflessi","Reflexes"]};
 
 const GARE={
-  basket3:["Basket 3 contro 3","Campo piccolo, un canestro","3-on-3 basketball","Half court, one hoop"],
   basket5:["Basket 5 contro 5","Partita intera","5-on-5 basketball","Full game"],
   beach:["Beach volley","Due sulla sabbia","Beach volleyball","Two on the sand"],
-  volley:["Pallavolo 6 contro 6","Rete alta, muro","6-on-6 volleyball","High net, big block"],
   calcetto:["Calcetto 5 contro 5","Portiere compreso","5-a-side football","Keeper included"],
-  scherma:["Duello di scherma","Uno solo, tutto o niente","Fencing duel","One only, all or nothing"],
+  scherma:["Scherma a coppie","Due assalti, due stoccate","Fencing pairs","Two bouts, two touches"],
   staffetta:["Staffetta 4x100","Serve il cambio pulito","4x100 relay","Clean handoffs matter"],
   tennis:["Doppio di tennis","Rete, riflessi, copertura","Tennis doubles","Net play and reflexes"],
-  bob:["Bob a quattro","Spinta, peso, curve","Four-man bobsleigh","Push, weight, curves"],
   fune:["Tiro alla fune","Solo massa e presa","Tug of war","Just mass and grip"],
   regata:["Regata a remi","Ritmo e braccia","Rowing race","Rhythm and arms"],
   tuffi:["Tuffi a squadre","Stile e sincronia","Team diving","Style and timing"],
   nuoto:["Staffetta in acqua","Solo animali acquatici","Water relay","Aquatic animals only"],
-  volo:["Slalom aereo","Solo chi vola","Aerial slalom","Flyers only"]};
+  volo:["Slalom aereo","Solo chi vola","Aerial slalom","Flyers only"],
+  bob:["Bob a quattro","Spinta, peso, curve","Four-man bobsleigh","Push, weight, curves"],
+  ciclismo:["Ciclismo a squadre","Il gruppo va come il più lento","Team cycling","The pack goes as slow as its slowest"],
+  ginnastica:["Ginnastica a squadre","Attrezzi e atterraggi","Team gymnastics","Apparatus and landings"],
+  arco:["Tiro con l'arco","Mano ferma, fiato corto","Team archery","Steady hand, short breath"],
+  pesi:["Sollevamento pesi","Si alza e basta","Team weightlifting","You lift, that is all"],
+  judo:["Judo a coppie","Presa, leva, testa","Judo pairs","Grip, leverage, head"],
+  taekwondo:["Taekwondo a coppie","Calci alti e riflessi","Taekwondo pairs","High kicks and reflexes"],
+  pingpong:["Tennistavolo doppio","Tutto in un metro","Table tennis doubles","All within one metre"],
+  lenta:["Marcia lentissima","Vince l'ultimo che si ferma","Slowest march","Last one standing wins"],
+  saltosci:["Salto con gli sci","Coraggio e niente peso","Team ski jumping","Nerve, and no weight"],
+  slittino:["Slittino a coppie","Testa avanti, occhi chiusi","Luge pairs","Head first, eyes shut"],
+  pattinaggio:["Pattinaggio artistico","Due che si muovono come uno","Figure skating pairs","Two moving as one"],
+  fondo:["Sci di fondo","Chilometri, non scatti","Cross-country skiing","Kilometres, not sprints"],
+  snowboard:["Snowboard a squadre","Tavola, salti, atterraggi","Team snowboard","Board, air, landing"],
+  discesa:["Discesa libera","Dritti in fondo","Downhill","Straight to the bottom"],
+  slalom:["Slalom speciale","Porte strette, reazione","Special slalom","Tight gates, quick reaction"]};
 
 /* ─── arene ───────────────────────────────────────────────────────────
    L'arena NON si sorteggia: si ricava dalla gara. Quasi tutte le gare
@@ -149,13 +181,14 @@ const GARE={
    arrivano da soli: niente stato nuovo, niente modifiche alla rete.
    Le gare personalizzate non hanno id noto e restano sul tema di base. */
 const ARENE={
-  giungla:    ["basket3","basket5","tennis"],
-  savana:     ["calcetto","staffetta"],
-  paleolitico:["fune","scherma"],
-  spiaggia:   ["beach","volley"],
-  ghiacciaio: ["bob"],
+  giungla:    ["basket5","tennis","ginnastica","pingpong"],
+  spiaggia:   ["beach","lenta"],
+  savana:     ["calcetto","staffetta","ciclismo"],
+  paleolitico:["scherma","fune","arco","pesi","judo","taekwondo"],
   oceano:     ["regata","tuffi","nuoto"],
-  cielo:      ["volo"]
+  cielo:      ["volo"],
+  ghiacciaio: ["bob","slittino","pattinaggio"],
+  montagna:   ["saltosci","fondo","snowboard","discesa","slalom"]
 };
 const ARENA_DI=(function(){const m={};for(const a in ARENE)ARENE[a].forEach(id=>m[id]=a);return m;})();
 const arenaGara=sp=>(sp&&!sp.custom&&ARENA_DI[sp.id])||"base";

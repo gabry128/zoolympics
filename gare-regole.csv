@@ -1,34 +1,28 @@
-﻿id;gara;gruppo;stato;accesso;premio;accesso (dati);premio (dati);animali ammessi;% sul totale;size;migliore
-basket3;Basket 3 contro 3;estiva;attuale;Terra>=5;Altezza x4 · Agilita x3 · Velocita x2 · Presa x1 · Forza x1;ter:5;alt:4|agi:3|vel:2|man:1|frz:1;77;79%;3;Drago 8.5
-basket5;Basket 5 contro 5;estiva;attuale;Terra>=5;Altezza x4 · Agilita x3 · Velocita x2 · Presa x1 · Forza x1;ter:5;alt:4|agi:3|vel:2|man:1|frz:1;77;79%;5;Drago 8.5
-beach;Beach volley;estiva;attuale;Terra>=5;Altezza x3 · Agilita x3 · Riflessi x2 · Presa x1 · Forza x1;ter:5;alt:3|agi:3|rif:2|man:1|frz:1;77;79%;2;Drago 8.6
-volley;Pallavolo 6 contro 6;estiva;attuale;Terra>=5;Altezza x3 · Agilita x3 · Riflessi x2 · Presa x1 · Forza x1;ter:5;alt:3|agi:3|rif:2|man:1|frz:1;77;79%;6;Drago 8.6
-calcetto;Calcetto 5 contro 5;estiva;attuale;Terra>=6;Velocita x4 · Agilita x4 · Fiato x2 · Forza x1;ter:6;vel:4|agi:4|res:2|frz:1;69;71%;5;Gazzella 8.6
-scherma;Duello di scherma;estiva;attuale;Terra>=5 e Presa>=4;Intelligenza x4 · Velocita x3 · Riflessi x2 · Agilita x1;ter:5|man:4;int:4|vel:3|rif:2|agi:1;32;32%;1;Drago 9.4
-staffetta;Staffetta 4x100;estiva;attuale;Terra>=7;Velocita x5 · Agilita x2 · Fiato x1;ter:7;vel:5|agi:2|res:1;58;59%;4;Gazzella 9.4
-tennis;Doppio di tennis;estiva;attuale;Terra>=5 e Presa>=4;Agilita x4 · Velocita x3 · Intelligenza x2 · Riflessi x2;ter:5|man:4;agi:4|vel:3|int:2|rif:2;32;32%;2;Gibbone 8.9
-bob;Bob a quattro;invernale;attuale;Terra>=5;Stazza x3 · Forza x3 · Velocita x2 · Agilita x2;ter:5;mas:3|frz:3|vel:2|agi:2;77;79%;4;Drago 8.9
-fune;Tiro alla fune;estiva;attuale;Terra>=4;Forza x4 · Stazza x4 · Presa x2;ter:4;frz:4|mas:4|man:2;82;84%;5;Gorilla 9.4
-regata;Regata a remi;estiva;attuale;Presa>=4;Forza x4 · Fiato x4 · Acqua x1;man:4;frz:4|res:4|acq:1;37;38%;4;Drago 9.0
-tuffi;Tuffi a squadre;estiva;attuale;Acqua>=3;Agilita x4 · Equilibrio x3 · Altezza x1 · Stazza penalizza -2;acq:3;agi:4|equ:3|alt:1|mas:-2;43;44%;3;Polpo 8.2
-nuoto;Staffetta in acqua;estiva;attuale;Acqua>=7;Velocita x4 · Fiato x3 · Forza x1;acq:7;vel:4|res:3|frz:1;22;22%;4;Squalo 8.6
-volo;Slalom aereo;estiva;attuale;Volo>=6;Volo x4 · Agilita x3 · Velocita x3 · Fiato x1;vol:6;vol:4|agi:3|vel:3|res:1;14;14%;2;Aquila 9.2
-ciclismo;Ciclismo a squadre;estiva;nuova;Terra>=6;Fiato x4 · Velocita x3 · Equilibrio x1;ter:6;res:4|vel:3|equ:1;69;71%;12;Drago 9.1
-ginnastica;Ginnastica a squadre;estiva;nuova;Terra>=5;Agilita x4 · Equilibrio x4;ter:5;agi:4|equ:4;77;79%;13;Gibbone 10.0
-equitazione;Equitazione a squadre;estiva;nuova;Terra>=6;Equilibrio x4 · Velocita x2 · Intelligenza x2;ter:6;equ:4|vel:2|int:2;69;71%;12;Drago 9.8
-arco;Tiro con l'arco a squadre;estiva;nuova;Terra>=5 e Presa>=4;Precisione x5 · Equilibrio x2;ter:5|man:4;pre:5|equ:2;32;32%;4;Drago 10.0
-pesi;Sollevamento pesi a squadre;estiva;nuova;Terra>=5;Forza x5 · Stazza x3;ter:5;frz:5|mas:3;77;79%;13;Elefante 10.0
-judo;Judo a squadre;estiva;nuova;Terra>=5 e Presa>=4;Forza x3 · Agilita x3 · Intelligenza x2;ter:5|man:4;frz:3|agi:3|int:2;32;32%;4;Drago 8.9
-taekwondo;Taekwondo a squadre;estiva;nuova;Terra>=5;Agilita x4 · Riflessi x3 · Velocita x2;ter:5;agi:4|rif:3|vel:2;77;79%;13;Gibbone 9.6
-badminton;Badminton doppio;estiva;nuova;Terra>=5 e Presa>=4;Riflessi x4 · Agilita x3 · Velocita x1;ter:5|man:4;rif:4|agi:3|vel:1;32;32%;4;Gibbone 9.8
-pingpong;Tennistavolo doppio;estiva;nuova;Terra>=5 e Presa>=4;Riflessi x5 · Precisione x3;ter:5|man:4;rif:5|pre:3;32;32%;4;Drago 10.0
-saltosci;Salto con gli sci di squadra;invernale;nuova;Terra>=5;Coraggio x4 · Equilibrio x3 · Stazza penalizza -1;ter:5;cor:4|equ:3|mas:-1;77;79%;13;Drago 8.9
-slittino;Slittino a squadre;invernale;nuova;Terra>=5;Coraggio x4 · Stazza x2 · Equilibrio x2;ter:5;cor:4|mas:2|equ:2;77;79%;13;Drago 9.8
-pattinaggio;Pattinaggio artistico a squadre;invernale;nuova;Terra>=5;Agilita x4 · Equilibrio x4;ter:5;agi:4|equ:4;77;79%;13;Gibbone 10.0
-velocita;Pattinaggio di velocita a squadre;invernale;nuova;Terra>=5;Velocita x4 · Equilibrio x3;ter:5;vel:4|equ:3;77;79%;13;Leopardo 9.6
-fondo;Sci di fondo a squadre;invernale;nuova;Terra>=6;Fiato x5 · Velocita x1;ter:6;res:5|vel:1;69;71%;12;Cammello 9.2
-snowboard;Snowboard a squadre;invernale;nuova;Terra>=5;Equilibrio x4 · Agilita x3 · Coraggio x2;ter:5;equ:4|agi:3|cor:2;77;79%;13;Gibbone 9.1
-discesa;Discesa libera a squadre;invernale;nuova;Terra>=5;Velocita x4 · Coraggio x3 · Equilibrio x2;ter:5;vel:4|cor:3|equ:2;77;79%;13;Drago 9.6
-slalom;Slalom speciale a squadre;invernale;nuova;Terra>=5;Agilita x4 · Riflessi x3;ter:5;agi:4|rif:3;77;79%;13;Gibbone 10.0
-biathlon;Biathlon a squadre;invernale;nuova;Terra>=6;Fiato x4 · Precisione x4;ter:6;res:4|pre:4;69;71%;12;Drago 9.5
-combinata;Combinata nordica a squadre;invernale;nuova;Terra>=5;Fiato x4 · Velocita x3 · Equilibrio x1;ter:5;res:4|vel:3|equ:1;77;79%;13;Drago 9.1
+﻿id;gara;gruppo;squadra;accesso;premio;intesa;accesso (dati);premio (dati);animali ammessi;% sul totale;migliore
+basket5;Basket 5 contro 5;classica;5;Terra>=5;Altezza x4 · Agilita x3 · Velocita x2 · Presa x1 · Forza x1;ruoli su Altezza: 60% sopra 6, fino a +15%;ter:5;alt:4|agi:3|vel:2|man:1|frz:1;74;78%;Drago 8.5
+beach;Beach volley;classica;2;Terra>=5;Altezza x3 · Agilita x3 · Riflessi x2 · Presa x1 · Forza x1;ruoli su Altezza: 50% sopra 6, fino a +10%;ter:5;alt:3|agi:3|rif:2|man:1|frz:1;74;78%;Drago 8.6
+calcetto;Calcetto 5 contro 5;classica;5;Terra>=6;Velocita x4 · Agilita x4 · Fiato x2 · Forza x1;ruoli su Velocita: 60% sopra 6, fino a +10%;ter:6;vel:4|agi:4|res:2|frz:1;66;70%;Drago 8.4
+scherma;Scherma a coppie;classica;2;Terra>=5 e Presa>=4;Intelligenza x4 · Velocita x3 · Riflessi x2 · Agilita x1;somiglianza su Riflessi, fino a +8%;ter:5|man:4;int:4|vel:3|rif:2|agi:1;32;34%;Drago 9.4
+staffetta;Staffetta 4x100;classica;4;Terra>=7;Velocita x5 · Agilita x2 · Fiato x1;;ter:7;vel:5|agi:2|res:1;55;58%;Ghepardo 8.8
+tennis;Doppio di tennis;classica;2;Terra>=5 e Presa>=4;Agilita x4 · Velocita x3 · Intelligenza x2 · Riflessi x2;somiglianza su Agilita, fino a +8%;ter:5|man:4;agi:4|vel:3|int:2|rif:2;32;34%;Gibbone 8.9
+fune;Tiro alla fune;classica;5;Terra>=4;Forza x4 · Stazza x4 · Presa x2;;ter:4;frz:4|mas:4|man:2;79;84%;Gorilla 9.4
+regata;Regata a remi;classica;4;Presa>=4;Forza x4 · Fiato x4 · Acqua x1;somiglianza su Fiato, fino a +10%;man:4;frz:4|res:4|acq:1;37;39%;Drago 9.0
+tuffi;Tuffi a squadre;classica;3;Acqua>=3;Agilita x4 · Equilibrio x3 · Altezza x1 · Stazza penalizza -2;somiglianza su Stazza, fino a +15%;acq:3;agi:4|equ:3|alt:1|mas:-2;43;45%;Polpo 8.2
+nuoto;Staffetta in acqua;classica;4;Acqua>=7;Velocita x4 · Fiato x3 · Forza x1;;acq:7;vel:4|res:3|frz:1;23;24%;Squalo 8.6
+volo;Slalom aereo;classica;2;Volo>=6;Volo x4 · Agilita x3 · Velocita x3 · Fiato x1;;vol:6;vol:4|agi:3|vel:3|res:1;14;14%;Aquila 9.2
+bob;Bob a quattro;ghiaccio;4;Terra>=5;Stazza x3 · Forza x3 · Velocita x2 · Agilita x2;ruoli su Stazza: 75% sopra 6, fino a +10%;ter:5;mas:3|frz:3|vel:2|agi:2;74;78%;Drago 8.9
+ciclismo;Ciclismo a squadre;classica;4;Terra>=6;Fiato x4 · Velocita x3 · Equilibrio x1;somiglianza su Fiato, fino a +12%;ter:6;res:4|vel:3|equ:1;66;70%;Drago 9.1
+ginnastica;Ginnastica a squadre;classica;4;Terra>=5;Agilita x4 · Equilibrio x3 · Forza x2;somiglianza su Agilita, fino a +12%;ter:5;agi:4|equ:3|frz:2;74;78%;Gibbone 8.7
+arco;Tiro con l'arco;classica;3;Terra>=5 e Presa>=4;Precisione x5 · Equilibrio x2;;ter:5|man:4;pre:5|equ:2;32;34%;Drago 10.0
+pesi;Sollevamento pesi;classica;3;Terra>=5;Forza x5 · Stazza x3;;ter:5;frz:5|mas:3;74;78%;Elefante 10.0
+judo;Judo a coppie;classica;2;Terra>=5 e Presa>=4;Forza x3 · Agilita x3 · Intelligenza x2;;ter:5|man:4;frz:3|agi:3|int:2;32;34%;Drago 8.9
+taekwondo;Taekwondo a coppie;classica;2;Terra>=5;Agilita x4 · Riflessi x3 · Velocita x2;;ter:5;agi:4|rif:3|vel:2;74;78%;Gibbone 9.6
+pingpong;Tennistavolo doppio;classica;2;Terra>=5 e Presa>=4;Riflessi x5 · Precisione x3;somiglianza su Riflessi, fino a +10%;ter:5|man:4;rif:5|pre:3;32;34%;Drago 10.0
+lenta;Marcia lentissima;classica;3;Terra>=4;Fiato x4 · Velocita penalizza -3 · Stazza penalizza -2;;ter:4;res:4|vel:-3|mas:-2;79;84%;Lumaca 8.0
+saltosci;Salto con gli sci;ghiaccio;4;Terra>=5;Coraggio x4 · Equilibrio x3 · Stazza penalizza -1;ruoli su Stazza: 25% sopra 6, fino a +12%;ter:5;cor:4|equ:3|mas:-1;74;78%;Drago 8.9
+slittino;Slittino a coppie;ghiaccio;2;Terra>=5;Coraggio x4 · Stazza x2 · Equilibrio x2;ruoli su Stazza: 50% sopra 6, fino a +10%;ter:5;cor:4|mas:2|equ:2;74;78%;Drago 9.8
+pattinaggio;Pattinaggio artistico;ghiaccio;2;Terra>=5;Agilita x4 · Equilibrio x4;somiglianza su Equilibrio, fino a +15%;ter:5;agi:4|equ:4;74;78%;Gibbone 10.0
+fondo;Sci di fondo;ghiaccio;4;Terra>=6;Fiato x5 · Velocita x1;somiglianza su Fiato, fino a +12%;ter:6;res:5|vel:1;66;70%;Cammello 9.2
+snowboard;Snowboard a squadre;ghiaccio;3;Terra>=5;Equilibrio x4 · Agilita x3 · Coraggio x2;;ter:5;equ:4|agi:3|cor:2;74;78%;Gibbone 9.1
+discesa;Discesa libera;ghiaccio;3;Terra>=5;Velocita x4 · Coraggio x3 · Equilibrio x2;;ter:5;vel:4|cor:3|equ:2;74;78%;Drago 9.6
+slalom;Slalom speciale;ghiaccio;4;Terra>=5;Agilita x4 · Riflessi x3;;ter:5;agi:4|rif:3;74;78%;Gibbone 10.0

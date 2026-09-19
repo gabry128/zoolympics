@@ -39,6 +39,11 @@ input:focus-visible,button:focus-visible,.scelta:focus-visible,summary:focus-vis
 .scelta.ctr{align-items:center;text-align:center}
 .scelta[aria-pressed=true]{border-color:var(--oro);background:#20504C}
 .scelta b{font-size:15px;font-weight:600}.scelta span{font-size:12.5px;color:var(--fumo)}
+.gruppo-gare{grid-column:1/-1;font-family:var(--disp);font-size:12px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--fumo);display:flex;align-items:center;gap:9px;margin-top:6px}
+.gruppo-gare:first-child{margin-top:0}
+.gruppo-gare::after{content:"";flex:1;height:1px;background:var(--bordo)}
+.gruppo-gare i{font-style:normal;font-size:11px;color:var(--oro)}
 .codice{font-family:var(--disp);font-weight:900;font-size:clamp(40px,14vw,60px);letter-spacing:.14em;color:var(--oro);text-align:center;line-height:1.15}
 #codice-in{font-family:var(--disp);font-size:30px;letter-spacing:.2em;text-align:center;text-transform:uppercase}
 .plance{display:flex;gap:7px}
@@ -181,5 +186,6 @@ html[data-arena="savana"]     {--notte:#1C1106;--fondo:#2E1E0C;--pannello:#3E2A1
 html[data-arena="paleolitico"]{--notte:#130E0D;--fondo:#221A18;--pannello:#2F2422;--bordo:#54403A;--fumo:#B6A49C}
 html[data-arena="spiaggia"]   {--notte:#0B1F26;--fondo:#123840;--pannello:#1B4C52;--bordo:#2E7076;--fumo:#A8CFCB}
 html[data-arena="ghiacciaio"] {--notte:#081722;--fondo:#0F2838;--pannello:#17384C;--bordo:#2B5D7E;--fumo:#A9C6DC}
+html[data-arena="montagna"]   {--notte:#0E1714;--fondo:#1A2723;--pannello:#243430;--bordo:#3E5A50;--fumo:#A3BEB0}
 html[data-arena="oceano"]     {--notte:#04121F;--fondo:#0A2338;--pannello:#0F3350;--bordo:#1B5480;--fumo:#93B8D6}
 html[data-arena="cielo"]      {--notte:#0C1026;--fondo:#161C3C;--pannello:#212A52;--bordo:#3A467E;--fumo:#AEB6DC}

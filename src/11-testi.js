@@ -26,6 +26,8 @@ const S={
   aTesta:["a testa","each"],allAsta:["all'asta","in the auction"],giocatori:["giocatori","players"],
   assegnati:["%d di %d assegnati","%d of %d taken"],
   apparizioneRara:["apparizione rara","rare sighting"],
+  gruppoClassica:["Olimpiadi classiche","Classic games"],
+  gruppoGhiaccio:["Sport di ghiaccio","Ice and snow"],
   nessunaOfferta:["nessuna offerta","no bid"],offertaDi:["offerta: %d — %s","bid: %d — %s"],
   apriA1:["Apro a 1","I open at 1"],saltaAnimale:["Salta questo animale (skip)","Skip this animal"],
   skipUsato:["Skip già usato","Skip already used"],

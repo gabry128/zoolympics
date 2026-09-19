@@ -240,9 +240,8 @@ const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":
 
 let corrente = 0, correnteGara = 0, vista = "atleti", filtro = "tutti", query = "";
 
-/* Ogni gara ha ormai accesso e premio separati, quindi un voto esiste
-   sempre: anche le diciannove proposte hanno i loro pesi. */
-const propost = g => g.stato === "nuova";
+/* Ogni gara ha accesso e premio separati, quindi un voto esiste sempre. */
+const ghiaccio = g => g.gruppo === "ghiaccio";
 
 /* ─── radar ─── */
 const CX=182, CY=172, RR=116, N=K.length;
@@ -349,7 +348,7 @@ function disegnaGara(){
     <button class="posto" data-va="${esc(x.a.id)}" title="Apri la scheda di ${esc(x.a.it)}">
       <span class="posto-n">${n}</span>
       <span>${x.a.emoji}</span>
-      <span class="posto-nome">${esc(x.a.it)}${x.a.nuovo?'<span class="voce-nuovo"></span>':""}</span>
+      <span class="posto-nome">${esc(x.a.it)}${x.a.raro?'<span class="voce-nuovo" title="raro"></span>':""}</span>
       <span class="posto-barra"><span class="posto-riemp" style="width:${Math.max(3,valore(x.a)*10).toFixed(1)}%"></span></span>
       <span class="posto-val">${valore(x.a).toFixed(1)}</span>
     </button>`;
@@ -370,7 +369,7 @@ function disegnaGara(){
         <div class="targhe">
           <span class="targa oro">${dentro.length} atleti ammessi</span>
           <span class="targa">squadra da ${g.size}</span>
-          ${propost(g) ? '<span class="targa rosa">proposta, non ancora nel gioco</span>' : ""}
+          <span class="targa">${ghiaccio(g)?"di ghiaccio ❄":"olimpiade classica"}</span>
         </div>
       </div>
       <nav class="frecce">
@@ -442,7 +441,7 @@ function disegnaAtleta(){
   const tutte = GARE.map((g,i)=>({g,i}));
   const ammesse = tutte.filter(x => a.dentro[x.i]).sort((p,q)=>a.fit[q.i]-a.fit[p.i]);
   const escluse = tutte.filter(x => !a.dentro[x.i]).sort((p,q)=>a.fit[q.i]-a.fit[p.i]);
-  const proposte = ammesse.filter(x => propost(x.g)).length;
+  const suGhiaccio = ammesse.filter(x => ghiaccio(x.g)).length;
 
   const mancanti = (g) => Object.entries(g.req)
     .filter(([k,v]) => a.d[iK[k]] < v)
@@ -452,7 +451,7 @@ function disegnaAtleta(){
     <div class="gara${fuori?" fuori":""}">
       <span class="gara-emoji">${g.emoji||"·"}</span>
       <button class="gara-nome" data-gara="${i}" title="Apri la scheda della gara"
-        style="background:none;border:0;color:inherit;font:inherit;text-align:left;cursor:pointer;padding:0;text-decoration:underline;text-decoration-color:var(--bordo);text-underline-offset:3px">${esc(g.nome)}${propost(g)?' <span style="color:var(--rosa);font-size:10px;letter-spacing:.1em">PROPOSTA</span>':""}</button>
+        style="background:none;border:0;color:inherit;font:inherit;text-align:left;cursor:pointer;padding:0;text-decoration:underline;text-decoration-color:var(--bordo);text-underline-offset:3px">${esc(g.nome)}${ghiaccio(g)?' <span style="color:var(--fumo);font-size:11px">❄</span>':""}</button>
       <span class="gara-barra"><span class="gara-riemp" style="width:${(a.fit[i]/10*100).toFixed(1)}%"></span></span>
       <span class="gara-val">${a.fit[i].toFixed(1)}</span>
       ${fuori ? `<span class="perche">fuori per ${esc(mancanti(g))}</span>` : ""}
@@ -477,8 +476,9 @@ function disegnaAtleta(){
         <div class="en">${esc(a.en)}</div>
         <div class="targhe">
           <span class="targa oro">${dentro} gare su ${GARE.length}</span>
-          ${proposte?`<span class="targa rosa">${proposte} ancora proposte</span>`:""}
-          ${a.nuovo ? '<span class="targa rosa">proposto, non ancora nel gioco</span>' : ""}
+          ${suGhiaccio?`<span class="targa">${suGhiaccio} di ghiaccio</span>`:""}
+          ${a.raro?'<span class="targa rosa">animale raro</span>':""}
+
         </div>
       </div>
       <nav class="frecce">
@@ -528,10 +528,10 @@ function disegnaAtleta(){
     </section>` : ""}
 
     <section>
-      <h2 class="titoletto">Una nota sulle gare proposte</h2>
-      <p class="nota">Delle 33 gare, 19 sono ancora proposte: hanno accesso, premi e un voto, ma non sono nel gioco.
-      Nelle liste qui sopra sono marcate <b style="color:var(--rosa)">PROPOSTA</b>${proposte?` — questo atleta ne è ammesso a ${proposte}`:""}.
-      Nessuna di loro ha una sinergia: l'intesa di squadra esiste solo per le 14 già nel gioco.</p>
+      <h2 class="titoletto">In breve</h2>
+      <p class="nota">${esc(a.it)} è ammesso a <b>${ammesse.length}</b> gare su ${GARE.length}${suGhiaccio?`, di cui ${suGhiaccio} sul ghiaccio ❄`:""}.
+      ${a.raro?`È un <b>animale raro</b>: quando toccherebbe a lui entrare all'asta, ci entra solo una volta su sedici.`:""}
+      Il voto di ogni gara è il <code>fit</code>, la stessa formula che usa il gioco per decidere chi ha vinto il round.</p>
     </section>`;
 
   document.getElementById("prec").onclick = ()=>vaiA(corrente-1);
@@ -573,8 +573,8 @@ function legaVertici(a){
 
 /* ─── rubrica ─── */
 const FILTRI = {
-  atleti: [["tutti","Tutti"],["nuovi","Solo nuovi"],["acqua","Acquatici"],["volo","Volanti"]],
-  gare:   [["tutti","Tutte"],["attuale","Nel gioco"],["nuova","Proposte"],["estiva","Estive"],["invernale","Invernali"]]
+  atleti: [["tutti","Tutti"],["acqua","Acquatici"],["volo","Volanti"],["rari","Rari"]],
+  gare:   [["tutti","Tutte"],["classica","Classiche"],["ghiaccio","Di ghiaccio"]]
 };
 
 function sincronizza(){
@@ -600,14 +600,13 @@ function elenco(){
   if (vista === "gare"){
     const v = GARE.map((g,i)=>({g,i})).filter(({g})=>{
       if (q && !g.nome.toLowerCase().includes(q)) return false;
-      if (filtro === "attuale" || filtro === "nuova") return g.stato === filtro;
-      if (filtro === "estiva" || filtro === "invernale") return g.gruppo === filtro;
+      if (filtro === "classica" || filtro === "ghiaccio") return g.gruppo === filtro;
       return true;
     });
     cont.innerHTML = v.length ? v.map(({g,i})=>`
       <button class="voce" role="option" data-g="${i}" aria-current="${i===correnteGara}" aria-selected="${i===correnteGara}">
         <span class="voce-emoji">${g.emoji || "🏅"}</span>
-        <span class="voce-nome">${esc(g.nome)}${g.stato==="nuova"?'<span class="voce-nuovo" title="proposta"></span>':""}</span>
+        <span class="voce-nome">${esc(g.nome)}${ghiaccio(g)?' <span style="color:var(--fumo);font-size:11px">❄</span>':""}</span>
         <span class="voce-n">${g.ammessi}</span>
       </button>`).join("") : '<p class="vuoto">Nessuna gara con questo nome.</p>';
     cont.querySelectorAll(".voce").forEach(b => b.onclick = ()=>vaiAGara(+b.dataset.g));
@@ -616,7 +615,7 @@ function elenco(){
 
   const v = ANIMALI.map((a,i)=>({a,i})).filter(({a})=>{
     if (q && !(a.it.toLowerCase().includes(q) || a.en.toLowerCase().includes(q) || a.id.includes(q))) return false;
-    if (filtro === "nuovi") return a.nuovo;
+    if (filtro === "rari") return a.raro;
     if (filtro === "acqua") return a.d[iK.acq] >= 7;
     if (filtro === "volo")  return a.d[iK.vol] >= 6;
     return true;
@@ -624,7 +623,7 @@ function elenco(){
   cont.innerHTML = v.length ? v.map(({a,i})=>`
     <button class="voce" role="option" data-i="${i}" aria-current="${i===corrente}" aria-selected="${i===corrente}">
       <span class="voce-emoji">${a.emoji}</span>
-      <span class="voce-nome">${esc(a.it)}${a.nuovo?'<span class="voce-nuovo" title="proposto"></span>':""}</span>
+      <span class="voce-nome">${esc(a.it)}${a.raro?'<span class="voce-nuovo" title="raro"></span>':""}</span>
       <span class="voce-n">${a.dentro.reduce((s,x)=>s+x,0)}</span>
     </button>`).join("") : '<p class="vuoto">Nessun atleta con questo nome.</p>';
   cont.querySelectorAll(".voce").forEach(b => b.onclick = ()=>vaiA(+b.dataset.i));

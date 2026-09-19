@@ -32,7 +32,14 @@ function disegnaScelta(v){
   const g=$("#scelta-griglia");
   if(!mio){g.innerHTML=`<div class="attesa" style="grid-column:1/-1"><p class="nota">${t("attendiScelta")}</p></div>`;return;}
   const opz=(v.match.opzioni||[]).map(id=>SPORT.find(x=>x.id===id)).filter(Boolean);
-  g.innerHTML=opz.map(sp=>`<button class="scelta" data-gara="${sp.id}"><b>${sp.emoji} ${esc(nomeGara(sp))}</b><span>${esc(descGara(sp))} · ${sp.size} ${t("aTesta")}</span></button>`).join("");
+  /* Con quasi trenta gare un elenco unico e' un muro: si dividono nei due
+     gruppi, e un gruppo senza gare disponibili non compare affatto. */
+  const bottone=sp=>`<button class="scelta" data-gara="${sp.id}"><b>${sp.emoji} ${esc(nomeGara(sp))}</b><span>${esc(descGara(sp))} · ${sp.size} ${t("aTesta")}</span></button>`;
+  g.innerHTML=[["classica","gruppoClassica"],["ghiaccio","gruppoGhiaccio"]].map(([gr,chiave])=>{
+    const dentro=opz.filter(sp=>(sp.gruppo||"classica")===gr);
+    if(!dentro.length)return "";
+    return `<h3 class="gruppo-gare">${t(chiave)} <i>${dentro.length}</i></h3>${dentro.map(bottone).join("")}`;
+  }).join("");
   $$("[data-gara]",g).forEach(b=>b.onclick=()=>agisci({t:"scegliGara",id:b.dataset.gara}));
 }
 /* Le rose di tutti, sempre consultabili: si apre toccando le plance. */
