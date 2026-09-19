@@ -437,19 +437,19 @@ const ANIMALI=[
 ["brontosauro","Brontosauro","Brontosaurus","🦕",[10,10,3,1,1,7,7,4,0,10,4,3,6,4,3]],
 ].map(([id,it,en,emoji,s])=>{const o={id,it,en,emoji};K.forEach((k,i)=>o[k]=s[i]);return o;});
 const SPORT_TUTTI=[
-{id:"basket3",size:3,emoji:"🏀",req:{"ter": 5},pesi:{"alt": 3, "man": 3, "agi": 2, "vel": 2, "frz": 1},sinergia:{tipo:"ruoli",stat:"alt",soglia:6,quota:0.60,max:0.12}},
-{id:"basket5",size:5,emoji:"🏀",req:{"ter": 5},pesi:{"alt": 3, "man": 3, "agi": 2, "vel": 2, "frz": 1},sinergia:{tipo:"ruoli",stat:"alt",soglia:6,quota:0.60,max:0.15}},
-{id:"beach",size:2,emoji:"🏐",req:{"ter": 5},pesi:{"alt": 3, "agi": 3, "man": 3, "frz": 2, "vel": 1},sinergia:{tipo:"ruoli",stat:"alt",soglia:6,quota:0.50,max:0.10}},
-{id:"volley",size:6,emoji:"🏐",req:{"ter": 5},pesi:{"alt": 3, "agi": 3, "man": 3, "frz": 2, "vel": 1},sinergia:{tipo:"ruoli",stat:"alt",soglia:6,quota:0.50,max:0.15}},
-{id:"calcetto",size:5,emoji:"⚽",req:{"ter": 6},pesi:{"vel": 3, "agi": 3, "res": 2, "ter": 2, "frz": 1},sinergia:{tipo:"ruoli",stat:"vel",soglia:6,quota:0.60,max:0.10}},
-{id:"scherma",size:1,emoji:"🤺",req:{"ter": 5, "man": 4},pesi:{"man": 4, "agi": 3, "vel": 2, "alt": 1}},
-{id:"staffetta",size:4,emoji:"🏃",req:{"ter": 7},pesi:{"vel": 4, "res": 3, "ter": 2, "agi": 1}},
-{id:"tennis",size:2,emoji:"🎾",req:{"ter": 5, "man": 4},pesi:{"man": 4, "agi": 3, "vel": 2, "alt": 1},sinergia:{tipo:"simili",stat:"agi",max:0.08}},
+{id:"basket3",size:3,emoji:"🏀",req:{"ter": 5},pesi:{"alt": 4, "agi": 3, "vel": 2, "man": 1, "frz": 1},sinergia:{tipo:"ruoli",stat:"alt",soglia:6,quota:0.60,max:0.12}},
+{id:"basket5",size:5,emoji:"🏀",req:{"ter": 5},pesi:{"alt": 4, "agi": 3, "vel": 2, "man": 1, "frz": 1},sinergia:{tipo:"ruoli",stat:"alt",soglia:6,quota:0.60,max:0.15}},
+{id:"beach",size:2,emoji:"🏐",req:{"ter": 5},pesi:{"alt": 3, "agi": 3, "rif": 2, "man": 1, "frz": 1},sinergia:{tipo:"ruoli",stat:"alt",soglia:6,quota:0.50,max:0.10}},
+{id:"volley",size:6,emoji:"🏐",req:{"ter": 5},pesi:{"alt": 3, "agi": 3, "rif": 2, "man": 1, "frz": 1},sinergia:{tipo:"ruoli",stat:"alt",soglia:6,quota:0.50,max:0.15}},
+{id:"calcetto",size:5,emoji:"⚽",req:{"ter": 6},pesi:{"vel": 4, "agi": 4, "res": 2, "frz": 1},sinergia:{tipo:"ruoli",stat:"vel",soglia:6,quota:0.60,max:0.10}},
+{id:"scherma",size:1,emoji:"🤺",req:{"ter": 5, "man": 4},pesi:{"int": 4, "vel": 3, "rif": 2, "agi": 1}},
+{id:"staffetta",size:4,emoji:"🏃",req:{"ter": 7},pesi:{"vel": 5, "agi": 2, "res": 1}},
+{id:"tennis",size:2,emoji:"🎾",req:{"ter": 5, "man": 4},pesi:{"agi": 4, "vel": 3, "int": 2, "rif": 2},sinergia:{tipo:"simili",stat:"agi",max:0.08}},
 {id:"bob",size:4,emoji:"🛷",req:{"ter": 5},pesi:{"mas": 3, "frz": 3, "vel": 2, "agi": 2},sinergia:{tipo:"ruoli",stat:"mas",soglia:6,quota:0.75,max:0.10}},
-{id:"fune",size:5,emoji:"🪢",req:{"ter": 4},pesi:{"frz": 4, "mas": 4, "man": 2, "res": 1}},
-{id:"regata",size:4,emoji:"🚣",req:{"man": 4},pesi:{"frz": 3, "res": 3, "man": 3, "acq": 1},sinergia:{tipo:"simili",stat:"res",max:0.10}},
-{id:"tuffi",size:3,emoji:"🤿",req:{"acq": 3},pesi:{"agi": 4, "acq": 2, "alt": 1, "mas": -2},sinergia:{tipo:"simili",stat:"mas",max:0.15}},
-{id:"nuoto",size:4,emoji:"🏊",req:{"acq": 7},pesi:{"acq": 4, "vel": 3, "res": 2, "frz": 1}},
+{id:"fune",size:5,emoji:"🪢",req:{"ter": 4},pesi:{"frz": 4, "mas": 4, "man": 2}},
+{id:"regata",size:4,emoji:"🚣",req:{"man": 4},pesi:{"frz": 4, "res": 4, "acq": 1},sinergia:{tipo:"simili",stat:"res",max:0.10}},
+{id:"tuffi",size:3,emoji:"🤿",req:{"acq": 3},pesi:{"agi": 4, "equ": 3, "alt": 1, "mas": -2},sinergia:{tipo:"simili",stat:"mas",max:0.15}},
+{id:"nuoto",size:4,emoji:"🏊",req:{"acq": 7},pesi:{"vel": 4, "res": 3, "frz": 1}},
 {id:"volo",size:2,emoji:"🪂",req:{"vol": 6},pesi:{"vol": 4, "agi": 3, "vel": 3, "res": 1}},
 ];
 /* Niente gare da un animale solo: il minimo è due contro due. */
@@ -674,7 +674,7 @@ S.punti=["Punti","Points"];
 function vai(id){document.querySelectorAll(".schermo").forEach(s=>s.classList.toggle("attivo",s.id===id));window.scrollTo(0,0);}
 "use strict";
 const COLORI=["var(--p1)","var(--p2)","var(--p3)","var(--p4)","var(--p5)"];
-const BUILD="2026-09-19f";
+const BUILD="2026-09-19g";
 const PREFISSO="zoolympics-";     // NON cambiarlo mai: chi ha la versione
                                   // vecchia non riuscirebbe più a entrare.
 /* Senza un TURN, due dispositivi su reti diverse (uno in WiFi, uno in 4G)
@@ -688,7 +688,7 @@ const ICE={iceServers:[
 ]};
 const ALFA="ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
 const DURATA=7000;
-const GENERICO={vel:2,agi:2,frz:2,res:2,man:2,alt:1};
+const GENERICO={vel:2,agi:2,frz:2,res:2,alt:1,man:1};
 
 const $=(s,r=document)=>r.querySelector(s);
 const $$=(s,r=document)=>[...r.querySelectorAll(s)];

@@ -1,7 +1,7 @@
 function vai(id){document.querySelectorAll(".schermo").forEach(s=>s.classList.toggle("attivo",s.id===id));window.scrollTo(0,0);}
 "use strict";
 const COLORI=["var(--p1)","var(--p2)","var(--p3)","var(--p4)","var(--p5)"];
-const BUILD="2026-09-19f";
+const BUILD="2026-09-19g";
 const PREFISSO="zoolympics-";     // NON cambiarlo mai: chi ha la versione
                                   // vecchia non riuscirebbe più a entrare.
 /* Senza un TURN, due dispositivi su reti diverse (uno in WiFi, uno in 4G)
@@ -15,7 +15,7 @@ const ICE={iceServers:[
 ]};
 const ALFA="ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
 const DURATA=7000;
-const GENERICO={vel:2,agi:2,frz:2,res:2,man:2,alt:1};
+const GENERICO={vel:2,agi:2,frz:2,res:2,alt:1,man:1};
 
 const $=(s,r=document)=>r.querySelector(s);
 const $$=(s,r=document)=>[...r.querySelectorAll(s)];
