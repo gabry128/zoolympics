@@ -96,6 +96,10 @@ bloccano a metà.
   servono.
 - Le fini riga sono **LF** ovunque (`.gitattributes`): il build deve riprodurre
   `docs/index.html` byte per byte anche su Windows.
+- **Dentro `docs/` non si scrive mai a mano.** È tutta output: `index.html`,
+  `versione.txt` e `sw.js` li genera il build, `manifest.json` e le icone
+  arrivano da `statico/`. Si può cancellare per intero e `python3 build.py`
+  la rimette identica. Una modifica fatta lì dentro la perdi al primo build.
 - `docs/` **è tracciato** da git: la pubblicazione è GitHub Pages dal repo,
   impostato su branch `main` e cartella `/docs`. Pages, servendo da un branch,
   pubblica solo dalla radice o da `/docs`: una cartella `dist/` non la

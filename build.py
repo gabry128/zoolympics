@@ -13,7 +13,7 @@ ricarica.
 Uso:  python3 build.py              # alza BUILD e ricostruisce
       python3 build.py --stessa     # ricostruisce lasciando BUILD com'e'
 """
-import datetime, pathlib, re, sys
+import datetime, pathlib, re, shutil, sys
 
 BASE = pathlib.Path(__file__).parent
 ORDINE = [
@@ -53,6 +53,10 @@ SORGENTE_BUILD = "src/20-base.js"
 SEGUONO_BUILD = ["src/sw.js"]
 # Copiati in USCITA cosi' come sono, dopo il timbro del BUILD.
 DA_COPIARE = ["src/sw.js"]
+# Il manifest e le icone: non li tocca nessuno, ma stanno nel sorgente e non
+# solo in USCITA, cosi' quella cartella e' interamente rigenerabile e si puo'
+# buttare senza perdere niente.
+STATICI = "statico"
 RE_BUILD = re.compile(r'(const\s+BUILD\s*=\s*")(\d{4}-\d{2}-\d{2})([a-z]+)(")')
 
 
@@ -152,12 +156,18 @@ def main():
     scrivi(fuori / "versione.txt", build + "\n")
     for nome in DA_COPIARE:
         scrivi(fuori / pathlib.Path(nome).name, leggi(BASE / nome))
+    # copyfile e non leggi/scrivi: quelle passano per UTF-8 e su un PNG
+    # non funzionerebbero.
+    statici = sorted(f for f in (BASE / STATICI).iterdir() if f.is_file())
+    for f in statici:
+        shutil.copyfile(f, fuori / f.name)
 
     print(f"BUILD {build}{'' if alzato else ' (invariato)'}")
     print(f"{USCITA}/index.html · {uscita.stat().st_size} byte")
     print(f"{USCITA}/versione.txt allineato")
     for nome in DA_COPIARE:
         print(f"{USCITA}/{pathlib.Path(nome).name} aggiornato")
+    print(f"{len(statici)} file da {STATICI}/ copiati")
 
 
 main()

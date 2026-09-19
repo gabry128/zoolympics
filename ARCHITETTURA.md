@@ -20,9 +20,12 @@ into `src/sw.js`, writes `docs/versione.txt`, and copies `sw.js` next to the
 page. `--stessa` rebuilds without bumping — use it when nothing shipped, or
 every no-op build makes all clients drop their cache.
 
-`manifest.json` and the icons are static files that live in `docs/` and the
-build leaves them alone. The output folder is called `docs/` because GitHub
-Pages, serving from a branch, only publishes the repo root or `/docs`.
+`manifest.json` and the icons live in `statico/` and are copied to `docs/`
+untouched (byte-wise — they must never go through the UTF-8 read/write path
+that the text pieces use). Nothing is authored inside `docs/`: **the whole
+folder is output**, and `rm -rf docs && python3 build.py` reproduces all seven
+files byte for byte. It is called `docs/` because GitHub Pages, serving from a
+branch, only publishes the repo root or `/docs`.
 
 Things to know about `BUILD`:
 
