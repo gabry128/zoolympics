@@ -629,7 +629,7 @@ S.punti=["Punti","Points"];
 function vai(id){document.querySelectorAll(".schermo").forEach(s=>s.classList.toggle("attivo",s.id===id));window.scrollTo(0,0);}
 "use strict";
 const COLORI=["var(--p1)","var(--p2)","var(--p3)","var(--p4)","var(--p5)"];
-const BUILD="2026-09-18f";
+const BUILD="2026-09-19a";
 const PREFISSO="zoolympics-";     // NON cambiarlo mai: chi ha la versione
                                   // vecchia non riuscirebbe più a entrare.
 /* Senza un TURN, due dispositivi su reti diverse (uno in WiFi, uno in 4G)
@@ -708,10 +708,71 @@ function intesa(rosa,sn){
   const sd=Math.sqrt(v.reduce((s,x)=>s+(x-m)*(x-m),0)/v.length);
   return Math.max(0,1-Math.min(1,sd/3.5));
 }
+
+/* ─── modificatori ───────────────────────────────────────────────────────
+   Slot per gli effetti che agiscono DOPO il punteggio base: meteo,
+   stanchezza, bonus a chi sta perdendo. Oggi la lista è vuota e il gioco
+   si comporta esattamente come prima: applicaModificatori esce subito.
+
+   Un modificatore è un oggetto:
+
+     { id:      "meteo",                       // stringa breve, per il log
+       attivo:  ctx => ctx.match.meteo==="pioggia",   // facoltativo
+       calcola: ctx => ({mult:0.9, etichetta:"Pioggia −10%"}) }
+
+   calcola restituisce mult (moltiplica) e/o add (somma punti secchi).
+   Neutro = {mult:1, add:0}. I mult di tutti i modificatori si moltiplicano
+   fra loro e gli add si sommano, quindi l'ordine nella lista non cambia il
+   risultato. Si applicano al punteggio NON ancora arrotondato, così si
+   arrotonda una volta sola alla fine.
+
+   Il ctx che arriva a attivo/calcola contiene:
+     rosa, pesi, sinergia, media, sin, bonus, grezzo   (dal punteggio base)
+     giocatore, giocatori, sport                       (aggiunti da classifica)
+   più qualsiasi cosa passi il chiamante come ultimo argomento.
+
+   Due regole da rispettare, altrimenti si rompe la partita in rete:
+
+   1. DETERMINISMO. classifica() gira sia sull'host (chiudiRound) sia su
+      ogni client (disegnaFine), separatamente. Un modificatore deve essere
+      una funzione pura di dati presenti in V, altrimenti host e ospiti
+      vedono punteggi diversi. Il meteo va quindi sorteggiato una volta
+      dall'host, salvato in M e esposto in vista() — mai tirato a caso qui.
+   2. NIENTE GIRI VIZIOSI. Un modificatore non può leggere la classifica di
+      questo round: la classifica dipende da lui. Il bonus a chi sta
+      perdendo deve guardare M.punti, cioè i round già chiusi.
+
+   Un modificatore che esplode viene saltato: meglio un effetto mancante
+   che una partita bloccata a fine round. */
+const MODIFICATORI=[];
+
+function applicaModificatori(grezzo,ctx){
+  if(!MODIFICATORI.length) return {grezzo:grezzo, mods:[]};
+  let mult=1, add=0; const mods=[];
+  for(const m of MODIFICATORI){
+    if(!m||typeof m.calcola!=="function") continue;
+    let r;
+    try{
+      if(typeof m.attivo==="function" && !m.attivo(ctx)) continue;
+      r=m.calcola(ctx);
+    }catch(e){ continue; }
+    if(!r) continue;
+    const dm=(typeof r.mult==="number"&&isFinite(r.mult))?r.mult:1;
+    const da=(typeof r.add==="number"&&isFinite(r.add))?r.add:0;
+    if(dm===1&&da===0) continue;
+    mult*=dm; add+=da;
+    mods.push({id:m.id||"?",etichetta:r.etichetta||m.id||"",mult:dm,add:da});
+  }
+  return {grezzo:grezzo*mult+add, mods:mods};
+}
+
 /* Punteggio di squadra = media dei voti, più una percentuale di bonus
-   per l'intesa. Niente altro: due numeri che si leggono a occhio. */
-function punteggio(rosa,pesi,sn){
-  if(!rosa||!rosa.length)return{tot:0,stat:{}};
+   per l'intesa. Niente altro: due numeri che si leggono a occhio.
+   Poi, se ci sono modificatori, si applicano sopra: tot è il punteggio
+   finale, totBase quello prima dei modificatori, mods l'elenco di cosa
+   è stato applicato (dati semplici, si possono mettere in V). */
+function punteggio(rosa,pesi,sn,ctx){
+  if(!rosa||!rosa.length)return{tot:0,stat:{},totBase:0,mods:[]};
   const media=rosa.reduce((s,a)=>s+fit(a,pesi),0)/rosa.length;
   let w=0,cop=0;const stat={};
   for(const k in pesi){if(pesi[k]<=0)continue;
@@ -719,16 +780,23 @@ function punteggio(rosa,pesi,sn){
     stat[k]=rosa.reduce((s,a)=>s+(a[k]||0),0)/rosa.length;}
   const sin=intesa(rosa,sn);
   const bonus=sin===null?0:sin*sn.max;
-  return {tot:Math.min(100,Math.round(media*10*(1+bonus))),
-          media, sin, bonus};
+  const grezzo=media*10*(1+bonus);
+  const mod=applicaModificatori(grezzo,
+    Object.assign({rosa:rosa,pesi:pesi,sinergia:sn,media:media,sin:sin,bonus:bonus,grezzo:grezzo},ctx||{}));
+  return {tot:Math.max(0,Math.min(100,Math.round(mod.grezzo))),
+          totBase:Math.min(100,Math.round(grezzo)),
+          mods:mod.mods,
+          stat, media, sin, bonus};
 }
-function classifica(sp,giocatori){
+function classifica(sp,giocatori,ctx){
   const pesi=(sp&&sp.pesi)||GENERICO;
+  const extra=ctx||{};
   return giocatori.map(p=>{
-    const q=punteggio(p.rosa,pesi,sp&&sp.sinergia);
+    const q=punteggio(p.rosa,pesi,sp&&sp.sinergia,
+      Object.assign({},extra,{giocatore:p,giocatori:giocatori,sport:sp}));
     const ch=Object.keys(q.stat).sort((a,b)=>q.stat[b]-q.stat[a]);
     const val=p.rosa.map(a=>({a,f:fit(a,pesi),r:fit(a,pesi)/Math.max(1,a.prezzo)}));
-    return {p,tot:q.tot,media:q.media,sin:q.sin,bonus:q.bonus,forti:ch.slice(0,2),debole:ch[ch.length-1],
+    return {p,tot:q.tot,totBase:q.totBase,mods:q.mods,media:q.media,sin:q.sin,bonus:q.bonus,forti:ch.slice(0,2),debole:ch[ch.length-1],
       affare:val.slice().sort((x,y)=>y.r-x.r)[0],
       disastro:val.filter(x=>x.a.prezzo>=2).sort((x,y)=>x.r-y.r)[0]};
   }).sort((a,b)=>b.tot-a.tot||b.p.crediti-a.p.crediti||a.p.id-b.p.id);
