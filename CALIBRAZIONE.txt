@@ -1,0 +1,576 @@
+# ─────────────────────────────────────────────────────────────────────
+# CALIBRAZIONE DELLE CLASSIFICHE
+#
+# Per ogni gara c'è la classifica che il gioco produce OGGI, dalla migliore
+# alla peggiore. Correggila: sposta le righe nell'ordine che secondo te è
+# giusto. Poi la rimando indietro e adatto le doti degli animali perché il
+# gioco produca quell'ordine.
+#
+# COME SI MODIFICA
+#   · Riordina le righe dentro un blocco. Conta solo l'ordine.
+#   · Il numero a destra è il voto attuale: lo ignoro quando rileggo, serve
+#     solo a te per vedere quanto sono distanti fra loro.
+#   · Puoi cancellare una riga: vuol dire "non mi interessa dove sta".
+#   · Puoi aggiungere una riga scrivendo il nome di un animale: se supera il
+#     requisito d'accesso lo metto dove l'hai messo, altrimenti te lo dico.
+#   · NON toccare le righe che cominciano con === o con #.
+#
+# I BLOCCHI CHE NON TOCCHI NON CONTANO. Confronto con l'originale e prendo
+# vincoli solo dalle gare che hai davvero cambiato: puoi correggerne tre e
+# lasciare stare le altre ventiquattro.
+#
+# COSA SO FARE E COSA NO
+#   Le doti sono numeri interi da 0 a 10 condivisi da tutte le gare: alzare
+#   la Velocità di un animale per sistemare la staffetta lo sposta anche nel
+#   calcetto e nella discesa. Quindi cercherò il compromesso che rispetta più
+#   vincoli possibile restando vicino ai valori di adesso, e ti dirò
+#   esattamente quali richieste non sono riuscito a soddisfare e perché.
+#   Due animali con doti identiche nelle voci che una gara premia non si
+#   possono separare in quella gara: si separano solo cambiando i pesi.
+#
+# DUE PESI DIVERSI, ED E' IMPORTANTE
+#   Se lasci due righe nell'ordine in cui le trovi, chiedo solo che quello
+#   resti l'ordine: un pari merito va bene. Se invece le INVERTI, pretendo un
+#   sorpasso vero. Cosi' "non toccare" e "cambia" sono due richieste diverse
+#   e non devo indovinare quale intendevi.
+# ─────────────────────────────────────────────────────────────────────
+
+=== basket5 · 🏀 Basket 5 contro 5 ===
+#   accesso: Terra>=5
+#   premia : Altezza x4, Agilita x3, Velocita x2, Presa x1, Forza x1
+#   74 ammessi, qui i primi 15. Squadra da 5.
+  1. drago         🐉 Drago               8.5
+  2. gibbone       🐵 Gibbone             7.3
+  3. canguro       🦘 Canguro             7.3
+  4. gorilla       🦍 Gorilla             6.8
+  5. trex          🦖 T-Rex               6.7
+  6. unicorno      🦄 Unicorno            6.6
+  7. leopardo      🐆 Leopardo            6.5
+  8. scimpanze     🐒 Scimpanzé           6.5
+  9. giraffa       🦒 Giraffa             6.4
+ 10. tigre         🐅 Tigre               6.4
+ 11. orango        🦧 Orango              6.3
+ 12. cavallo       🐎 Cavallo             6.3
+ 13. aquila        🦅 Aquila              6.3
+ 14. pantera       🐈‍⬛ Pantera             6.2
+ 15. elefante      🐘 Elefante            6.1
+
+=== beach · 🏐 Beach volley ===
+#   accesso: Terra>=5
+#   premia : Altezza x3, Agilita x3, Riflessi x2, Presa x1, Forza x1
+#   74 ammessi, qui i primi 15. Squadra da 2.
+  1. drago         🐉 Drago               8.6
+  2. gibbone       🐵 Gibbone             7.9
+  3. scimpanze     🐒 Scimpanzé           7.3
+  4. canguro       🦘 Canguro             7.3
+  5. gorilla       🦍 Gorilla             7.0
+  6. orango        🦧 Orango              6.9
+  7. unicorno      🦄 Unicorno            6.9
+  8. tigre         🐅 Tigre               6.8
+  9. leopardo      🐆 Leopardo            6.8
+ 10. aquila        🦅 Aquila              6.6
+ 11. pantera       🐈‍⬛ Pantera             6.6
+ 12. trex          🦖 T-Rex               6.2
+ 13. cervo         🦌 Cervo               6.1
+ 14. cavallo       🐎 Cavallo             6.1
+ 15. leone         🦁 Leone               6.1
+
+=== calcetto · ⚽ Calcetto 5 contro 5 ===
+#   accesso: Terra>=6
+#   premia : Velocita x4, Agilita x4, Fiato x2, Forza x1
+#   66 ammessi, qui i primi 15. Squadra da 5.
+  1. drago         🐉 Drago               8.4
+  2. gibbone       🐵 Gibbone             8.2
+  3. unicorno      🦄 Unicorno            8.0
+  4. gazzella      🦌 Gazzella            7.9
+  5. tigre         🐅 Tigre               7.8
+  6. ghepardo      🐆 Ghepardo            7.8
+  7. leopardo      🐆 Leopardo            7.8
+  8. lupo          🐺 Lupo                7.7
+  9. cavallo       🐎 Cavallo             7.6
+ 10. pantera       🐈‍⬛ Pantera             7.5
+ 11. iena          🐺 Iena                7.5
+ 12. gatto         🐈 Gatto               7.4
+ 13. canguro       🦘 Canguro             7.3
+ 14. scoiattolo    🐿️ Scoiattolo          7.3
+ 15. cervo         🦌 Cervo               7.2
+
+=== scherma · 🤺 Scherma a coppie ===
+#   accesso: Terra>=5 e Presa>=4
+#   premia : Intelligenza x4, Velocita x3, Riflessi x2, Agilita x1
+#   32 ammessi, qui i primi 15. Squadra da 2.
+  1. drago         🐉 Drago               9.4
+  2. aquila        🦅 Aquila              8.6
+  3. scimpanze     🐒 Scimpanzé           8.5
+  4. gibbone       🐵 Gibbone             8.2
+  5. tigre         🐅 Tigre               8.2
+  6. pantera       🐈‍⬛ Pantera             8.2
+  7. gufo          🦉 Gufo                8.0
+  8. pappagallo    🦜 Pappagallo          8.0
+  9. lontra        🦦 Lontra              7.8
+ 10. iena          🐺 Iena                7.8
+ 11. leopardo      🐆 Leopardo            7.7
+ 12. gatto         🐈 Gatto               7.5
+ 13. scoiattolo    🐿️ Scoiattolo          7.1
+ 14. ratto         🐀 Ratto               7.0
+ 15. canguro       🦘 Canguro             6.7
+
+=== staffetta · 🏃 Staffetta 4x100 ===
+#   accesso: Terra>=7
+#   premia : Velocita x5, Agilita x2, Fiato x1
+#   55 ammessi, qui i primi 15. Squadra da 4.
+  1. ghepardo      🐆 Ghepardo            8.8
+  2. gazzella      🦌 Gazzella            8.6
+  3. drago         🐉 Drago               8.5
+  4. unicorno      🦄 Unicorno            8.4
+  5. cavallo       🐎 Cavallo             8.1
+  6. lupo          🐺 Lupo                7.9
+  7. leopardo      🐆 Leopardo            7.9
+  8. tigre         🐅 Tigre               7.8
+  9. pantera       🐈‍⬛ Pantera             7.8
+ 10. cervo         🦌 Cervo               7.6
+ 11. iena          🐺 Iena                7.6
+ 12. gatto         🐈 Gatto               7.5
+ 13. scoiattolo    🐿️ Scoiattolo          7.5
+ 14. leone         🦁 Leone               7.4
+ 15. zebra         🦓 Zebra               7.1
+
+=== tennis · 🎾 Doppio di tennis ===
+#   accesso: Terra>=5 e Presa>=4
+#   premia : Agilita x4, Velocita x3, Intelligenza x2, Riflessi x2
+#   32 ammessi, qui i primi 15. Squadra da 2.
+  1. gibbone       🐵 Gibbone             8.9
+  2. aquila        🦅 Aquila              8.8
+  3. drago         🐉 Drago               8.6
+  4. scimpanze     🐒 Scimpanzé           8.4
+  5. gatto         🐈 Gatto               8.3
+  6. tigre         🐅 Tigre               8.2
+  7. leopardo      🐆 Leopardo            8.2
+  8. pantera       🐈‍⬛ Pantera             8.2
+  9. scoiattolo    🐿️ Scoiattolo          8.1
+ 10. lontra        🦦 Lontra              7.9
+ 11. gufo          🦉 Gufo                7.8
+ 12. pappagallo    🦜 Pappagallo          7.8
+ 13. ratto         🐀 Ratto               7.3
+ 14. canguro       🦘 Canguro             7.2
+ 15. iena          🐺 Iena                7.1
+
+=== fune · 🪢 Tiro alla fune ===
+#   accesso: Terra>=4
+#   premia : Forza x4, Stazza x4, Presa x2
+#   79 ammessi, qui i primi 15. Squadra da 5.
+  1. gorilla       🦍 Gorilla             9.4
+  2. elefante      🐘 Elefante            9.4
+  3. mammut        🦣 Mammut              9.4
+  4. orso          🐻 Orso                9.2
+  5. drago         🐉 Drago               9.2
+  6. trex          🦖 T-Rex               8.6
+  7. rinoceronte   🦏 Rinoceronte         8.2
+  8. brontosauro   🦕 Brontosauro         8.2
+  9. tigre         🐅 Tigre               8.0
+ 10. ippopotamo    🦛 Ippopotamo          7.8
+ 11. bisonte       🦬 Bisonte             7.8
+ 12. panda         🐼 Panda               7.8
+ 13. bufalo        🐃 Bufalo              7.8
+ 14. orango        🦧 Orango              7.6
+ 15. toro          🐂 Toro                7.4
+
+=== regata · 🚣 Regata a remi ===
+#   accesso: Presa>=4
+#   premia : Forza x4, Fiato x4, Acqua x1
+#   37 ammessi, qui i primi 15. Squadra da 4.
+  1. drago         🐉 Drago               9.0
+  2. elefante      🐘 Elefante            8.0
+  3. mammut        🦣 Mammut              7.8
+  4. orso          🐻 Orso                7.8
+  5. iena          🐺 Iena                7.8
+  6. tigre         🐅 Tigre               7.7
+  7. gorilla       🦍 Gorilla             7.2
+  8. formica       🐜 Formica             7.2
+  9. canguro       🦘 Canguro             6.4
+ 10. pantera       🐈‍⬛ Pantera             6.2
+ 11. leopardo      🐆 Leopardo            6.1
+ 12. lontra        🦦 Lontra              6.0
+ 13. aquila        🦅 Aquila              6.0
+ 14. polpo         🐙 Polpo               6.0
+ 15. orango        🦧 Orango              5.9
+
+=== tuffi · 🤿 Tuffi a squadre ===
+#   accesso: Acqua>=3
+#   premia : Agilita x4, Equilibrio x3, Altezza x1, Stazza penalizza -2
+#   43 ammessi, qui i primi 15. Squadra da 3.
+  1. polpo         🐙 Polpo               8.2
+  2. lontra        🦦 Lontra              8.0
+  3. rana          🐸 Rana                7.8
+  4. delfino       🐬 Delfino             7.7
+  5. ratto         🐀 Ratto               7.5
+  6. calamaro      🦑 Calamaro            7.0
+  7. leopardo      🐆 Leopardo            7.0
+  8. drago         🐉 Drago               6.9
+  9. pantera       🐈‍⬛ Pantera             6.8
+ 10. cervo         🦌 Cervo               6.5
+ 11. cane          🐕 Cane                6.5
+ 12. tigre         🐅 Tigre               6.4
+ 13. fenicottero   🦩 Fenicottero         6.3
+ 14. lupo          🐺 Lupo                6.2
+ 15. cigno         🦢 Cigno               6.1
+
+=== nuoto · 🏊 Staffetta in acqua ===
+#   accesso: Acqua>=7
+#   premia : Velocita x4, Fiato x3, Forza x1
+#   23 ammessi, qui i primi 15. Squadra da 4.
+  1. squalo        🦈 Squalo              8.6
+  2. delfino       🐬 Delfino             8.4
+  3. balena        🐋 Balena              7.1
+  4. capodoglio    🐳 Capodoglio          7.1
+  5. bufalo        🐃 Bufalo              6.6
+  6. coccodrillo   🐊 Coccodrillo         5.9
+  7. calamaro      🦑 Calamaro            5.9
+  8. cigno         🦢 Cigno               5.8
+  9. lontra        🦦 Lontra              5.6
+ 10. foca          🦭 Foca                5.4
+ 11. oca           🪿 Oca                 5.1
+ 12. ippopotamo    🦛 Ippopotamo          5.0
+ 13. pinguino      🐧 Pinguino            4.6
+ 14. polpo         🐙 Polpo               4.6
+ 15. anatra        🦆 Anatra              4.5
+
+=== volo · 🪂 Slalom aereo ===
+#   accesso: Volo>=6
+#   premia : Volo x4, Agilita x3, Velocita x3, Fiato x1
+#   14 ammessi, qui i primi 14. Squadra da 2.
+  1. aquila        🦅 Aquila              9.2
+  2. drago         🐉 Drago               8.8
+  3. pipistrello   🦇 Pipistrello         8.2
+  4. colomba       🕊️ Colomba             7.9
+  5. ape           🐝 Ape                 7.8
+  6. gufo          🦉 Gufo                7.5
+  7. pappagallo    🦜 Pappagallo          7.2
+  8. zanzara       🦟 Zanzara             6.7
+  9. cigno         🦢 Cigno               5.9
+ 10. oca           🪿 Oca                 5.6
+ 11. anatra        🦆 Anatra              5.5
+ 12. farfalla      🦋 Farfalla            5.5
+ 13. fenicottero   🦩 Fenicottero         5.5
+ 14. coccinella    🐞 Coccinella          4.6
+
+=== bob · 🛷 Bob a quattro ===
+#   accesso: Terra>=5
+#   premia : Stazza x3, Forza x3, Velocita x2, Agilita x2
+#   74 ammessi, qui i primi 15. Squadra da 4.
+  1. drago         🐉 Drago               8.9
+  2. tigre         🐅 Tigre               8.6
+  3. trex          🦖 T-Rex               8.4
+  4. leone         🦁 Leone               8.1
+  5. orso          🐻 Orso                8.0
+  6. gorilla       🦍 Gorilla             7.9
+  7. leopardo      🐆 Leopardo            7.9
+  8. cavallo       🐎 Cavallo             7.8
+  9. unicorno      🦄 Unicorno            7.7
+ 10. rinoceronte   🦏 Rinoceronte         7.6
+ 11. bisonte       🦬 Bisonte             7.5
+ 12. elefante      🐘 Elefante            7.2
+ 13. mammut        🦣 Mammut              7.2
+ 14. toro          🐂 Toro                7.2
+ 15. canguro       🦘 Canguro             7.2
+
+=== ciclismo · 🚴 Ciclismo a squadre ===
+#   accesso: Terra>=6
+#   premia : Fiato x4, Velocita x3, Equilibrio x1
+#   66 ammessi, qui i primi 15. Squadra da 4.
+  1. drago         🐉 Drago               9.1
+  2. unicorno      🦄 Unicorno            8.5
+  3. cavallo       🐎 Cavallo             8.4
+  4. lupo          🐺 Lupo                8.4
+  5. iena          🐺 Iena                8.2
+  6. gibbone       🐵 Gibbone             7.8
+  7. asino         🫏 Asino               7.6
+  8. cervo         🦌 Cervo               7.4
+  9. cammello      🐫 Cammello            7.4
+ 10. gazzella      🦌 Gazzella            7.4
+ 11. zebra         🦓 Zebra               7.2
+ 12. tigre         🐅 Tigre               7.0
+ 13. cane          🐕 Cane                7.0
+ 14. pantera       🐈‍⬛ Pantera             7.0
+ 15. canguro       🦘 Canguro             6.8
+
+=== ginnastica · 🤸 Ginnastica a squadre ===
+#   accesso: Terra>=5
+#   premia : Agilita x4, Equilibrio x3, Forza x2
+#   74 ammessi, qui i primi 15. Squadra da 4.
+  1. gibbone       🐵 Gibbone             8.7
+  2. drago         🐉 Drago               8.7
+  3. tigre         🐅 Tigre               8.4
+  4. gatto         🐈 Gatto               8.4
+  5. leopardo      🐆 Leopardo            8.4
+  6. scimpanze     🐒 Scimpanzé           8.3
+  7. canguro       🦘 Canguro             8.3
+  8. aquila        🦅 Aquila              8.3
+  9. scoiattolo    🐿️ Scoiattolo          8.2
+ 10. unicorno      🦄 Unicorno            7.9
+ 11. lontra        🦦 Lontra              7.9
+ 12. pantera       🐈‍⬛ Pantera             7.8
+ 13. capra         🐐 Capra               7.7
+ 14. ragno         🕷️ Ragno               7.7
+ 15. leone         🦁 Leone               7.4
+
+=== arco · 🏹 Tiro con l'arco ===
+#   accesso: Terra>=5 e Presa>=4
+#   premia : Precisione x5, Equilibrio x2
+#   32 ammessi, qui i primi 15. Squadra da 3.
+  1. drago         🐉 Drago              10.0
+  2. aquila        🦅 Aquila              9.0
+  3. gufo          🦉 Gufo                9.0
+  4. scimpanze     🐒 Scimpanzé           8.3
+  5. ragno         🕷️ Ragno               8.3
+  6. lontra        🦦 Lontra              8.3
+  7. tigre         🐅 Tigre               8.0
+  8. gibbone       🐵 Gibbone             7.9
+  9. gatto         🐈 Gatto               7.9
+ 10. scoiattolo    🐿️ Scoiattolo          7.9
+ 11. castoro       🦫 Castoro             7.7
+ 12. formica       🐜 Formica             7.7
+ 13. rana          🐸 Rana                7.6
+ 14. pappagallo    🦜 Pappagallo          7.3
+ 15. pantera       🐈‍⬛ Pantera             7.3
+
+=== pesi · 🏋️ Sollevamento pesi ===
+#   accesso: Terra>=5
+#   premia : Forza x5, Stazza x3
+#   74 ammessi, qui i primi 15. Squadra da 3.
+  1. elefante      🐘 Elefante           10.0
+  2. mammut        🦣 Mammut             10.0
+  3. rinoceronte   🦏 Rinoceronte        10.0
+  4. orso          🐻 Orso               10.0
+  5. trex          🦖 T-Rex              10.0
+  6. brontosauro   🦕 Brontosauro        10.0
+  7. gorilla       🦍 Gorilla             9.6
+  8. drago         🐉 Drago               9.6
+  9. ippopotamo    🦛 Ippopotamo          9.4
+ 10. bisonte       🦬 Bisonte             9.4
+ 11. bufalo        🐃 Bufalo              9.4
+ 12. tigre         🐅 Tigre               9.2
+ 13. toro          🐂 Toro                9.0
+ 14. leone         🦁 Leone               8.6
+ 15. alce          🫎 Alce                8.4
+
+=== judo · 🥋 Judo a coppie ===
+#   accesso: Terra>=5 e Presa>=4
+#   premia : Forza x3, Agilita x3, Intelligenza x2
+#   32 ammessi, qui i primi 15. Squadra da 2.
+  1. drago         🐉 Drago               8.9
+  2. tigre         🐅 Tigre               8.8
+  3. scimpanze     🐒 Scimpanzé           8.1
+  4. leopardo      🐆 Leopardo            8.1
+  5. gorilla       🦍 Gorilla             8.0
+  6. orango        🦧 Orango              7.9
+  7. aquila        🦅 Aquila              7.6
+  8. pantera       🐈‍⬛ Pantera             7.6
+  9. canguro       🦘 Canguro             7.5
+ 10. iena          🐺 Iena                7.5
+ 11. lontra        🦦 Lontra              7.1
+ 12. gibbone       🐵 Gibbone             7.0
+ 13. orso          🐻 Orso                7.0
+ 14. elefante      🐘 Elefante            6.8
+ 15. gufo          🦉 Gufo                6.8
+
+=== taekwondo · 🥋 Taekwondo a coppie ===
+#   accesso: Terra>=5
+#   premia : Agilita x4, Riflessi x3, Velocita x2
+#   74 ammessi, qui i primi 15. Squadra da 2.
+  1. gibbone       🐵 Gibbone             9.6
+  2. aquila        🦅 Aquila              9.0
+  3. gazzella      🦌 Gazzella            9.0
+  4. gatto         🐈 Gatto               8.7
+  5. scoiattolo    🐿️ Scoiattolo          8.7
+  6. unicorno      🦄 Unicorno            8.4
+  7. ghepardo      🐆 Ghepardo            8.4
+  8. drago         🐉 Drago               8.4
+  9. leopardo      🐆 Leopardo            8.4
+ 10. scimpanze     🐒 Scimpanzé           8.3
+ 11. tigre         🐅 Tigre               8.3
+ 12. pantera       🐈‍⬛ Pantera             8.3
+ 13. lontra        🦦 Lontra              8.1
+ 14. lupo          🐺 Lupo                7.9
+ 15. gufo          🦉 Gufo                7.9
+
+=== pingpong · 🏓 Tennistavolo doppio ===
+#   accesso: Terra>=5 e Presa>=4
+#   premia : Riflessi x5, Precisione x3
+#   32 ammessi, qui i primi 15. Squadra da 2.
+  1. drago         🐉 Drago              10.0
+  2. aquila        🦅 Aquila              9.0
+  3. gufo          🦉 Gufo                9.0
+  4. gibbone       🐵 Gibbone             8.9
+  5. scimpanze     🐒 Scimpanzé           8.6
+  6. tigre         🐅 Tigre               8.6
+  7. lontra        🦦 Lontra              8.6
+  8. pappagallo    🦜 Pappagallo          8.2
+  9. pantera       🐈‍⬛ Pantera             8.2
+ 10. castoro       🦫 Castoro             8.0
+ 11. gatto         🐈 Gatto               7.6
+ 12. scoiattolo    🐿️ Scoiattolo          7.6
+ 13. formica       🐜 Formica             7.4
+ 14. ratto         🐀 Ratto               7.2
+ 15. leopardo      🐆 Leopardo            7.2
+
+=== lenta · 🐢 Marcia lentissima ===
+#   accesso: Terra>=4
+#   premia : Fiato x4, Velocita penalizza -3, Stazza penalizza -2
+#   79 ammessi, qui i primi 15. Squadra da 3.
+  1. lumaca        🐌 Lumaca              8.0
+  2. tartaruga     🐢 Tartaruga           7.9
+  3. formica       🐜 Formica             7.6
+  4. asino         🫏 Asino               7.1
+  5. pinguino      🐧 Pinguino            7.0
+  6. oca           🪿 Oca                 6.7
+  7. aragosta      🦞 Aragosta            6.7
+  8. cammello      🐫 Cammello            6.6
+  9. castoro       🦫 Castoro             6.6
+ 10. lontra        🦦 Lontra              6.6
+ 11. scarabeo      🪲 Scarabeo            6.6
+ 12. riccio        🦔 Riccio              6.4
+ 13. anatra        🦆 Anatra              6.4
+ 14. granchio      🦀 Granchio            6.3
+ 15. tasso         🦡 Tasso               6.2
+
+=== saltosci · 🎿 Salto con gli sci ===
+#   accesso: Terra>=5
+#   premia : Coraggio x4, Equilibrio x3, Stazza penalizza -1
+#   74 ammessi, qui i primi 15. Squadra da 4.
+  1. drago         🐉 Drago               8.9
+  2. aquila        🦅 Aquila              8.8
+  3. tigre         🐅 Tigre               8.2
+  4. leone         🦁 Leone               7.9
+  5. gatto         🐈 Gatto               7.9
+  6. lontra        🦦 Lontra              7.9
+  7. gufo          🦉 Gufo                7.9
+  8. scimpanze     🐒 Scimpanzé           7.8
+  9. gibbone       🐵 Gibbone             7.8
+ 10. unicorno      🦄 Unicorno            7.8
+ 11. lupo          🐺 Lupo                7.8
+ 12. formica       🐜 Formica             7.8
+ 13. cane          🐕 Cane                7.5
+ 14. pantera       🐈‍⬛ Pantera             7.5
+ 15. canguro       🦘 Canguro             7.4
+
+=== slittino · 🛷 Slittino a coppie ===
+#   accesso: Terra>=5
+#   premia : Coraggio x4, Stazza x2, Equilibrio x2
+#   74 ammessi, qui i primi 15. Squadra da 2.
+  1. drago         🐉 Drago               9.8
+  2. tigre         🐅 Tigre               9.0
+  3. leone         🦁 Leone               8.8
+  4. gorilla       🦍 Gorilla             8.2
+  5. orso          🐻 Orso                8.2
+  6. unicorno      🦄 Unicorno            8.0
+  7. trex          🦖 T-Rex               8.0
+  8. rinoceronte   🦏 Rinoceronte         7.8
+  9. bufalo        🐃 Bufalo              7.8
+ 10. elefante      🐘 Elefante            7.5
+ 11. bisonte       🦬 Bisonte             7.5
+ 12. cavallo       🐎 Cavallo             7.5
+ 13. toro          🐂 Toro                7.5
+ 14. lupo          🐺 Lupo                7.5
+ 15. aquila        🦅 Aquila              7.5
+
+=== pattinaggio · ⛸️ Pattinaggio artistico ===
+#   accesso: Terra>=5
+#   premia : Agilita x4, Equilibrio x4
+#   74 ammessi, qui i primi 15. Squadra da 2.
+  1. gibbone       🐵 Gibbone            10.0
+  2. gatto         🐈 Gatto              10.0
+  3. scoiattolo    🐿️ Scoiattolo         10.0
+  4. scimpanze     🐒 Scimpanzé           9.0
+  5. ragno         🕷️ Ragno               9.0
+  6. lontra        🦦 Lontra              9.0
+  7. aquila        🦅 Aquila              9.0
+  8. capra         🐐 Capra               8.5
+  9. canguro       🦘 Canguro             8.5
+ 10. coniglio      🐇 Coniglio            8.5
+ 11. gufo          🦉 Gufo                8.5
+ 12. rana          🐸 Rana                8.5
+ 13. drago         🐉 Drago               8.5
+ 14. leopardo      🐆 Leopardo            8.5
+ 15. gazzella      🦌 Gazzella            8.5
+
+=== fondo · 🎿 Sci di fondo ===
+#   accesso: Terra>=6
+#   premia : Fiato x5, Velocita x1
+#   66 ammessi, qui i primi 15. Squadra da 4.
+  1. cammello      🐫 Cammello            9.2
+  2. drago         🐉 Drago               9.0
+  3. asino         🫏 Asino               9.0
+  4. lupo          🐺 Lupo                8.8
+  5. iena          🐺 Iena                8.8
+  6. cavallo       🐎 Cavallo             8.2
+  7. unicorno      🦄 Unicorno            8.2
+  8. bufalo        🐃 Bufalo              7.5
+  9. formica       🐜 Formica             7.3
+ 10. gibbone       🐵 Gibbone             7.2
+ 11. cervo         🦌 Cervo               7.2
+ 12. zebra         🦓 Zebra               7.2
+ 13. cane          🐕 Cane                7.0
+ 14. bisonte       🦬 Bisonte             6.8
+ 15. alce          🫎 Alce                6.8
+
+=== snowboard · 🏂 Snowboard a squadre ===
+#   accesso: Terra>=5
+#   premia : Equilibrio x4, Agilita x3, Coraggio x2
+#   74 ammessi, qui i primi 15. Squadra da 3.
+  1. gibbone       🐵 Gibbone             9.1
+  2. gatto         🐈 Gatto               9.1
+  3. aquila        🦅 Aquila              9.0
+  4. drago         🐉 Drago               9.0
+  5. scoiattolo    🐿️ Scoiattolo          8.9
+  6. scimpanze     🐒 Scimpanzé           8.6
+  7. lontra        🦦 Lontra              8.6
+  8. tigre         🐅 Tigre               8.4
+  9. canguro       🦘 Canguro             8.2
+ 10. gufo          🦉 Gufo                8.2
+ 11. unicorno      🦄 Unicorno            8.1
+ 12. ragno         🕷️ Ragno               8.1
+ 13. leopardo      🐆 Leopardo            8.1
+ 14. capra         🐐 Capra               8.0
+ 15. pantera       🐈‍⬛ Pantera             8.0
+
+=== discesa · ⛷️ Discesa libera ===
+#   accesso: Terra>=5
+#   premia : Velocita x4, Coraggio x3, Equilibrio x2
+#   74 ammessi, qui i primi 15. Squadra da 3.
+  1. drago         🐉 Drago               9.6
+  2. aquila        🦅 Aquila              9.0
+  3. unicorno      🦄 Unicorno            8.7
+  4. tigre         🐅 Tigre               8.7
+  5. leone         🦁 Leone               8.4
+  6. ghepardo      🐆 Ghepardo            8.3
+  7. cavallo       🐎 Cavallo             8.1
+  8. lupo          🐺 Lupo                8.1
+  9. pantera       🐈‍⬛ Pantera             8.0
+ 10. gibbone       🐵 Gibbone             7.8
+ 11. leopardo      🐆 Leopardo            7.7
+ 12. iena          🐺 Iena                7.6
+ 13. canguro       🦘 Canguro             7.4
+ 14. gazzella      🦌 Gazzella            7.4
+ 15. cane          🐕 Cane                7.3
+
+=== slalom · ⛷️ Slalom speciale ===
+#   accesso: Terra>=5
+#   premia : Agilita x4, Riflessi x3
+#   74 ammessi, qui i primi 15. Squadra da 4.
+  1. gibbone       🐵 Gibbone            10.0
+  2. gatto         🐈 Gatto               9.1
+  3. scoiattolo    🐿️ Scoiattolo          9.1
+  4. scimpanze     🐒 Scimpanzé           9.0
+  5. lontra        🦦 Lontra              9.0
+  6. aquila        🦅 Aquila              9.0
+  7. gazzella      🦌 Gazzella            9.0
+  8. leopardo      🐆 Leopardo            8.6
+  9. tigre         🐅 Tigre               8.4
+ 10. gufo          🦉 Gufo                8.4
+ 11. pappagallo    🦜 Pappagallo          8.4
+ 12. pantera       🐈‍⬛ Pantera             8.4
+ 13. unicorno      🦄 Unicorno            8.3
+ 14. drago         🐉 Drago               8.3
+ 15. ghepardo      🐆 Ghepardo            8.0
+
