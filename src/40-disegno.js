@@ -84,7 +84,7 @@ function disegnaAsta(v){
 
   if(L.fase==="venduto"){
     const w=v.giocatori[L.migliore];
-    lotto.innerHTML=`<div class="venduto"><div class="bestia">${L.animale.emoji}</div>
+    lotto.innerHTML=`<div class="venduto"><div class="bestia${raro(L.animale)?" raro":""}">${L.animale.emoji}</div>
       <div class="timbro">${t("venduto")}</div><div class="nomebestia" style="font-size:21px">${esc(nome)}</div>
       <p class="nota">${t("aPer",`<b style="color:${w.col}">${esc(w.nome)}</b>`,`<b style="color:var(--oro)">${L.offerta}</b>`)} ${plur(L.offerta)}</p></div>`;
     azioni.innerHTML=`<button class="btn" id="avanti">${t("prossimo")}</button>`;
@@ -99,7 +99,8 @@ function disegnaAsta(v){
     azioni.innerHTML=`<button class="btn" id="avanti">${t("avanti")}</button>`;
     $("#avanti").onclick=()=>agisci({t:"avanti"});return;
   }
-  lotto.innerHTML=`<div class="bestia">${L.animale.emoji}</div>
+  lotto.innerHTML=`<div class="bestia${raro(L.animale)?" raro":""}">${L.animale.emoji}</div>
+    ${raro(L.animale)?`<div class="rarita">${t("apparizioneRara")}</div>`:""}
     <div class="nomebestia">${esc(nome)}</div>
     ${v.valori?dotiAnimale(L.animale,v.sport):""}
     <div class="offerta">${L.migliore===null?t("nessunaOfferta"):t("offertaDi",L.offerta,esc(v.giocatori[L.migliore].nome))}</div>`;

@@ -20,8 +20,8 @@ function prossimoLotto(){
   fermaTimer();
   if(finita()){G.lotto=null;chiudiRound();return;}
   if(!G.coda.length){
-    if(!G.riserva.length)G.riserva=mischia(pool).slice();
-    G.coda.push(G.riserva.length?G.riserva.shift():mischia(ANIMALI)[0]);G.introdotti++;
+    if(!G.riserva.length)G.riserva=mischiaRari(pool).slice();
+    G.coda.push(G.riserva.length?G.riserva.shift():mischiaRari(ANIMALI)[0]);G.introdotti++;
   }
   let a=G.apre,g=0;
   while(pieno(G.giocatori[a])&&g<G.giocatori.length){a=(a+1)%G.giocatori.length;g++;}

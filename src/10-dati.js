@@ -90,6 +90,15 @@ const ANIMALI=[
 ["trex","T-Rex","T-Rex","🦖",[8,10,7,5,3,6,8,2,0,10,6,4,9,5,5]],
 ["brontosauro","Brontosauro","Brontosaurus","🦕",[10,10,3,1,1,7,7,4,0,10,4,3,6,4,3]],
 ].map(([id,it,en,emoji,s])=>{const o={id,it,en,emoji};K.forEach((k,i)=>o[k]=s[i]);return o;});
+
+/* ─── rarità ───
+   Il drago resta fortissimo: non va indebolito, va visto di rado. Il
+   numero è la probabilità che, quando toccherebbe a lui entrare fra i
+   lotti, ci entri davvero: 0,12 vuol dire circa una volta su otto.
+   Sta qui perché è un dato, e perché il renderer deve poterlo ricavare
+   da solo senza che viaggi dentro V. */
+const RARITA={drago:0.12};
+const raro=a=>!!(a&&RARITA[a.id]);
 const SPORT_TUTTI=[
 {id:"basket3",size:3,emoji:"🏀",req:{"ter": 5},pesi:{"alt": 4, "agi": 3, "vel": 2, "man": 1, "frz": 1},sinergia:{tipo:"ruoli",stat:"alt",soglia:6,quota:0.60,max:0.12}},
 {id:"basket5",size:5,emoji:"🏀",req:{"ter": 5},pesi:{"alt": 4, "agi": 3, "vel": 2, "man": 1, "frz": 1},sinergia:{tipo:"ruoli",stat:"alt",soglia:6,quota:0.60,max:0.15}},

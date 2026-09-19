@@ -28,7 +28,7 @@ function avviaGara(sp){
   G={dim:sp.size,sim:MODO!=="locale",
     giocatori:sedie.map((s,i)=>({id:i,nome:(s.nome||"").trim()||((lang?"Player ":"Giocatore ")+(i+1)),col:COLORI[i],crediti:M.borsa[i],rosa:[],skip:1,online:true})),
     coda:[],riserva:[],introdotti:0,apre:(M.round-1)%sedie.length,lotto:null};
-  const tot=Math.min(40,G.giocatori.length*G.dim),m=mischia(pool);
+  const tot=Math.min(40,G.giocatori.length*G.dim),m=mischiaRari(pool);
   G.coda=m.slice(0,tot);G.riserva=m.slice(tot);G.introdotti=tot;
   prossimoLotto();
 }

@@ -1,7 +1,7 @@
 function vai(id){document.querySelectorAll(".schermo").forEach(s=>s.classList.toggle("attivo",s.id===id));window.scrollTo(0,0);}
 "use strict";
 const COLORI=["var(--p1)","var(--p2)","var(--p3)","var(--p4)","var(--p5)"];
-const BUILD="2026-09-19g";
+const BUILD="2026-09-19h";
 const PREFISSO="zoolympics-";     // NON cambiarlo mai: chi ha la versione
                                   // vecchia non riuscirebbe più a entrare.
 /* Senza un TURN, due dispositivi su reti diverse (uno in WiFi, uno in 4G)
@@ -20,6 +20,13 @@ const GENERICO={vel:2,agi:2,frz:2,res:2,alt:1,man:1};
 const $=(s,r=document)=>r.querySelector(s);
 const $$=(s,r=document)=>[...r.querySelectorAll(s)];
 const mischia=a=>{const b=a.slice();for(let i=b.length-1;i>0;i--){const j=(Math.random()*(i+1))|0;[b[i],b[j]]=[b[j],b[i]];}return b;};
+/* Come mischia, ma gli animali rari che stavolta "non escono" finiscono in
+   fondo: chi taglia la lista ai primi N quasi sempre li lascia fuori.
+   Il caso sta qui, nel rifornimento dei lotti, e non nel punteggio: quello
+   deve restare deterministico e ricavabile da V. */
+const mischiaRari=lista=>{const fondo=[];
+  const testa=mischia(lista).filter(a=>{if(raro(a)&&Math.random()>=RARITA[a.id]){fondo.push(a);return false;}return true;});
+  return testa.concat(fondo);};
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const MEM={leggi(k,d){try{const v=localStorage.getItem("asta."+k);return v?JSON.parse(v):d;}catch{return d;}},
   scrivi(k,v){try{localStorage.setItem("asta."+k,JSON.stringify(v));}catch{}},
