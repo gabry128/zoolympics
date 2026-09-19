@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """
 Zoolympics — build.
-Rimette insieme i pezzi di src/ e vendor/ in un unico dist/index.html,
+Rimette insieme i pezzi di src/ e vendor/ in un unico docs/index.html,
 il file che si mette online.
 
 Alza da solo BUILD in src/20-base.js: stesso giorno → lettera successiva,
-giorno nuovo → "a". Lo stesso valore finisce in dist/versione.txt, perche'
+giorno nuovo → "a". Lo stesso valore finisce in docs/versione.txt, perche'
 i due devono restare allineati: se divergono ogni client butta la cache e
 ricarica.
 
@@ -42,6 +42,9 @@ ORDINE = [
     ("f", "src/04-coda.html"),
 ]
 
+# GitHub Pages, servendo da un branch, pubblica solo dalla radice o da
+# /docs: la cartella di uscita si chiama docs/ per questo.
+USCITA = "docs"
 SORGENTE_BUILD = "src/20-base.js"
 RE_BUILD = re.compile(r'(const\s+BUILD\s*=\s*")(\d{4}-\d{2}-\d{2})([a-z]+)(")')
 
@@ -119,15 +122,15 @@ def main():
                 sys.exit(f"manca {cosa}")
             pezzi.append(leggi(p))
 
-    fuori = BASE / "dist"
+    fuori = BASE / USCITA
     fuori.mkdir(exist_ok=True)
     uscita = fuori / "index.html"
     scrivi(uscita, "\n".join(pezzi))
     scrivi(fuori / "versione.txt", build + "\n")
 
     print(f"BUILD {build}{'' if alzato else ' (invariato)'}")
-    print(f"dist/index.html · {uscita.stat().st_size} byte")
-    print("dist/versione.txt allineato")
+    print(f"{USCITA}/index.html · {uscita.stat().st_size} byte")
+    print(f"{USCITA}/versione.txt allineato")
 
 
 main()

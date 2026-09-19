@@ -11,12 +11,14 @@ is ~8 KB.
 Deployment is still **one file**. `src/` and `vendor/` are just the source layout.
 
 ```
-python3 build.py      # → dist/index.html
+python3 build.py      # → docs/index.html
 ```
 
 `build.py` concatenates the pieces in a fixed order and reproduces the original
 file **byte for byte** (verified). `sw.js`, `manifest.json`, `versione.txt` and
-the icons sit next to `dist/index.html` and are untouched by the build.
+the icons sit next to `docs/index.html`. The output folder is called `docs/`
+because GitHub Pages, serving from a branch, only publishes the repo root or
+`/docs`.
 
 Two things that must stay in sync by hand:
 

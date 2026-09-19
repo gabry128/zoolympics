@@ -1,5 +1,6 @@
-# dist/ NON va ignorato: la pubblicazione e' GitHub Pages dal repo,
-# quindi dist/index.html e dist/versione.txt devono essere committati.
+# docs/ NON va ignorato: la pubblicazione e' GitHub Pages dal repo
+# (impostazioni: branch main, cartella /docs), quindi i file serviti
+# devono stare nella storia.
 
 __pycache__/
 *.pyc

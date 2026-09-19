@@ -1,14 +1,14 @@
 # Zoolympics — regole del progetto
 
 PWA in **un file solo**. I sorgenti stanno in `src/` e `vendor/`; `build.py` li
-riconcatena in `dist/index.html`. Quello che si pubblica è solo il file
+riconcatena in `docs/index.html`. Quello che si pubblica è solo il file
 compilato.
 
 Prima di toccare qualunque cosa leggi **`ARCHITETTURA.md`**: è la mappa e dice
 in quale modulo sta cosa. Apri solo i moduli che servono al compito.
 
 ```
-python3 build.py              # alza BUILD e ricostruisce dist/
+python3 build.py              # alza BUILD e ricostruisce docs/
 python3 build.py --stessa     # ricostruisce lasciando BUILD com'è
 ```
 
@@ -19,7 +19,7 @@ python3 build.py --stessa     # ricostruisce lasciando BUILD com'è
 ## Invarianti — non violarli
 
 **1. `BUILD` e `versione.txt` sempre allineati.**
-`BUILD` sta in `src/20-base.js`, il suo gemello in `dist/versione.txt`. Se i due
+`BUILD` sta in `src/20-base.js`, il suo gemello in `docs/versione.txt`. Se i due
 valori divergono ogni client butta la cache e ricarica in continuazione. `BUILD`
 è anche il controllo di compatibilità del multigiocatore: un ospite con un build
 diverso viene rifiutato all'handshake.
@@ -86,8 +86,10 @@ bloccano a metà.
 - Non aprire tutto il progetto: `ARCHITETTURA.md` più i due o tre moduli che
   servono.
 - Le fini riga sono **LF** ovunque (`.gitattributes`): il build deve riprodurre
-  `dist/index.html` byte per byte anche su Windows.
-- `dist/` **è tracciato** da git: la pubblicazione è GitHub Pages dal repo,
-  quindi i file serviti devono stare nella storia. Dopo una modifica ai
-  sorgenti, ricostruisci e committa anche `dist/index.html` e
-  `dist/versione.txt`, insieme al `BUILD` alzato in `src/20-base.js`.
+  `docs/index.html` byte per byte anche su Windows.
+- `docs/` **è tracciato** da git: la pubblicazione è GitHub Pages dal repo,
+  impostato su branch `main` e cartella `/docs`. Pages, servendo da un branch,
+  pubblica solo dalla radice o da `/docs`: una cartella `dist/` non la
+  vedrebbe. Dopo una modifica ai sorgenti, ricostruisci e committa anche
+  `docs/index.html` e `docs/versione.txt`, insieme al `BUILD` alzato in
+  `src/20-base.js`.
