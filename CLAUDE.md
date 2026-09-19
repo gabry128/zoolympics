@@ -7,6 +7,10 @@ compilato.
 Prima di toccare qualunque cosa leggi **`ARCHITETTURA.md`**: è la mappa e dice
 in quale modulo sta cosa. Apri solo i moduli che servono al compito.
 
+**`VERIFICHE.md`** elenca le prove ancora da fare — cose che funzionano sulla
+carta ma che nessuno ha visto succedere. Se ne chiudi una, toglila da lì;
+se ne apri una nuova, aggiungila.
+
 ```
 python3 build.py              # alza BUILD e ricostruisce docs/
 python3 build.py --stessa     # ricostruisce lasciando BUILD com'è
