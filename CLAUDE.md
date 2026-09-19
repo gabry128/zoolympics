@@ -8,7 +8,8 @@ Prima di toccare qualunque cosa leggi **`ARCHITETTURA.md`**: è la mappa e dice
 in quale modulo sta cosa. Apri solo i moduli che servono al compito.
 
 ```
-python3 build.py     # → dist/index.html
+python3 build.py              # alza BUILD e ricostruisce dist/
+python3 build.py --stessa     # ricostruisce lasciando BUILD com'è
 ```
 
 `vendor/peerjs.js` sono 93 KB di libreria di terze parti: **non leggerlo mai**.
@@ -21,8 +22,12 @@ python3 build.py     # → dist/index.html
 `BUILD` sta in `src/20-base.js`, il suo gemello in `dist/versione.txt`. Se i due
 valori divergono ogni client butta la cache e ricarica in continuazione. `BUILD`
 è anche il controllo di compatibilità del multigiocatore: un ospite con un build
-diverso viene rifiutato all'handshake, quindi va alzato ogni volta che cambia
-quello che viaggia in rete.
+diverso viene rifiutato all'handshake.
+
+**Non si toccano a mano**: li allinea `build.py`, che alza `BUILD` a ogni build
+(stesso giorno → lettera successiva, giorno nuovo → `a`) e riscrive
+`versione.txt`. Per una ricostruzione che non deve far ricaricare nessuno usa
+`--stessa`.
 
 **2. `PREFISSO` non si cambia mai.**
 `const PREFISSO="zoolympics-"` in `src/20-base.js:5` è il prefisso degli id
@@ -83,5 +88,6 @@ bloccano a metà.
 - Le fini riga sono **LF** ovunque (`.gitattributes`): il build deve riprodurre
   `dist/index.html` byte per byte anche su Windows.
 - `dist/` **è tracciato** da git: la pubblicazione è GitHub Pages dal repo,
-  quindi il file compilato deve stare nella storia. Dopo una modifica ai
-  sorgenti, ricostruisci e committa anche `dist/`.
+  quindi i file serviti devono stare nella storia. Dopo una modifica ai
+  sorgenti, ricostruisci e committa anche `dist/index.html` e
+  `dist/versione.txt`, insieme al `BUILD` alzato in `src/20-base.js`.
