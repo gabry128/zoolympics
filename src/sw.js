@@ -4,7 +4,7 @@
    solo se i byte del file sono diversi, ed e' il nome della cache, cosi'
    ogni versione riparte pulita invece di ereditare i resti di quella
    prima. */
-const BUILD="2026-09-19c";
+const BUILD="2026-09-19d";
 const CACHE="zoolympics-"+BUILD;
 const GUSCIO=["./","index.html","manifest.json","icon-192.png","icon-512.png","apple-touch-icon.png"];
 
