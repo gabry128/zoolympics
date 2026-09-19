@@ -6,3 +6,9 @@ __pycache__/
 *.pyc
 .DS_Store
 Thumbs.db
+
+# Rigenerabili in un comando, non vanno in git:
+#   python strumenti/costruisci-tabelle.py   -> le due tabelle
+#   node   strumenti/costruisci-dossier.js   -> la pagina
+/dossier.html
+/animali.csv

@@ -1,0 +1,668 @@
+<title>Dossier Atleti Zoolympics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&display=swap">
+<style>
+/* La palette e' quella del gioco (src/02-stile.css :root): l'arena di
+   Zoolympics e' notturna, e la scheda vive nello stesso mondo. Tema unico
+   e deliberato, con ogni colore dipinto esplicitamente. */
+:root{
+  --notte:#0B2426; --fondo:#123234; --pannello:#194242; --bordo:#2B5D5B;
+  --osso:#F1E8D6; --fumo:#9BB5AE; --oro:#E8B33C; --rosa:#E0457B;
+  --spenta:#5E8079;
+  --disp:"Archivo Black","Arial Black",Impact,system-ui,sans-serif;
+  --ui:"Archivo","Segoe UI",system-ui,-apple-system,sans-serif;
+  --r:12px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:var(--notte); color:var(--osso);
+  font-family:var(--ui); font-size:15px; line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+:focus-visible{outline:2px solid var(--oro);outline-offset:2px;border-radius:4px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* ─── impianto ─── */
+.guscio{display:grid;grid-template-columns:302px minmax(0,1fr);min-height:100vh}
+
+/* ─── colonna degli atleti ─── */
+.rubrica{
+  background:var(--fondo);border-right:1px solid var(--bordo);
+  position:sticky;top:0;height:100vh;display:flex;flex-direction:column;
+}
+.rubrica-testa{padding:18px 18px 12px;border-bottom:1px solid var(--bordo);display:flex;flex-direction:column;gap:10px}
+.marchio{font-family:var(--disp);font-size:17px;line-height:1;letter-spacing:-.02em;text-transform:uppercase}
+.marchio span{color:var(--oro)}
+.cerca{
+  width:100%;background:var(--pannello);border:1px solid var(--bordo);border-radius:9px;
+  padding:9px 11px;color:var(--osso);font-family:var(--ui);font-size:14px;
+}
+.cerca::placeholder{color:var(--spenta)}
+.filtri{display:flex;gap:6px;flex-wrap:wrap}
+.filtro{
+  background:none;border:1px solid var(--bordo);border-radius:20px;padding:4px 11px;
+  color:var(--fumo);font-family:var(--ui);font-size:12px;cursor:pointer;transition:.15s;
+}
+.filtro[aria-pressed="true"]{background:var(--oro);border-color:var(--oro);color:#12302B;font-weight:600}
+.lista{overflow-y:auto;flex:1;padding:6px}
+.voce{
+  display:grid;grid-template-columns:26px 1fr auto;gap:9px;align-items:center;
+  width:100%;text-align:left;background:none;border:0;border-radius:9px;
+  padding:7px 9px;color:var(--osso);font-family:var(--ui);font-size:14px;cursor:pointer;
+}
+.voce:hover{background:var(--pannello)}
+.voce[aria-current="true"]{background:var(--oro);color:#12302B;font-weight:600}
+.voce-emoji{font-size:18px;line-height:1}
+.voce-nome{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.voce-n{font-size:12px;color:var(--fumo);font-variant-numeric:tabular-nums}
+.voce[aria-current="true"] .voce-n{color:#12302B;opacity:.7}
+.voce-nuovo{width:5px;height:5px;border-radius:50%;background:var(--rosa);display:inline-block;margin-left:5px;vertical-align:middle}
+.vuoto{padding:22px 14px;color:var(--fumo);font-size:13px}
+
+/* ─── scheda ─── */
+.scheda{padding:26px 30px 70px;max-width:1120px}
+.testa{display:grid;grid-template-columns:auto 1fr auto;gap:20px;align-items:center;margin-bottom:26px}
+.ritratto{
+  width:92px;height:92px;display:grid;place-items:center;font-size:52px;line-height:1;
+  background:var(--fondo);border:1px solid var(--bordo);border-radius:20px;
+}
+.occhiello{
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--fumo);
+  font-weight:600;font-variant-numeric:tabular-nums;
+}
+h1{font-family:var(--disp);font-size:clamp(30px,4.4vw,46px);line-height:.98;letter-spacing:-.025em;text-transform:uppercase;text-wrap:balance;margin:3px 0 1px}
+.en{color:var(--fumo);font-size:15px}
+.targhe{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}
+.targa{
+  font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;font-weight:600;
+  border:1px solid var(--bordo);border-radius:20px;padding:3px 10px;color:var(--fumo);
+}
+.targa.oro{border-color:var(--oro);color:var(--oro)}
+.targa.rosa{border-color:var(--rosa);color:var(--rosa)}
+.frecce{display:flex;gap:7px}
+.freccia{
+  width:38px;height:38px;border-radius:10px;background:var(--fondo);border:1px solid var(--bordo);
+  color:var(--osso);font-size:17px;cursor:pointer;transition:.15s;
+}
+.freccia:hover{background:var(--pannello);border-color:var(--oro)}
+
+section{margin-bottom:28px}
+.titoletto{
+  font-family:var(--disp);font-size:12.5px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--fumo);margin-bottom:12px;display:flex;align-items:baseline;gap:10px;
+}
+.titoletto::after{content:"";flex:1;height:1px;background:var(--bordo)}
+.nota{color:var(--fumo);font-size:13px;max-width:62ch}
+
+.pannello{background:var(--fondo);border:1px solid var(--bordo);border-radius:var(--r);padding:18px}
+
+/* profilo: radar + doti */
+.profilo{display:grid;grid-template-columns:minmax(300px,380px) minmax(0,1fr);gap:16px;align-items:start}
+.radar{width:100%;height:auto;display:block}
+.legenda{display:flex;gap:16px;justify-content:center;margin-top:4px;font-size:12px;color:var(--fumo)}
+.legenda i{display:inline-block;width:15px;height:2px;vertical-align:middle;margin-right:6px}
+.doti{display:flex;flex-direction:column;gap:2px}
+.dote{display:grid;grid-template-columns:104px 1fr 30px 46px;gap:10px;align-items:center;padding:3px 0;font-size:13px}
+.dote-nome{color:var(--osso)}
+.dote-barra{height:7px;background:var(--pannello);border-radius:4px;overflow:hidden}
+.dote-riemp{height:100%;background:var(--oro);border-radius:4px}
+.dote-val{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
+.dote-delta{text-align:right;font-size:11.5px;color:var(--fumo);font-variant-numeric:tabular-nums}
+.dote-delta.su{color:var(--oro)}
+.dote-delta.giu{color:var(--spenta)}
+
+/* rendimento */
+.gare{display:flex;flex-direction:column;gap:7px}
+.gara{display:grid;grid-template-columns:22px 1fr 116px 34px;gap:11px;align-items:center;font-size:13.5px;padding:2px 0}
+.gara-emoji{font-size:15px}
+.gara-nome{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.gara-barra{height:9px;background:var(--pannello);border-radius:5px;overflow:hidden}
+.gara-riemp{height:100%;background:var(--oro);border-radius:5px}
+.gara-val{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
+.gara.fuori{color:var(--spenta)}
+.gara.fuori .gara-riemp{background:var(--spenta);opacity:.45}
+.gara.fuori .gara-val{color:var(--spenta)}
+.perche{grid-column:2/-1;font-size:11.5px;color:var(--rosa);margin-top:-4px}
+.podio{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:11px;margin-bottom:16px}
+.medaglia{background:var(--pannello);border:1px solid var(--bordo);border-radius:var(--r);padding:13px 15px}
+.medaglia .occhiello{font-size:10px}
+.medaglia b{display:block;font-family:var(--disp);font-size:15px;line-height:1.15;margin:5px 0 3px;text-transform:uppercase;letter-spacing:-.01em}
+.medaglia .voto{color:var(--oro);font-weight:700;font-variant-numeric:tabular-nums;font-size:19px}
+
+/* sinergia */
+.sinergie{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:12px}
+.sinergia{background:var(--fondo);border:1px solid var(--bordo);border-radius:var(--r);padding:15px 16px}
+.sinergia h3{font-family:var(--disp);font-size:14px;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:3px}
+.sinergia .tipo{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--oro);font-weight:600}
+.sinergia p{font-size:13px;color:var(--fumo);margin:7px 0 0}
+.sinergia p b{color:var(--osso);font-weight:600}
+.compagni{display:flex;gap:6px;flex-wrap:wrap;margin-top:11px;padding-top:11px;border-top:1px solid var(--bordo)}
+.compagno{
+  display:inline-flex;align-items:center;gap:5px;background:var(--pannello);
+  border:1px solid var(--bordo);border-radius:20px;padding:3px 10px 3px 7px;
+  font-size:12px;color:var(--osso);cursor:pointer;font-family:var(--ui);
+}
+.compagno:hover{border-color:var(--oro)}
+
+/* gare senza punteggio */
+.pasticche{display:flex;gap:7px;flex-wrap:wrap}
+.pasticca{
+  font-size:12.5px;border:1px solid var(--bordo);border-radius:20px;padding:4px 12px;
+  color:var(--spenta);background:none;font-family:var(--ui);cursor:default;
+}
+.pasticca.dentro{color:var(--osso);border-color:var(--oro)}
+.pasticca .segno{color:var(--oro);margin-right:5px}
+
+/* suggerimento */
+.tip{
+  position:fixed;pointer-events:none;z-index:9;opacity:0;transition:opacity .12s;
+  background:var(--pannello);border:1px solid var(--oro);border-radius:9px;
+  padding:7px 11px;font-size:12.5px;max-width:250px;box-shadow:0 8px 22px rgba(0,0,0,.45);
+}
+.tip.vedi{opacity:1}
+.tip b{color:var(--oro)}
+
+/* ─── vista per gara ─── */
+.cambio{display:flex;gap:4px;background:var(--pannello);border:1px solid var(--bordo);border-radius:9px;padding:3px}
+.cambio button{
+  flex:1;background:none;border:0;border-radius:7px;padding:6px 8px;cursor:pointer;
+  color:var(--fumo);font-family:var(--ui);font-size:12.5px;font-weight:600;transition:.15s;
+}
+.cambio button[aria-pressed="true"]{background:var(--oro);color:#12302B}
+.pesi{display:flex;flex-direction:column;gap:3px}
+.peso{display:grid;grid-template-columns:104px 1fr 56px;gap:10px;align-items:center;font-size:13px}
+.peso-barra{height:8px;background:var(--pannello);border-radius:4px;position:relative;overflow:hidden}
+.peso-riemp{height:100%;background:var(--oro);border-radius:4px}
+.peso-riemp.contro{background:var(--rosa)}
+.peso-val{text-align:right;font-variant-numeric:tabular-nums;font-weight:700;font-size:12px}
+.peso-val.contro{color:var(--rosa)}
+.due{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:14px;align-items:start}
+.classifica{display:flex;flex-direction:column;gap:5px}
+.posto{
+  display:grid;grid-template-columns:20px 22px 1fr 82px 34px;gap:9px;align-items:center;
+  width:100%;background:none;border:0;border-radius:8px;padding:4px 6px;
+  color:var(--osso);font-family:var(--ui);font-size:13.5px;cursor:pointer;text-align:left;
+}
+.posto:hover{background:var(--pannello)}
+.posto-n{color:var(--spenta);font-size:11.5px;font-variant-numeric:tabular-nums;text-align:right}
+.posto-nome{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.posto-barra{height:8px;background:var(--pannello);border-radius:4px;overflow:hidden}
+.posto-riemp{height:100%;background:var(--oro);border-radius:4px}
+.coda .posto-riemp{background:var(--spenta)}
+.posto-val{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
+.soffio{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.regola-riga{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:12px}
+.req{
+  font-size:12.5px;border:1px solid var(--bordo);border-radius:8px;padding:5px 11px;
+  background:var(--pannello);font-variant-numeric:tabular-nums;
+}
+.req b{color:var(--oro)}
+.req.carattere{border-color:var(--oro)}
+.numerone{font-family:var(--disp);font-size:34px;line-height:1;color:var(--oro);font-variant-numeric:tabular-nums}
+
+@media (max-width:900px){
+  .guscio{grid-template-columns:1fr}
+  .rubrica{position:static;height:auto;max-height:44vh;border-right:0;border-bottom:1px solid var(--bordo)}
+  .scheda{padding:20px 16px 50px}
+  .profilo{grid-template-columns:1fr}
+  .testa{grid-template-columns:auto 1fr;gap:14px}
+  .frecce{grid-column:1/-1}
+  .dote{grid-template-columns:88px 1fr 26px 40px}
+  .gara{grid-template-columns:20px 1fr 70px 30px}
+}
+</style>
+
+<div class="guscio">
+  <aside class="rubrica">
+    <div class="rubrica-testa">
+      <div class="marchio">Zoo<span>lympics</span> · Dossier</div>
+      <div class="cambio">
+        <button data-v="atleti" aria-pressed="true">Atleti</button>
+        <button data-v="gare" aria-pressed="false">Gare</button>
+      </div>
+      <input class="cerca" id="cerca" type="search" placeholder="Cerca…" autocomplete="off" aria-label="Cerca">
+      <div class="filtri" id="filtri"></div>
+    </div>
+    <div class="lista" id="lista" role="listbox" aria-label="Elenco"></div>
+  </aside>
+  <main class="scheda" id="scheda"></main>
+</div>
+<div class="tip" id="tip" role="status"></div>
+
+<script type="application/json" id="dati">__DATI__</script>
+<script>
+const D = JSON.parse(document.getElementById("dati").textContent);
+const K = D.chiavi, NOMI = D.nomi, MEDIA = D.media, GARE = D.gare, ANIMALI = D.animali;
+const iK = Object.fromEntries(K.map((k,i)=>[k,i]));
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+let corrente = 0, correnteGara = 0, vista = "atleti", filtro = "tutti", query = "";
+
+/* Ogni gara ha ormai accesso e premio separati, quindi un voto esiste
+   sempre: anche le diciannove proposte hanno i loro pesi. */
+const propost = g => g.stato === "nuova";
+
+/* ─── radar ─── */
+const CX=182, CY=172, RR=116, N=K.length;
+const puntoR = (i,v) => {
+  const a = -Math.PI/2 + i*2*Math.PI/N, r = v/10*RR;
+  return [CX + r*Math.cos(a), CY + r*Math.sin(a)];
+};
+const poligono = vals => vals.map((v,i)=>puntoR(i,v).map(n=>n.toFixed(1)).join(",")).join(" ");
+
+function radar(a){
+  let s = `<svg class="radar" viewBox="0 0 364 344" role="img" aria-label="Profilo delle 15 doti di ${esc(a.it)}">`;
+  for (const anello of [2,4,6,8,10])
+    s += `<polygon points="${poligono(K.map(()=>anello))}" fill="none" stroke="#2B5D5B" stroke-width="${anello===10?1.2:.7}" opacity="${anello===10?.9:.45}"/>`;
+  for (let i=0;i<N;i++){
+    const [x,y] = puntoR(i,10);
+    s += `<line x1="${CX}" y1="${CY}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" stroke="#2B5D5B" stroke-width=".7" opacity=".4"/>`;
+  }
+  /* media: tratteggiata e senza riempimento, cosi' si distingue anche
+     senza affidarsi al solo colore */
+  s += `<polygon points="${poligono(MEDIA)}" fill="none" stroke="#9BB5AE" stroke-width="2" stroke-dasharray="5 4" opacity=".85"/>`;
+  s += `<polygon points="${poligono(a.d)}" fill="#E8B33C" fill-opacity=".18" stroke="#E8B33C" stroke-width="2" stroke-linejoin="round"/>`;
+  for (let i=0;i<N;i++){
+    const [x,y] = puntoR(i, a.d[i]);
+    s += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3.6" fill="#E8B33C"/>`;
+    s += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="12" fill="transparent" class="vertice" data-i="${i}" tabindex="0" role="img" aria-label="${esc(NOMI[K[i]])}: ${a.d[i]} su 10, media ${MEDIA[i]}"/>`;
+  }
+  for (let i=0;i<N;i++){
+    const [x,y] = puntoR(i,10), dx = x-CX, dy = y-CY;
+    const lx = CX + dx*1.20, ly = CY + dy*1.20 + 4;
+    const anc = Math.abs(dx)<6 ? "middle" : (dx>0 ? "start" : "end");
+    s += `<text x="${lx.toFixed(1)}" y="${ly.toFixed(1)}" text-anchor="${anc}" fill="#9BB5AE" font-size="10.5" font-weight="600" letter-spacing=".08em" font-family="Archivo, sans-serif">${K[i].toUpperCase()}</text>`;
+  }
+  return s + "</svg>";
+}
+
+/* ─── sinergia in parole ─── */
+function raccontaSinergia(a, g, gi){
+  const s = g.sinergia, k = s.stat, v = a.d[iK[k]], nome = NOMI[k];
+  const bonus = Math.round(s.max*100);
+  let tipo, testo;
+  if (s.tipo === "ruoli"){
+    const quota = Math.round(s.quota*100);
+    const alto = v >= s.soglia;
+    tipo = "Ruoli";
+    testo = `La squadra rende quando il <b>${quota}%</b> dei suoi membri arriva ${aD(nome)} <b>${nome} ${s.soglia}</b>. `
+          + `${esc(a.it)} sta a <b>${v}</b>, quindi ${alto
+              ? `riempie uno dei posti "alti": accanto servono compagni sotto ${s.soglia}, o la quota salta per eccesso.`
+              : `riempie uno dei posti "bassi": accanto servono compagni da ${s.soglia} in su.`}`;
+  } else {
+    tipo = "Somiglianza";
+    testo = `Qui conta che i compagni si <b>assomiglino</b> in ${nome}: piu' i valori sono vicini, piu' l'intesa sale. `
+          + `${esc(a.it)} sta a <b>${v}</b>, quindi va accoppiato con chi gli sta intorno.`;
+  }
+  /* compagni suggeriti: solo fra gli ammessi alla stessa gara */
+  const ammessi = ANIMALI.filter(x => x.dentro[gi] && x.id !== a.id);
+  let scelti;
+  if (s.tipo === "ruoli"){
+    const opposto = v >= s.soglia ? x => x.d[iK[k]] < s.soglia : x => x.d[iK[k]] >= s.soglia;
+    scelti = ammessi.filter(opposto).sort((p,q)=>(q.fit[gi]||0)-(p.fit[gi]||0)).slice(0,5);
+  } else {
+    scelti = ammessi.sort((p,q)=>Math.abs(p.d[iK[k]]-v)-Math.abs(q.d[iK[k]]-v) || (q.fit[gi]||0)-(p.fit[gi]||0)).slice(0,5);
+  }
+  return `<article class="sinergia">
+    <div class="tipo">${tipo} · su ${esc(nome)} · fino a +${bonus}%</div>
+    <h3>${esc(g.nome)}</h3>
+    <p>${testo}</p>
+    ${scelti.length ? `<div class="compagni">${scelti.map(x =>
+      `<button class="compagno" data-va="${esc(x.id)}">${x.emoji} ${esc(x.it)} <b style="color:var(--fumo);font-weight:600">${x.d[iK[k]]}</b></button>`).join("")}</div>` : ""}
+  </article>`;
+}
+
+/* ─── scheda della gara ─── */
+/* "a Altezza" non si puo' sentire */
+const aD = nome => /^[AEIOU]/.test(nome) ? "ad" : "a";
+
+function raccontaRegola(g){
+  const s = g.sinergia;
+  if (!s) return `<p class="nota">Questa gara non ha intesa: i voti dei componenti si sommano e basta, come al tiro alla fune.</p>`;
+  const nome = NOMI[s.stat], bonus = Math.round(s.max*100);
+  if (s.tipo === "ruoli"){
+    const quota = Math.round(s.quota*100);
+    const size = g.size;
+    const alti = Math.round(s.quota*size);
+    return `<p><b>Ruoli su ${esc(nome)}</b> — la squadra rende quando esattamente il <b>${quota}%</b>
+      dei suoi membri arriva ${aD(nome)} ${esc(nome)} ${s.soglia}. In una squadra da ${size} vuol dire
+      <b>${alti} sopra la soglia e ${size-alti} sotto</b>. Sbagliare per eccesso costa quanto sbagliare
+      per difetto: una squadra tutta alta vale quanto una tutta bassa. Il bonus arriva al massimo a
+      <b>+${bonus}%</b> sul punteggio di squadra.</p>`;
+  }
+  return `<p><b>Somiglianza su ${esc(nome)}</b> — qui conta che i componenti si assomiglino:
+    il bonus è pieno se hanno tutti lo stesso valore di ${esc(nome)} e si azzera quando la loro
+    deviazione standard arriva a 3,5. Al massimo vale <b>+${bonus}%</b>.</p>`;
+}
+
+function disegnaGara(){
+  const g = GARE[correnteGara], gi = correnteGara;
+  const dentro = ANIMALI.map((a,i)=>({a,i})).filter(x => x.a.dentro[gi]);
+  const ord = dentro.slice().sort((p,q) => q.a.fit[gi] - p.a.fit[gi]);
+  const migliori = ord.slice(0, 10);
+  const peggiori = ord.slice(-10).reverse();
+  const valore = a => a.fit[gi];
+
+  const riga = (x, n, coda) => `
+    <button class="posto" data-va="${esc(x.a.id)}" title="Apri la scheda di ${esc(x.a.it)}">
+      <span class="posto-n">${n}</span>
+      <span>${x.a.emoji}</span>
+      <span class="posto-nome">${esc(x.a.it)}${x.a.nuovo?'<span class="voce-nuovo"></span>':""}</span>
+      <span class="posto-barra"><span class="posto-riemp" style="width:${Math.max(3,valore(x.a)*10).toFixed(1)}%"></span></span>
+      <span class="posto-val">${valore(x.a).toFixed(1)}</span>
+    </button>`;
+
+  /* chi resta fuori per un solo punto su un solo requisito */
+  const soffio = ANIMALI.filter(a => !a.dentro[gi] &&
+    Object.entries(g.req).filter(([k,v]) => a.d[iK[k]] < v).length === 1 &&
+    Object.entries(g.req).every(([k,v]) => a.d[iK[k]] >= v - 1));
+
+  const pesiMax = Math.max(...Object.values(g.pesi).map(Math.abs));
+
+  document.getElementById("scheda").innerHTML = `
+    <header class="testa">
+      <div class="ritratto">${g.emoji || "🏅"}</div>
+      <div>
+        <div class="occhiello">Gara ${gi+1} di ${GARE.length} · ${esc(g.gruppo)}</div>
+        <h1>${esc(g.nome)}</h1>
+        <div class="targhe">
+          <span class="targa oro">${dentro.length} atleti ammessi</span>
+          <span class="targa">squadra da ${g.size}</span>
+          ${propost(g) ? '<span class="targa rosa">proposta, non ancora nel gioco</span>' : ""}
+        </div>
+      </div>
+      <nav class="frecce">
+        <button class="freccia" id="prec" aria-label="Gara precedente">‹</button>
+        <button class="freccia" id="succ" aria-label="Gara successiva">›</button>
+      </nav>
+    </header>
+
+    <section>
+      <h2 class="titoletto">Chi può entrare</h2>
+      <div class="regola-riga">
+        ${Object.entries(g.req).map(([k,v]) =>
+          `<span class="req">${esc(NOMI[k])} <b>≥ ${v}</b></span>`).join("")}
+        <span class="req">${dentro.length} su ${ANIMALI.length} <b>(${Math.round(dentro.length/ANIMALI.length*100)}%)</b></span>
+      </div>
+      ${soffio.length ? `<p class="nota">Fuori per un solo punto: ${soffio.slice(0,12).map(a =>
+        `<button class="compagno" data-va="${esc(a.id)}">${a.emoji} ${esc(a.it)}</button>`).join(" ")}</p>` : ""}
+    </section>
+
+    <section>
+      <h2 class="titoletto">Cosa premia</h2>
+      <div class="pannello pesi">
+        ${Object.entries(g.pesi).sort((p,q)=>Math.abs(q[1])-Math.abs(p[1])).map(([k,w])=>`
+          <div class="peso">
+            <span>${esc(NOMI[k])}</span>
+            <span class="peso-barra"><span class="peso-riemp${w<0?" contro":""}" style="width:${Math.abs(w)/pesiMax*100}%"></span></span>
+            <span class="peso-val${w<0?" contro":""}">${w>0?"×"+w:"penalizza "+w}</span>
+          </div>`).join("")}
+      </div>
+      <p class="nota" style="margin-top:9px">Nessuna di queste doti compare fra i requisiti d'accesso:
+      chi entra è una cosa, chi rende è un'altra. L'unica eccezione è lo slalom aereo, dove il Volo
+      fa tutt'e due i mestieri.</p>
+    </section>
+
+    <section>
+      <h2 class="titoletto">I migliori e i peggiori fra gli ammessi</h2>
+      <div class="due">
+        <div class="pannello">
+          <div class="occhiello" style="margin-bottom:9px">In cima</div>
+          <div class="classifica">${migliori.map((x,n)=>riga(x,n+1,false)).join("")}</div>
+        </div>
+        <div class="pannello coda">
+          <div class="occhiello" style="margin-bottom:9px">In fondo</div>
+          <div class="classifica">${peggiori.map((x,n)=>riga(x,ord.length-n,true)).join("")}</div>
+        </div>
+      </div>
+      <p class="nota" style="margin-top:9px">Tutti e ${dentro.length} sono ammessi: quelli in fondo
+        possono partecipare, semplicemente non ci vanno forte. Il voto è il <code>fit</code>, la stessa
+        formula che usa il gioco.</p>
+    </section>
+
+    <section>
+      <h2 class="titoletto">Intesa di squadra</h2>
+      <div class="pannello">${raccontaRegola(g)}</div>
+    </section>`;
+
+  document.getElementById("prec").onclick = ()=>vaiAGara(correnteGara-1);
+  document.getElementById("succ").onclick = ()=>vaiAGara(correnteGara+1);
+  document.querySelectorAll("[data-va]").forEach(b =>
+    b.onclick = ()=>{vista="atleti";sincronizza();vaiA(ANIMALI.findIndex(x=>x.id===b.dataset.va));});
+}
+
+/* ─── scheda dell'atleta ─── */
+function disegnaAtleta(){
+  const a = ANIMALI[corrente];
+  const dentro = a.dentro.reduce((s,x)=>s+x,0);
+
+  /* gare con profilo di punteggio, quelle ammesse prima e per resa */
+  const tutte = GARE.map((g,i)=>({g,i}));
+  const ammesse = tutte.filter(x => a.dentro[x.i]).sort((p,q)=>a.fit[q.i]-a.fit[p.i]);
+  const escluse = tutte.filter(x => !a.dentro[x.i]).sort((p,q)=>a.fit[q.i]-a.fit[p.i]);
+  const proposte = ammesse.filter(x => propost(x.g)).length;
+
+  const mancanti = (g) => Object.entries(g.req)
+    .filter(([k,v]) => a.d[iK[k]] < v)
+    .map(([k,v]) => `${NOMI[k]} ${a.d[iK[k]]} invece di ${v}`).join(", ");
+
+  const rigaGara = ({g,i}, fuori) => `
+    <div class="gara${fuori?" fuori":""}">
+      <span class="gara-emoji">${g.emoji||"·"}</span>
+      <button class="gara-nome" data-gara="${i}" title="Apri la scheda della gara"
+        style="background:none;border:0;color:inherit;font:inherit;text-align:left;cursor:pointer;padding:0;text-decoration:underline;text-decoration-color:var(--bordo);text-underline-offset:3px">${esc(g.nome)}${propost(g)?' <span style="color:var(--rosa);font-size:10px;letter-spacing:.1em">PROPOSTA</span>':""}</button>
+      <span class="gara-barra"><span class="gara-riemp" style="width:${(a.fit[i]/10*100).toFixed(1)}%"></span></span>
+      <span class="gara-val">${a.fit[i].toFixed(1)}</span>
+      ${fuori ? `<span class="perche">fuori per ${esc(mancanti(g))}</span>` : ""}
+    </div>`;
+
+  const podio = ammesse.slice(0,3).map((x,n)=>`
+    <div class="medaglia">
+      <div class="occhiello">${["Il suo meglio","Secondo","Terzo"][n]}</div>
+      <b>${x.g.emoji||""} ${esc(x.g.nome)}</b>
+      <span class="voto">${a.fit[x.i].toFixed(1)}</span>
+      <span style="color:var(--fumo);font-size:12px"> su 10</span>
+    </div>`).join("");
+
+  const sinergie = ammesse.filter(x => x.g.sinergia).map(x => raccontaSinergia(a, x.g, x.i)).join("");
+
+  document.getElementById("scheda").innerHTML = `
+    <header class="testa">
+      <div class="ritratto">${a.emoji}</div>
+      <div>
+        <div class="occhiello">Atleta ${corrente+1} di ${ANIMALI.length} · ${esc(a.id)}</div>
+        <h1>${esc(a.it)}</h1>
+        <div class="en">${esc(a.en)}</div>
+        <div class="targhe">
+          <span class="targa oro">${dentro} gare su ${GARE.length}</span>
+          ${proposte?`<span class="targa rosa">${proposte} ancora proposte</span>`:""}
+          ${a.nuovo ? '<span class="targa rosa">proposto, non ancora nel gioco</span>' : ""}
+        </div>
+      </div>
+      <nav class="frecce">
+        <button class="freccia" id="prec" aria-label="Atleta precedente">‹</button>
+        <button class="freccia" id="succ" aria-label="Atleta successivo">›</button>
+      </nav>
+    </header>
+
+    <section>
+      <h2 class="titoletto">Profilo</h2>
+      <div class="profilo">
+        <div class="pannello">
+          ${radar(a)}
+          <div class="legenda">
+            <span><i style="background:#E8B33C"></i>${esc(a.it)}</span>
+            <span><i style="background:#9BB5AE;height:0;border-top:2px dashed #9BB5AE"></i>media dei ${ANIMALI.length}</span>
+          </div>
+        </div>
+        <div class="pannello doti">
+          ${K.map((k,i)=>{
+            const d = +(a.d[i]-MEDIA[i]).toFixed(1);
+            return `<div class="dote">
+              <span class="dote-nome">${esc(NOMI[k])}</span>
+              <span class="dote-barra"><span class="dote-riemp" style="width:${a.d[i]*10}%"></span></span>
+              <span class="dote-val">${a.d[i]}</span>
+              <span class="dote-delta ${d>0?"su":d<0?"giu":""}">${d>0?"+":""}${d.toFixed(1)}</span>
+            </div>`;}).join("")}
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="titoletto">Dove rende di più</h2>
+      ${ammesse.length ? `<div class="podio">${podio}</div>` : ""}
+      <div class="pannello gare">
+        ${ammesse.map(x=>rigaGara(x,false)).join("") || '<p class="nota">Nessuna gara con punteggio lo ammette.</p>'}
+      </div>
+      ${escluse.length ? `
+        <h2 class="titoletto" style="margin-top:18px">Gare che lo escludono</h2>
+        <div class="pannello gare">${escluse.map(x=>rigaGara(x,true)).join("")}</div>
+        <p class="nota" style="margin-top:9px">Il voto è calcolato lo stesso: dice quanto renderebbe se il requisito d'ingresso cambiasse.</p>` : ""}
+    </section>
+
+    ${sinergie ? `<section>
+      <h2 class="titoletto">Intesa di squadra</h2>
+      <div class="sinergie">${sinergie}</div>
+    </section>` : ""}
+
+    <section>
+      <h2 class="titoletto">Una nota sulle gare proposte</h2>
+      <p class="nota">Delle 33 gare, 19 sono ancora proposte: hanno accesso, premi e un voto, ma non sono nel gioco.
+      Nelle liste qui sopra sono marcate <b style="color:var(--rosa)">PROPOSTA</b>${proposte?` — questo atleta ne è ammesso a ${proposte}`:""}.
+      Nessuna di loro ha una sinergia: l'intesa di squadra esiste solo per le 14 già nel gioco.</p>
+    </section>`;
+
+  document.getElementById("prec").onclick = ()=>vaiA(corrente-1);
+  document.getElementById("succ").onclick = ()=>vaiA(corrente+1);
+  document.querySelectorAll(".compagno").forEach(b =>
+    b.onclick = ()=>vaiA(ANIMALI.findIndex(x=>x.id===b.dataset.va)));
+  document.querySelectorAll("[data-gara]").forEach(b =>
+    b.onclick = ()=>{vista="gare";sincronizza();vaiAGara(+b.dataset.gara);});
+  legaVertici(a);
+}
+
+function disegna(){ vista === "gare" ? disegnaGara() : disegnaAtleta(); }
+
+/* ─── suggerimenti sul radar ─── */
+const tip = document.getElementById("tip");
+function mostraTip(txt, x, y){
+  tip.innerHTML = txt;
+  tip.classList.add("vedi");
+  const r = tip.getBoundingClientRect();
+  tip.style.left = Math.min(Math.max(8, x - r.width/2), innerWidth - r.width - 8) + "px";
+  tip.style.top  = Math.max(8, y - r.height - 12) + "px";
+}
+const nascondiTip = ()=>tip.classList.remove("vedi");
+
+function legaVertici(a){
+  document.querySelectorAll(".vertice").forEach(v=>{
+    const i = +v.dataset.i;
+    const testo = ()=>{
+      const d = +(a.d[i]-MEDIA[i]).toFixed(1);
+      return `<b>${esc(NOMI[K[i]])}</b> ${a.d[i]}/10<br>media ${MEDIA[i]} · ${d>0?"+":""}${d.toFixed(1)}`;
+    };
+    const dove = e=>{const r=v.getBoundingClientRect();return [r.left+r.width/2, r.top];};
+    v.addEventListener("mouseenter", ()=>{const [x,y]=dove();mostraTip(testo(),x,y);});
+    v.addEventListener("focus", ()=>{const [x,y]=dove();mostraTip(testo(),x,y);});
+    v.addEventListener("mouseleave", nascondiTip);
+    v.addEventListener("blur", nascondiTip);
+  });
+}
+
+/* ─── rubrica ─── */
+const FILTRI = {
+  atleti: [["tutti","Tutti"],["nuovi","Solo nuovi"],["acqua","Acquatici"],["volo","Volanti"]],
+  gare:   [["tutti","Tutte"],["attuale","Nel gioco"],["nuova","Proposte"],["estiva","Estive"],["invernale","Invernali"]]
+};
+
+function sincronizza(){
+  filtro = "tutti"; query = "";
+  const c = document.getElementById("cerca");
+  c.value = "";
+  c.placeholder = vista === "gare" ? "Cerca una gara…" : "Cerca un atleta…";
+  document.querySelectorAll(".cambio button").forEach(b =>
+    b.setAttribute("aria-pressed", String(b.dataset.v === vista)));
+  document.getElementById("filtri").innerHTML = FILTRI[vista].map(([f,t]) =>
+    `<button class="filtro" data-f="${f}" aria-pressed="${f === "tutti"}">${t}</button>`).join("");
+  document.querySelectorAll(".filtro").forEach(b => b.onclick = ()=>{
+    filtro = b.dataset.f;
+    document.querySelectorAll(".filtro").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+    elenco();
+  });
+}
+
+function elenco(){
+  const q = query.trim().toLowerCase();
+  const cont = document.getElementById("lista");
+
+  if (vista === "gare"){
+    const v = GARE.map((g,i)=>({g,i})).filter(({g})=>{
+      if (q && !g.nome.toLowerCase().includes(q)) return false;
+      if (filtro === "attuale" || filtro === "nuova") return g.stato === filtro;
+      if (filtro === "estiva" || filtro === "invernale") return g.gruppo === filtro;
+      return true;
+    });
+    cont.innerHTML = v.length ? v.map(({g,i})=>`
+      <button class="voce" role="option" data-g="${i}" aria-current="${i===correnteGara}" aria-selected="${i===correnteGara}">
+        <span class="voce-emoji">${g.emoji || "🏅"}</span>
+        <span class="voce-nome">${esc(g.nome)}${g.stato==="nuova"?'<span class="voce-nuovo" title="proposta"></span>':""}</span>
+        <span class="voce-n">${g.ammessi}</span>
+      </button>`).join("") : '<p class="vuoto">Nessuna gara con questo nome.</p>';
+    cont.querySelectorAll(".voce").forEach(b => b.onclick = ()=>vaiAGara(+b.dataset.g));
+    return;
+  }
+
+  const v = ANIMALI.map((a,i)=>({a,i})).filter(({a})=>{
+    if (q && !(a.it.toLowerCase().includes(q) || a.en.toLowerCase().includes(q) || a.id.includes(q))) return false;
+    if (filtro === "nuovi") return a.nuovo;
+    if (filtro === "acqua") return a.d[iK.acq] >= 7;
+    if (filtro === "volo")  return a.d[iK.vol] >= 6;
+    return true;
+  });
+  cont.innerHTML = v.length ? v.map(({a,i})=>`
+    <button class="voce" role="option" data-i="${i}" aria-current="${i===corrente}" aria-selected="${i===corrente}">
+      <span class="voce-emoji">${a.emoji}</span>
+      <span class="voce-nome">${esc(a.it)}${a.nuovo?'<span class="voce-nuovo" title="proposto"></span>':""}</span>
+      <span class="voce-n">${a.dentro.reduce((s,x)=>s+x,0)}</span>
+    </button>`).join("") : '<p class="vuoto">Nessun atleta con questo nome.</p>';
+  cont.querySelectorAll(".voce").forEach(b => b.onclick = ()=>vaiA(+b.dataset.i));
+}
+
+function scorri(){
+  const att = document.querySelector('.voce[aria-current="true"]');
+  if (att) att.scrollIntoView({block:"nearest"});
+  const dolce = !matchMedia("(prefers-reduced-motion: reduce)").matches;
+  document.getElementById("scheda").scrollIntoView({block:"start", behavior: dolce ? "smooth" : "auto"});
+}
+
+function vaiA(i){
+  if (i < 0 || i >= ANIMALI.length) return;
+  corrente = i; vista = "atleti";
+  nascondiTip(); disegna(); elenco(); scorri();
+}
+
+function vaiAGara(i){
+  if (i < 0 || i >= GARE.length) return;
+  correnteGara = i; vista = "gare";
+  nascondiTip(); disegna(); elenco(); scorri();
+}
+
+document.getElementById("cerca").addEventListener("input", e=>{query = e.target.value; elenco();});
+document.querySelectorAll(".cambio button").forEach(b => b.onclick = ()=>{
+  vista = b.dataset.v;
+  sincronizza(); disegna(); elenco();
+});
+addEventListener("keydown", e=>{
+  if (e.target.tagName === "INPUT") return;
+  const d = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
+  if (!d) return;
+  vista === "gare" ? vaiAGara(correnteGara + d) : vaiA(corrente + d);
+  e.preventDefault();
+});
+
+sincronizza();
+disegna();
+elenco();
+</script>
