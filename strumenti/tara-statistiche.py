@@ -42,6 +42,11 @@ PENALITA    = 0.8
 # dirtelo che ottenerla.
 COSTO_DRIFT = 0.10 # per punto di scostamento, al quadrato
 MAX_SPOSTA  = 3    # di quanti punti al massimo puo' muoversi una dote
+# Animali a cui una dote non puo' essere abbassata. Il drago deve restare il
+# piu' forte del gioco: a tenerlo in riga ci pensa la rarita', non la
+# debolezza. Se una classifica lo vuole sopra qualcuno, si abbassa quel
+# qualcuno o non si fa - il drago non si tocca in peggio.
+NON_ABBASSARE = {'drago'}
 COSTO_POOL  = 6.0  # quanto costa far entrare o uscire un animale da una gara
 GIRI        = 250000
 T0, T1      = 0.60, 0.004   # temperatura iniziale e finale del raffreddamento
@@ -116,6 +121,15 @@ if len(sys.argv) < 2:
     sys.exit(__doc__)
 percorso = sys.argv[1]
 scrivi = '--scrivi' in sys.argv
+# --cima N: tiene solo i primi N di ogni gara. Sotto, l'ordine esatto non
+# cambia il gioco - all'asta arrivano pochi animali e a vincere sono quelli
+# in cima - ma genera la gran parte dei vincoli, e quelli tirano le doti
+# dappertutto. Restringere la cima e' il modo di ottenere cio' che conta
+# senza riscrivere il bestiario.
+CIMA = 0
+for n, x in enumerate(sys.argv):
+    if x == '--cima' and n + 1 < len(sys.argv):
+        CIMA = int(sys.argv[n + 1])
 
 corretto, ignoti = leggi(percorso)
 if ignoti:
@@ -134,6 +148,8 @@ for gid, elenco in corretto.items():
     g = GARE.get(gid)
     if not g:
         print(f'gara sconosciuta nel file: {gid}'); continue
+    if CIMA:
+        elenco = elenco[:CIMA]
     originale = classifica_attuale(g, len(elenco))
     if elenco == originale:
         continue                       # blocco non toccato: nessun vincolo
@@ -211,10 +227,27 @@ for gid, g in GARE.items():
         GARE_PER_DOTE.setdefault(k, []).append(gid)
 
 
+# Il fit di un animale in una gara cambia solo quando cambiano le sue doti:
+# si tiene in cache e si butta via solo per quell'animale. Senza, il ciclo
+# faceva un centinaio di milioni di chiamate a fit().
+MEMO = {}
+
+
+def fit_di(i, gid):
+    v = MEMO.get((i, gid))
+    if v is None:
+        v = MEMO[(i, gid)] = fit(D[i], GARE[gid]['pesi'])
+    return v
+
+
+def scorda(i):
+    for gid in GARE_DI.get(i, ()):
+        MEMO.pop((i, gid), None)
+
+
 def costo_vincolo(n):
     A, B, gid, m = VINCOLI[n]
-    p = GARE[gid]['pesi']
-    d = fit(D[A], p) - fit(D[B], p)
+    d = fit_di(A, gid) - fit_di(B, gid)
     return (PENALITA + m - d) if d < m else 0.0
 
 
@@ -270,9 +303,12 @@ for giro in range(GIRI):
     nuovo_v = D[i][k] + random.choice((-1, 1))
     if not (0 <= nuovo_v <= 10) or abs(nuovo_v - D0[i][k]) > MAX_SPOSTA:
         continue
+    if i in NON_ABBASSARE and nuovo_v < D0[i][k]:
+        continue
     prima = costo_locale(i, k)
     vecchio = D[i][k]
     D[i][k] = nuovo_v
+    scorda(i)
     delta = costo_locale(i, k) - prima
     if delta <= 0 or random.random() < math.exp(-delta / T):
         accettate += 1
@@ -282,8 +318,10 @@ for giro in range(GIRI):
             migliore = {x: dict(D[x]) for x in TOCCABILI}
     else:
         D[i][k] = vecchio
+        scorda(i)
 for x in TOCCABILI:          # si tiene il migliore visto, non l'ultimo
     D[x] = migliore[x]
+MEMO.clear()
 print(f'dopo  : {violati()}/{len(VINCOLI)} vincoli violati, costo {costo_totale():.1f}'
       f'  ({accettate} mosse accettate su {GIRI})')
 

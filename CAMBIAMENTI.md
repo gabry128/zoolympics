@@ -131,6 +131,40 @@ novantaquattro radar insieme sarebbero novantaquattro SVG a ogni ricerca.
 
 Costa 6,4 KB sul file compilato, il 3%.
 
+### Le classifiche tarate a mano
+
+Il motore sa dire chi è più forte secondo i numeri, non chi *dovrebbe* esserlo.
+`CALIBRAZIONE.txt` esporta la classifica intera di ogni gara, si riordina con
+un editor qualunque, e `strumenti/tara-statistiche.py` adatta le doti perché il
+gioco produca quell'ordine — minimizzando insieme i vincoli violati e lo
+scostamento dai valori di partenza.
+
+Correzioni di questo giro: foca e pinguino su nei tuffi e in acqua, castoro e
+lontra ai remi, canguro primo nel taekwondo, brontosauro ed elefante giù nella
+marcia lenta. Sono giudizi che dai numeri non si ricavano.
+
+**Due cose imparate, e valgono più del risultato.**
+
+Prese tutte e 27 le gare insieme, le correzioni facevano 3206 richieste di
+sorpasso: soddisfarne l'85% voleva dire **riscrivere 589 doti su 92 animali dei
+94**. La causa è dimostrabile: 121 coppie vicine sono impossibili per
+*dominanza* — si chiedeva che l'Alce stesse sopra il T-Rex a basket, ma l'Alce
+è peggiore in tutte e cinque le doti che il basket guarda. Nessun peso e nessun
+valore le può invertire; l'unica via è riscrivere le doti, e da lì parte
+l'effetto domino.
+
+La soluzione non è stata tarare meglio, ma **chiedere di meno**: le posizioni
+profonde non cambiano una partita — all'asta arrivano pochi animali e a vincere
+sono quelli in cima — ma generano la gran parte dei vincoli. Con `--cima 8` si
+ottiene il 98% di ciò che conta toccando 46 animali invece di 92.
+
+**Il drago non si abbassa.** È in cima a ogni gara che lo ammette e la taratura
+non gli toglie nulla: `NON_ABBASSARE` glielo impedisce. A tenerlo in riga ci
+pensa la rarità, non la debolezza — è la stessa decisione di prima, difesa
+adesso anche dall'ottimizzatore. Resta secondo nel sollevamento pesi, dove il
+Brontosauro ha Forza 10 e Stazza 10 contro 10 e 9, e sessantatreesimo nella
+Marcia lentissima, che è una gara dove vincere significa essere lenti.
+
 ### Il ranking comunitario è predisposto, non acceso
 
 `src/24-comunita.js` tiene i voti e sa produrne una classifica, ma nessun

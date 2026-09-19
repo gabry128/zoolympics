@@ -15,6 +15,15 @@
 #     requisito d'accesso lo metto dove l'hai messo, altrimenti te lo dico.
 #   · NON toccare le righe che cominciano con === o con #.
 #
+# IL DRAGO STA PRIMO, ED E' VOLUTO
+#   Il drago e' l'animale piu' forte del gioco e deve restarlo: e' in cima a
+#   ogni gara che lo ammette, e la taratura non gli abbassa nessuna dote.
+#   Due eccezioni: la Marcia lentissima, dove vince chi e' lento e leggero e
+#   un drago primo svuoterebbe la gara di senso, e la Staffetta in acqua,
+#   dove non entra proprio (serve Acqua>=7, lui ha 5).
+#   Quello che lo tiene in riga non e' la debolezza ma la rarita': compare
+#   in circa una partita su sedici.
+#
 # I BLOCCHI CHE NON TOCCHI NON CONTANO. Confronto con l'originale e prendo
 # vincoli solo dalle gare che hai davvero cambiato: puoi correggerne tre e
 # lasciare stare le altre ventiquattro.
@@ -38,77 +47,77 @@
 #   premia : Altezza x4, Agilita x3, Velocita x2, Presa x1, Forza x1
 #   74 ammessi, tutti e 74. Squadra da 5.
   1. drago           🐉 Drago               8.5
-  2. gibbone         🐵 Gibbone             7.3
-  3. canguro         🦘 Canguro             7.3
-  4. gorilla         🦍 Gorilla             6.8
-  5. trex            🦖 T-Rex               6.7
-  6. unicorno        🦄 Unicorno            6.6
+  2. giraffa         🦒 Giraffa             6.4
+  3. gibbone         🐵 Gibbone             7.3
+  4. canguro         🦘 Canguro             7.3
+  5. scimpanze       🐒 Scimpanzé           6.5
+  6. gorilla         🦍 Gorilla             6.8
   7. leopardo        🐆 Leopardo            6.5
-  8. scimpanze       🐒 Scimpanzé           6.5
-  9. giraffa         🦒 Giraffa             6.4
- 10. tigre           🐅 Tigre               6.4
+  8. unicorno        🦄 Unicorno            6.6
+  9. tigre           🐅 Tigre               6.4
+ 10. pantera         🐈‍⬛ Pantera             6.2
  11. orango          🦧 Orango              6.3
  12. cavallo         🐎 Cavallo             6.3
- 13. aquila          🦅 Aquila              6.3
- 14. pantera         🐈‍⬛ Pantera             6.2
- 15. elefante        🐘 Elefante            6.1
- 16. mammut          🦣 Mammut              6.1
- 17. cervo           🦌 Cervo               6.1
- 18. leone           🦁 Leone               5.9
- 19. gazzella        🦌 Gazzella            5.9
- 20. ghepardo        🐆 Ghepardo            5.8
- 21. orso            🐻 Orso                5.8
- 22. iena            🐺 Iena                5.5
- 23. brontosauro     🦕 Brontosauro         5.5
- 24. gatto           🐈 Gatto               5.4
- 25. alce            🫎 Alce                5.3
- 26. zebra           🦓 Zebra               5.3
- 27. lupo            🐺 Lupo                5.3
- 28. scoiattolo      🐿️ Scoiattolo          5.2
- 29. gufo            🦉 Gufo                4.9
- 30. capra           🐐 Capra               4.8
- 31. volpe           🦊 Volpe               4.8
- 32. lontra          🦦 Lontra              4.7
- 33. cigno           🦢 Cigno               4.7
- 34. bisonte         🦬 Bisonte             4.6
- 35. cammello        🐫 Cammello            4.6
- 36. ragno           🕷️ Ragno               4.6
- 37. fenicottero     🦩 Fenicottero         4.6
- 38. cane            🐕 Cane                4.5
- 39. coniglio        🐇 Coniglio            4.5
- 40. bufalo          🐃 Bufalo              4.5
- 41. rinoceronte     🦏 Rinoceronte         4.5
- 42. panda           🐼 Panda               4.5
- 43. pappagallo      🦜 Pappagallo          4.5
- 44. lama            🦙 Lama                4.4
- 45. toro            🐂 Toro                4.3
- 46. ratto           🐀 Ratto               4.3
- 47. grillo          🦗 Grillo              4.3
- 48. rana            🐸 Rana                4.2
- 49. lucertola       🦎 Lucertola           4.1
- 50. pavone          🦚 Pavone              4.1
- 51. formica         🐜 Formica             4.1
- 52. topo            🐁 Topo                3.9
- 53. cinghiale       🐗 Cinghiale           3.7
- 54. oca             🪿 Oca                 3.7
- 55. gallo           🐓 Gallo               3.7
- 56. asino           🫏 Asino               3.7
- 57. ippopotamo      🦛 Ippopotamo          3.6
- 58. scorpione       🦂 Scorpione           3.5
- 59. mucca           🐄 Mucca               3.5
- 60. serpente        🐍 Serpente            3.5
- 61. tasso           🦡 Tasso               3.5
- 62. tacchino        🦃 Tacchino            3.5
- 63. granchio        🦀 Granchio            3.5
- 64. castoro         🦫 Castoro             3.3
- 65. maiale          🐖 Maiale              3.2
- 66. koala           🐨 Koala               3.2
- 67. anatra          🦆 Anatra              3.2
- 68. scarabeo        🪲 Scarabeo            3.1
+ 13. gazzella        🦌 Gazzella            5.9
+ 14. cervo           🦌 Cervo               6.1
+ 15. leone           🦁 Leone               5.9
+ 16. ghepardo        🐆 Ghepardo            5.8
+ 17. alce            🫎 Alce                5.3
+ 18. trex            🦖 T-Rex               6.7
+ 19. elefante        🐘 Elefante            6.1
+ 20. mammut          🦣 Mammut              6.1
+ 21. brontosauro     🦕 Brontosauro         5.5
+ 22. aquila          🦅 Aquila              6.3
+ 23. orso            🐻 Orso                5.8
+ 24. lupo            🐺 Lupo                5.3
+ 25. zebra           🦓 Zebra               5.3
+ 26. iena            🐺 Iena                5.5
+ 27. gatto           🐈 Gatto               5.4
+ 28. capra           🐐 Capra               4.8
+ 29. cammello        🐫 Cammello            4.6
+ 30. lama            🦙 Lama                4.4
+ 31. fenicottero     🦩 Fenicottero         4.6
+ 32. scoiattolo      🐿️ Scoiattolo          5.2
+ 33. volpe           🦊 Volpe               4.8
+ 34. cane            🐕 Cane                4.5
+ 35. gufo            🦉 Gufo                4.9
+ 36. bisonte         🦬 Bisonte             4.6
+ 37. rinoceronte     🦏 Rinoceronte         4.5
+ 38. bufalo          🐃 Bufalo              4.5
+ 39. toro            🐂 Toro                4.3
+ 40. lontra          🦦 Lontra              4.7
+ 41. cigno           🦢 Cigno               4.7
+ 42. coniglio        🐇 Coniglio            4.5
+ 43. panda           🐼 Panda               4.5
+ 44. asino           🫏 Asino               3.7
+ 45. ippopotamo      🦛 Ippopotamo          3.6
+ 46. pappagallo      🦜 Pappagallo          4.5
+ 47. ragno           🕷️ Ragno               4.6
+ 48. pavone          🦚 Pavone              4.1
+ 49. rana            🐸 Rana                4.2
+ 50. grillo          🦗 Grillo              4.3
+ 51. cinghiale       🐗 Cinghiale           3.7
+ 52. mucca           🐄 Mucca               3.5
+ 53. ratto           🐀 Ratto               4.3
+ 54. lucertola       🦎 Lucertola           4.1
+ 55. tasso           🦡 Tasso               3.5
+ 56. gallo           🐓 Gallo               3.7
+ 57. tacchino        🦃 Tacchino            3.5
+ 58. oca             🪿 Oca                 3.7
+ 59. maiale          🐖 Maiale              3.2
+ 60. pecora          🐑 Pecora              2.7
+ 61. castoro         🦫 Castoro             3.3
+ 62. topo            🐁 Topo                3.9
+ 63. formica         🐜 Formica             4.1
+ 64. koala           🐨 Koala               3.2
+ 65. scorpione       🦂 Scorpione           3.5
+ 66. granchio        🦀 Granchio            3.5
+ 67. serpente        🐍 Serpente            3.5
+ 68. anatra          🦆 Anatra              3.2
  69. puzzola         🦨 Puzzola             2.9
- 70. pecora          🐑 Pecora              2.7
- 71. coccinella      🐞 Coccinella          2.6
- 72. dodo            🦤 Dodo                2.1
+ 70. scarabeo        🪲 Scarabeo            3.1
+ 71. dodo            🦤 Dodo                2.1
+ 72. coccinella      🐞 Coccinella          2.6
  73. riccio          🦔 Riccio              1.9
  74. lumaca          🐌 Lumaca              0.9
 
@@ -122,73 +131,73 @@
   4. canguro         🦘 Canguro             7.3
   5. gorilla         🦍 Gorilla             7.0
   6. orango          🦧 Orango              6.9
-  7. unicorno        🦄 Unicorno            6.9
-  8. tigre           🐅 Tigre               6.8
-  9. leopardo        🐆 Leopardo            6.8
- 10. aquila          🦅 Aquila              6.6
- 11. pantera         🐈‍⬛ Pantera             6.6
- 12. trex            🦖 T-Rex               6.2
- 13. cervo           🦌 Cervo               6.1
- 14. cavallo         🐎 Cavallo             6.1
- 15. leone           🦁 Leone               6.1
- 16. gazzella        🦌 Gazzella            6.1
- 17. elefante        🐘 Elefante            6.0
- 18. giraffa         🦒 Giraffa             6.0
- 19. orso            🐻 Orso                6.0
- 20. gatto           🐈 Gatto               5.9
+  7. tigre           🐅 Tigre               6.8
+  8. leopardo        🐆 Leopardo            6.8
+  9. pantera         🐈‍⬛ Pantera             6.6
+ 10. giraffa         🦒 Giraffa             6.0
+ 11. gatto           🐈 Gatto               5.9
+ 12. unicorno        🦄 Unicorno            6.9
+ 13. aquila          🦅 Aquila              6.6
+ 14. leone           🦁 Leone               6.1
+ 15. gazzella        🦌 Gazzella            6.1
+ 16. cervo           🦌 Cervo               6.1
+ 17. ghepardo        🐆 Ghepardo            5.7
+ 18. cavallo         🐎 Cavallo             6.1
+ 19. lupo            🐺 Lupo                5.7
+ 20. orso            🐻 Orso                6.0
  21. lontra          🦦 Lontra              5.9
- 22. mammut          🦣 Mammut              5.8
- 23. scoiattolo      🐿️ Scoiattolo          5.8
- 24. gufo            🦉 Gufo                5.8
- 25. ghepardo        🐆 Ghepardo            5.7
- 26. lupo            🐺 Lupo                5.7
- 27. capra           🐐 Capra               5.4
- 28. pappagallo      🦜 Pappagallo          5.4
- 29. iena            🐺 Iena                5.4
- 30. volpe           🦊 Volpe               5.3
- 31. ragno           🕷️ Ragno               5.2
- 32. zebra           🦓 Zebra               5.1
- 33. cane            🐕 Cane                5.0
- 34. ratto           🐀 Ratto               5.0
- 35. formica         🐜 Formica             5.0
- 36. brontosauro     🦕 Brontosauro         5.0
- 37. alce            🫎 Alce                4.9
- 38. panda           🐼 Panda               4.9
+ 22. scoiattolo      🐿️ Scoiattolo          5.8
+ 23. capra           🐐 Capra               5.4
+ 24. iena            🐺 Iena                5.4
+ 25. gufo            🦉 Gufo                5.8
+ 26. zebra           🦓 Zebra               5.1
+ 27. cane            🐕 Cane                5.0
+ 28. volpe           🦊 Volpe               5.3
+ 29. trex            🦖 T-Rex               6.2
+ 30. elefante        🐘 Elefante            6.0
+ 31. alce            🫎 Alce                4.9
+ 32. mammut          🦣 Mammut              5.8
+ 33. lama            🦙 Lama                4.5
+ 34. cammello        🐫 Cammello            4.5
+ 35. panda           🐼 Panda               4.9
+ 36. pappagallo      🦜 Pappagallo          5.4
+ 37. coniglio        🐇 Coniglio            4.6
+ 38. rana            🐸 Rana                4.7
  39. fenicottero     🦩 Fenicottero         4.9
  40. cigno           🦢 Cigno               4.9
- 41. rana            🐸 Rana                4.7
- 42. coniglio        🐇 Coniglio            4.6
- 43. topo            🐁 Topo                4.6
- 44. cammello        🐫 Cammello            4.5
- 45. lama            🦙 Lama                4.5
- 46. castoro         🦫 Castoro             4.5
- 47. bisonte         🦬 Bisonte             4.4
- 48. lucertola       🦎 Lucertola           4.4
- 49. grillo          🦗 Grillo              4.4
- 50. granchio        🦀 Granchio            4.3
- 51. rinoceronte     🦏 Rinoceronte         4.2
- 52. oca             🪿 Oca                 4.2
+ 41. bisonte         🦬 Bisonte             4.4
+ 42. brontosauro     🦕 Brontosauro         5.0
+ 43. ratto           🐀 Ratto               5.0
+ 44. topo            🐁 Topo                4.6
+ 45. ragno           🕷️ Ragno               5.2
+ 46. rinoceronte     🦏 Rinoceronte         4.2
+ 47. bufalo          🐃 Bufalo              4.2
+ 48. toro            🐂 Toro                3.9
+ 49. castoro         🦫 Castoro             4.5
+ 50. tasso           🦡 Tasso               4.1
+ 51. grillo          🦗 Grillo              4.4
+ 52. lucertola       🦎 Lucertola           4.4
  53. pavone          🦚 Pavone              4.2
- 54. bufalo          🐃 Bufalo              4.2
- 55. tasso           🦡 Tasso               4.1
- 56. scorpione       🦂 Scorpione           4.0
- 57. toro            🐂 Toro                3.9
- 58. cinghiale       🐗 Cinghiale           3.9
- 59. serpente        🐍 Serpente            3.9
- 60. gallo           🐓 Gallo               3.9
- 61. koala           🐨 Koala               3.7
- 62. anatra          🦆 Anatra              3.7
- 63. scarabeo        🪲 Scarabeo            3.7
- 64. asino           🫏 Asino               3.7
- 65. ippopotamo      🦛 Ippopotamo          3.6
- 66. tacchino        🦃 Tacchino            3.5
- 67. mucca           🐄 Mucca               3.4
- 68. maiale          🐖 Maiale              3.3
+ 54. oca             🪿 Oca                 4.2
+ 55. cinghiale       🐗 Cinghiale           3.9
+ 56. asino           🫏 Asino               3.7
+ 57. ippopotamo      🦛 Ippopotamo          3.6
+ 58. gallo           🐓 Gallo               3.9
+ 59. koala           🐨 Koala               3.7
+ 60. formica         🐜 Formica             5.0
+ 61. granchio        🦀 Granchio            4.3
+ 62. scorpione       🦂 Scorpione           4.0
+ 63. serpente        🐍 Serpente            3.9
+ 64. anatra          🦆 Anatra              3.7
+ 65. mucca           🐄 Mucca               3.4
+ 66. maiale          🐖 Maiale              3.3
+ 67. tacchino        🦃 Tacchino            3.5
+ 68. pecora          🐑 Pecora              2.8
  69. puzzola         🦨 Puzzola             3.1
- 70. coccinella      🐞 Coccinella          3.0
- 71. pecora          🐑 Pecora              2.8
- 72. riccio          🦔 Riccio              2.4
- 73. dodo            🦤 Dodo                2.3
+ 70. scarabeo        🪲 Scarabeo            3.7
+ 71. riccio          🦔 Riccio              2.4
+ 72. dodo            🦤 Dodo                2.3
+ 73. coccinella      🐞 Coccinella          3.0
  74. lumaca          🐌 Lumaca              1.3
 
 === calcetto · ⚽ Calcetto 5 contro 5 ===
@@ -217,13 +226,13 @@
  20. lontra          🦦 Lontra              6.7
  21. zebra           🦓 Zebra               6.5
  22. coniglio        🐇 Coniglio            6.5
- 23. trex            🦖 T-Rex               6.4
- 24. capra           🐐 Capra               6.3
- 25. ragno           🕷️ Ragno               6.3
- 26. ratto           🐀 Ratto               6.2
- 27. grillo          🦗 Grillo              6.1
+ 23. capra           🐐 Capra               6.3
+ 24. ragno           🕷️ Ragno               6.3
+ 25. ratto           🐀 Ratto               6.2
+ 26. grillo          🦗 Grillo              6.1
+ 27. lucertola       🦎 Lucertola           6.0
  28. gorilla         🦍 Gorilla             6.0
- 29. lucertola       🦎 Lucertola           6.0
+ 29. trex            🦖 T-Rex               6.4
  30. formica         🐜 Formica             5.8
  31. rana            🐸 Rana                5.7
  32. orso            🐻 Orso                5.6
@@ -246,13 +255,13 @@
  49. bufalo          🐃 Bufalo              4.8
  50. scorpione       🦂 Scorpione           4.5
  51. castoro         🦫 Castoro             4.5
- 52. elefante        🐘 Elefante            4.4
- 53. mammut          🦣 Mammut              4.4
- 54. maiale          🐖 Maiale              4.4
- 55. fenicottero     🦩 Fenicottero         4.4
- 56. puzzola         🦨 Puzzola             4.2
- 57. scarabeo        🪲 Scarabeo            4.1
- 58. tacchino        🦃 Tacchino            4.0
+ 52. maiale          🐖 Maiale              4.4
+ 53. fenicottero     🦩 Fenicottero         4.4
+ 54. puzzola         🦨 Puzzola             4.2
+ 55. scarabeo        🪲 Scarabeo            4.1
+ 56. tacchino        🦃 Tacchino            4.0
+ 57. elefante        🐘 Elefante            4.4
+ 58. mammut          🦣 Mammut              4.4
  59. ippopotamo      🦛 Ippopotamo          3.9
  60. pecora          🐑 Pecora              3.8
  61. panda           🐼 Panda               3.8
@@ -267,92 +276,92 @@
 #   premia : Intelligenza x4, Velocita x3, Riflessi x2, Agilita x1
 #   32 ammessi, tutti e 32. Squadra da 2.
   1. drago           🐉 Drago               9.4
-  2. aquila          🦅 Aquila              8.6
-  3. scimpanze       🐒 Scimpanzé           8.5
-  4. gibbone         🐵 Gibbone             8.2
-  5. tigre           🐅 Tigre               8.2
-  6. pantera         🐈‍⬛ Pantera             8.2
-  7. gufo            🦉 Gufo                8.0
-  8. pappagallo      🦜 Pappagallo          8.0
-  9. lontra          🦦 Lontra              7.8
- 10. iena            🐺 Iena                7.8
- 11. leopardo        🐆 Leopardo            7.7
- 12. gatto           🐈 Gatto               7.5
- 13. scoiattolo      🐿️ Scoiattolo          7.1
- 14. ratto           🐀 Ratto               7.0
+  2. scimpanze       🐒 Scimpanzé           8.5
+  3. gibbone         🐵 Gibbone             8.2
+  4. aquila          🦅 Aquila              8.6
+  5. lontra          🦦 Lontra              7.8
+  6. gatto           🐈 Gatto               7.5
+  7. tigre           🐅 Tigre               8.2
+  8. pantera         🐈‍⬛ Pantera             8.2
+  9. leopardo        🐆 Leopardo            7.7
+ 10. gufo            🦉 Gufo                8.0
+ 11. pappagallo      🦜 Pappagallo          8.0
+ 12. scoiattolo      🐿️ Scoiattolo          7.1
+ 13. ratto           🐀 Ratto               7.0
+ 14. iena            🐺 Iena                7.8
  15. canguro         🦘 Canguro             6.7
- 16. gorilla         🦍 Gorilla             6.5
- 17. orango          🦧 Orango              6.4
- 18. orso            🐻 Orso                6.4
+ 16. orango          🦧 Orango              6.4
+ 17. gorilla         🦍 Gorilla             6.5
+ 18. topo            🐁 Topo                6.1
  19. castoro         🦫 Castoro             6.2
- 20. topo            🐁 Topo                6.1
- 21. elefante        🐘 Elefante            6.0
- 22. tasso           🦡 Tasso               5.3
- 23. ragno           🕷️ Ragno               5.2
- 24. formica         🐜 Formica             5.2
- 25. grillo          🦗 Grillo              5.2
- 26. panda           🐼 Panda               5.1
- 27. rana            🐸 Rana                5.1
+ 20. tasso           🦡 Tasso               5.3
+ 21. orso            🐻 Orso                6.4
+ 22. elefante        🐘 Elefante            6.0
+ 23. rana            🐸 Rana                5.1
+ 24. grillo          🦗 Grillo              5.2
+ 25. ragno           🕷️ Ragno               5.2
+ 26. formica         🐜 Formica             5.2
+ 27. panda           🐼 Panda               5.1
  28. granchio        🦀 Granchio            4.6
  29. scorpione       🦂 Scorpione           4.3
- 30. mammut          🦣 Mammut              4.2
- 31. scarabeo        🪲 Scarabeo            3.9
- 32. koala           🐨 Koala               3.8
+ 30. koala           🐨 Koala               3.8
+ 31. mammut          🦣 Mammut              4.2
+ 32. scarabeo        🪲 Scarabeo            3.9
 
 === staffetta · 🏃 Staffetta 4x100 ===
 #   accesso: Terra>=7
 #   premia : Velocita x5, Agilita x2, Fiato x1
 #   55 ammessi, tutti e 55. Squadra da 4.
-  1. ghepardo        🐆 Ghepardo            8.8
-  2. gazzella        🦌 Gazzella            8.6
-  3. drago           🐉 Drago               8.5
+  1. drago           🐉 Drago               8.5
+  2. ghepardo        🐆 Ghepardo            8.8
+  3. gazzella        🦌 Gazzella            8.6
   4. unicorno        🦄 Unicorno            8.4
   5. cavallo         🐎 Cavallo             8.1
-  6. lupo            🐺 Lupo                7.9
-  7. leopardo        🐆 Leopardo            7.9
-  8. tigre           🐅 Tigre               7.8
-  9. pantera         🐈‍⬛ Pantera             7.8
+  6. leopardo        🐆 Leopardo            7.9
+  7. tigre           🐅 Tigre               7.8
+  8. pantera         🐈‍⬛ Pantera             7.8
+  9. lupo            🐺 Lupo                7.9
  10. cervo           🦌 Cervo               7.6
  11. iena            🐺 Iena                7.6
- 12. gatto           🐈 Gatto               7.5
- 13. scoiattolo      🐿️ Scoiattolo          7.5
- 14. leone           🦁 Leone               7.4
- 15. zebra           🦓 Zebra               7.1
- 16. canguro         🦘 Canguro             7.1
- 17. volpe           🦊 Volpe               7.1
- 18. cane            🐕 Cane                7.0
+ 12. leone           🦁 Leone               7.4
+ 13. zebra           🦓 Zebra               7.1
+ 14. canguro         🦘 Canguro             7.1
+ 15. volpe           🦊 Volpe               7.1
+ 16. cane            🐕 Cane                7.0
+ 17. scoiattolo      🐿️ Scoiattolo          7.5
+ 18. gatto           🐈 Gatto               7.5
  19. coniglio        🐇 Coniglio            7.0
  20. scimpanze       🐒 Scimpanzé           6.8
  21. ratto           🐀 Ratto               6.4
  22. trex            🦖 T-Rex               6.4
  23. lucertola       🦎 Lucertola           6.2
  24. grillo          🦗 Grillo              6.2
- 25. ragno           🕷️ Ragno               6.0
- 26. capra           🐐 Capra               5.9
+ 25. capra           🐐 Capra               5.9
+ 26. ragno           🕷️ Ragno               6.0
  27. topo            🐁 Topo                5.6
  28. cinghiale       🐗 Cinghiale           5.5
- 29. orso            🐻 Orso                5.5
- 30. gorilla         🦍 Gorilla             5.4
- 31. bisonte         🦬 Bisonte             5.4
- 32. alce            🫎 Alce                5.4
- 33. giraffa         🦒 Giraffa             5.2
- 34. toro            🐂 Toro                5.2
- 35. cammello        🐫 Cammello            5.1
+ 29. gorilla         🦍 Gorilla             5.4
+ 30. bisonte         🦬 Bisonte             5.4
+ 31. alce            🫎 Alce                5.4
+ 32. giraffa         🦒 Giraffa             5.2
+ 33. toro            🐂 Toro                5.2
+ 34. cammello        🐫 Cammello            5.1
+ 35. orso            🐻 Orso                5.5
  36. gallo           🐓 Gallo               5.1
  37. pavone          🦚 Pavone              5.1
  38. rinoceronte     🦏 Rinoceronte         5.0
  39. lama            🦙 Lama                5.0
  40. formica         🐜 Formica             5.0
  41. bufalo          🐃 Bufalo              4.6
- 42. maiale          🐖 Maiale              4.5
- 43. tasso           🦡 Tasso               4.5
- 44. asino           🫏 Asino               4.5
+ 42. asino           🫏 Asino               4.5
+ 43. maiale          🐖 Maiale              4.5
+ 44. tasso           🦡 Tasso               4.5
  45. scorpione       🦂 Scorpione           4.2
  46. puzzola         🦨 Puzzola             4.2
  47. tacchino        🦃 Tacchino            4.0
- 48. elefante        🐘 Elefante            3.9
- 49. mammut          🦣 Mammut              3.9
- 50. pecora          🐑 Pecora              3.9
+ 48. pecora          🐑 Pecora              3.9
+ 49. elefante        🐘 Elefante            3.9
+ 50. mammut          🦣 Mammut              3.9
  51. mucca           🐄 Mucca               3.6
  52. scarabeo        🪲 Scarabeo            3.5
  53. panda           🐼 Panda               3.2
@@ -363,119 +372,119 @@
 #   accesso: Terra>=5 e Presa>=4
 #   premia : Agilita x4, Velocita x3, Intelligenza x2, Riflessi x2
 #   32 ammessi, tutti e 32. Squadra da 2.
-  1. gibbone         🐵 Gibbone             8.9
-  2. aquila          🦅 Aquila              8.8
-  3. drago           🐉 Drago               8.6
-  4. scimpanze       🐒 Scimpanzé           8.4
+  1. drago           🐉 Drago               8.6
+  2. gibbone         🐵 Gibbone             8.9
+  3. scimpanze       🐒 Scimpanzé           8.4
+  4. aquila          🦅 Aquila              8.8
   5. gatto           🐈 Gatto               8.3
   6. tigre           🐅 Tigre               8.2
   7. leopardo        🐆 Leopardo            8.2
   8. pantera         🐈‍⬛ Pantera             8.2
-  9. scoiattolo      🐿️ Scoiattolo          8.1
- 10. lontra          🦦 Lontra              7.9
+  9. lontra          🦦 Lontra              7.9
+ 10. scoiattolo      🐿️ Scoiattolo          8.1
  11. gufo            🦉 Gufo                7.8
  12. pappagallo      🦜 Pappagallo          7.8
- 13. ratto           🐀 Ratto               7.3
- 14. canguro         🦘 Canguro             7.2
- 15. iena            🐺 Iena                7.1
- 16. topo            🐁 Topo                6.6
- 17. ragno           🕷️ Ragno               6.5
- 18. grillo          🦗 Grillo              6.2
- 19. gorilla         🦍 Gorilla             6.1
- 20. orango          🦧 Orango              6.1
+ 13. canguro         🦘 Canguro             7.2
+ 14. iena            🐺 Iena                7.1
+ 15. ratto           🐀 Ratto               7.3
+ 16. orango          🦧 Orango              6.1
+ 17. gorilla         🦍 Gorilla             6.1
+ 18. ragno           🕷️ Ragno               6.5
+ 19. grillo          🦗 Grillo              6.2
+ 20. topo            🐁 Topo                6.6
  21. rana            🐸 Rana                6.1
  22. orso            🐻 Orso                5.6
  23. castoro         🦫 Castoro             5.5
  24. formica         🐜 Formica             5.5
  25. tasso           🦡 Tasso               5.1
  26. granchio        🦀 Granchio            4.6
- 27. scorpione       🦂 Scorpione           4.5
- 28. panda           🐼 Panda               4.5
+ 27. panda           🐼 Panda               4.5
+ 28. scorpione       🦂 Scorpione           4.5
  29. elefante        🐘 Elefante            4.4
- 30. scarabeo        🪲 Scarabeo            3.9
- 31. koala           🐨 Koala               3.6
+ 30. koala           🐨 Koala               3.6
+ 31. scarabeo        🪲 Scarabeo            3.9
  32. mammut          🦣 Mammut              3.5
 
 === fune · 🪢 Tiro alla fune ===
 #   accesso: Terra>=4
 #   premia : Forza x4, Stazza x4, Presa x2
 #   79 ammessi, tutti e 79. Squadra da 5.
-  1. gorilla         🦍 Gorilla             9.4
-  2. elefante        🐘 Elefante            9.4
-  3. mammut          🦣 Mammut              9.4
-  4. orso            🐻 Orso                9.2
-  5. drago           🐉 Drago               9.2
-  6. trex            🦖 T-Rex               8.6
+  1. drago           🐉 Drago               9.2
+  2. mammut          🦣 Mammut              9.4
+  3. elefante        🐘 Elefante            9.4
+  4. brontosauro     🦕 Brontosauro         8.2
+  5. gorilla         🦍 Gorilla             9.4
+  6. orso            🐻 Orso                9.2
   7. rinoceronte     🦏 Rinoceronte         8.2
-  8. brontosauro     🦕 Brontosauro         8.2
-  9. tigre           🐅 Tigre               8.0
- 10. ippopotamo      🦛 Ippopotamo          7.8
- 11. bisonte         🦬 Bisonte             7.8
- 12. panda           🐼 Panda               7.8
- 13. bufalo          🐃 Bufalo              7.8
+  8. ippopotamo      🦛 Ippopotamo          7.8
+  9. trex            🦖 T-Rex               8.6
+ 10. bisonte         🦬 Bisonte             7.8
+ 11. bufalo          🐃 Bufalo              7.8
+ 12. toro            🐂 Toro                7.4
+ 13. tigre           🐅 Tigre               8.0
  14. orango          🦧 Orango              7.6
- 15. toro            🐂 Toro                7.4
+ 15. panda           🐼 Panda               7.8
  16. leone           🦁 Leone               7.4
  17. alce            🫎 Alce                7.0
- 18. coccodrillo     🐊 Coccodrillo         7.0
- 19. leopardo        🐆 Leopardo            7.0
- 20. iena            🐺 Iena                7.0
- 21. canguro         🦘 Canguro             6.8
- 22. cavallo         🐎 Cavallo             6.6
- 23. mucca           🐄 Mucca               6.6
- 24. giraffa         🦒 Giraffa             6.4
- 25. unicorno        🦄 Unicorno            6.4
- 26. cammello        🐫 Cammello            6.2
- 27. cinghiale       🐗 Cinghiale           6.2
- 28. pantera         🐈‍⬛ Pantera             6.2
+ 18. cavallo         🐎 Cavallo             6.6
+ 19. mucca           🐄 Mucca               6.6
+ 20. coccodrillo     🐊 Coccodrillo         7.0
+ 21. cinghiale       🐗 Cinghiale           6.2
+ 22. cammello        🐫 Cammello            6.2
+ 23. giraffa         🦒 Giraffa             6.4
+ 24. iena            🐺 Iena                7.0
+ 25. leopardo        🐆 Leopardo            7.0
+ 26. unicorno        🦄 Unicorno            6.4
+ 27. pantera         🐈‍⬛ Pantera             6.2
+ 28. canguro         🦘 Canguro             6.8
  29. asino           🫏 Asino               5.8
- 30. scimpanze       🐒 Scimpanzé           5.6
- 31. maiale          🐖 Maiale              5.6
- 32. lupo            🐺 Lupo                5.2
- 33. zebra           🦓 Zebra               5.0
- 34. formica         🐜 Formica             5.0
- 35. aquila          🦅 Aquila              4.8
- 36. tasso           🦡 Tasso               4.6
+ 30. maiale          🐖 Maiale              5.6
+ 31. scimpanze       🐒 Scimpanzé           5.6
+ 32. zebra           🦓 Zebra               5.0
+ 33. lupo            🐺 Lupo                5.2
+ 34. tasso           🦡 Tasso               4.6
+ 35. castoro         🦫 Castoro             4.4
+ 36. formica         🐜 Formica             5.0
  37. gibbone         🐵 Gibbone             4.4
  38. ghepardo        🐆 Ghepardo            4.4
- 39. castoro         🦫 Castoro             4.4
- 40. granchio        🦀 Granchio            4.4
- 41. aragosta        🦞 Aragosta            4.4
- 42. cervo           🦌 Cervo               4.2
- 43. lama            🦙 Lama                4.2
- 44. scarabeo        🪲 Scarabeo            4.2
- 45. capra           🐐 Capra               4.0
- 46. cigno           🦢 Cigno               4.0
- 47. tartaruga       🐢 Tartaruga           4.0
- 48. scorpione       🦂 Scorpione           3.8
- 49. lontra          🦦 Lontra              3.8
- 50. koala           🐨 Koala               3.8
- 51. cane            🐕 Cane                3.6
- 52. serpente        🐍 Serpente            3.6
- 53. gufo            🦉 Gufo                3.6
- 54. tacchino        🦃 Tacchino            3.6
- 55. pecora          🐑 Pecora              3.4
- 56. pinguino        🐧 Pinguino            3.4
- 57. oca             🪿 Oca                 3.2
- 58. dodo            🦤 Dodo                3.2
- 59. volpe           🦊 Volpe               3.0
- 60. ragno           🕷️ Ragno               3.0
- 61. scoiattolo      🐿️ Scoiattolo          2.6
- 62. pappagallo      🦜 Pappagallo          2.6
- 63. rana            🐸 Rana                2.6
- 64. gazzella        🦌 Gazzella            2.6
- 65. gatto           🐈 Gatto               2.4
- 66. gallo           🐓 Gallo               2.4
- 67. pavone          🦚 Pavone              2.4
- 68. grillo          🦗 Grillo              2.4
- 69. ratto           🐀 Ratto               2.2
- 70. fenicottero     🦩 Fenicottero         2.0
+ 39. cervo           🦌 Cervo               4.2
+ 40. lama            🦙 Lama                4.2
+ 41. capra           🐐 Capra               4.0
+ 42. aragosta        🦞 Aragosta            4.4
+ 43. granchio        🦀 Granchio            4.4
+ 44. aquila          🦅 Aquila              4.8
+ 45. scarabeo        🪲 Scarabeo            4.2
+ 46. tartaruga       🐢 Tartaruga           4.0
+ 47. koala           🐨 Koala               3.8
+ 48. pecora          🐑 Pecora              3.4
+ 49. cane            🐕 Cane                3.6
+ 50. serpente        🐍 Serpente            3.6
+ 51. lontra          🦦 Lontra              3.8
+ 52. scorpione       🦂 Scorpione           3.8
+ 53. pinguino        🐧 Pinguino            3.4
+ 54. cigno           🦢 Cigno               4.0
+ 55. gufo            🦉 Gufo                3.6
+ 56. tacchino        🦃 Tacchino            3.6
+ 57. volpe           🦊 Volpe               3.0
+ 58. oca             🪿 Oca                 3.2
+ 59. dodo            🦤 Dodo                3.2
+ 60. gazzella        🦌 Gazzella            2.6
+ 61. gatto           🐈 Gatto               2.4
+ 62. ragno           🕷️ Ragno               3.0
+ 63. scoiattolo      🐿️ Scoiattolo          2.6
+ 64. pappagallo      🦜 Pappagallo          2.6
+ 65. gallo           🐓 Gallo               2.4
+ 66. pavone          🦚 Pavone              2.4
+ 67. ratto           🐀 Ratto               2.2
+ 68. rana            🐸 Rana                2.6
+ 69. grillo          🦗 Grillo              2.4
+ 70. coniglio        🐇 Coniglio            1.6
  71. anatra          🦆 Anatra              2.0
- 72. lucertola       🦎 Lucertola           1.8
- 73. puzzola         🦨 Puzzola             1.8
- 74. coniglio        🐇 Coniglio            1.6
- 75. riccio          🦔 Riccio              1.6
- 76. topo            🐁 Topo                1.6
+ 72. fenicottero     🦩 Fenicottero         2.0
+ 73. riccio          🦔 Riccio              1.6
+ 74. puzzola         🦨 Puzzola             1.8
+ 75. topo            🐁 Topo                1.6
+ 76. lucertola       🦎 Lucertola           1.8
  77. colomba         🕊️ Colomba             1.4
  78. coccinella      🐞 Coccinella          1.4
  79. lumaca          🐌 Lumaca              1.2
@@ -485,35 +494,35 @@
 #   premia : Forza x4, Fiato x4, Acqua x1
 #   37 ammessi, tutti e 37. Squadra da 4.
   1. drago           🐉 Drago               9.0
-  2. elefante        🐘 Elefante            8.0
-  3. mammut          🦣 Mammut              7.8
-  4. orso            🐻 Orso                7.8
-  5. iena            🐺 Iena                7.8
+  2. orso            🐻 Orso                7.8
+  3. gorilla         🦍 Gorilla             7.2
+  4. lontra          🦦 Lontra              6.0
+  5. castoro         🦫 Castoro             5.8
   6. tigre           🐅 Tigre               7.7
-  7. gorilla         🦍 Gorilla             7.2
-  8. formica         🐜 Formica             7.2
-  9. canguro         🦘 Canguro             6.4
- 10. pantera         🐈‍⬛ Pantera             6.2
- 11. leopardo        🐆 Leopardo            6.1
- 12. lontra          🦦 Lontra              6.0
- 13. aquila          🦅 Aquila              6.0
- 14. polpo           🐙 Polpo               6.0
- 15. orango          🦧 Orango              5.9
- 16. castoro         🦫 Castoro             5.8
- 17. tasso           🦡 Tasso               5.7
- 18. scimpanze       🐒 Scimpanzé           5.6
- 19. scarabeo        🪲 Scarabeo            5.6
- 20. granchio        🦀 Granchio            5.4
- 21. aragosta        🦞 Aragosta            5.4
+  7. elefante        🐘 Elefante            8.0
+  8. mammut          🦣 Mammut              7.8
+  9. iena            🐺 Iena                7.8
+ 10. polpo           🐙 Polpo               6.0
+ 11. scimpanze       🐒 Scimpanzé           5.6
+ 12. orango          🦧 Orango              5.9
+ 13. pantera         🐈‍⬛ Pantera             6.2
+ 14. leopardo        🐆 Leopardo            6.1
+ 15. canguro         🦘 Canguro             6.4
+ 16. tasso           🦡 Tasso               5.7
+ 17. formica         🐜 Formica             7.2
+ 18. aquila          🦅 Aquila              6.0
+ 19. calamaro        🦑 Calamaro            5.1
+ 20. aragosta        🦞 Aragosta            5.4
+ 21. granchio        🦀 Granchio            5.4
  22. panda           🐼 Panda               5.2
- 23. calamaro        🦑 Calamaro            5.1
- 24. gibbone         🐵 Gibbone             5.0
- 25. scorpione       🦂 Scorpione           4.1
- 26. gufo            🦉 Gufo                4.1
- 27. rana            🐸 Rana                4.0
- 28. gatto           🐈 Gatto               3.7
- 29. ragno           🕷️ Ragno               3.7
- 30. bradipo         🦥 Bradipo             3.6
+ 23. gibbone         🐵 Gibbone             5.0
+ 24. scarabeo        🪲 Scarabeo            5.6
+ 25. rana            🐸 Rana                4.0
+ 26. bradipo         🦥 Bradipo             3.6
+ 27. scorpione       🦂 Scorpione           4.1
+ 28. gufo            🦉 Gufo                4.1
+ 29. gatto           🐈 Gatto               3.7
+ 30. ragno           🕷️ Ragno               3.7
  31. ratto           🐀 Ratto               3.4
  32. scoiattolo      🐿️ Scoiattolo          3.2
  33. koala           🐨 Koala               3.2
@@ -526,72 +535,72 @@
 #   accesso: Acqua>=3
 #   premia : Agilita x4, Equilibrio x3, Altezza x1, Stazza penalizza -2
 #   43 ammessi, tutti e 43. Squadra da 3.
-  1. polpo           🐙 Polpo               8.2
-  2. lontra          🦦 Lontra              8.0
-  3. rana            🐸 Rana                7.8
-  4. delfino         🐬 Delfino             7.7
-  5. ratto           🐀 Ratto               7.5
-  6. calamaro        🦑 Calamaro            7.0
-  7. leopardo        🐆 Leopardo            7.0
-  8. drago           🐉 Drago               6.9
-  9. pantera         🐈‍⬛ Pantera             6.8
- 10. cervo           🦌 Cervo               6.5
- 11. cane            🐕 Cane                6.5
- 12. tigre           🐅 Tigre               6.4
- 13. fenicottero     🦩 Fenicottero         6.3
- 14. lupo            🐺 Lupo                6.2
- 15. cigno           🦢 Cigno               6.1
- 16. pescetropicale  🐠 Pesce tropicale     6.1
+  1. drago           🐉 Drago               6.9
+  2. delfino         🐬 Delfino             7.7
+  3. lontra          🦦 Lontra              8.0
+  4. foca            🦭 Foca                5.5
+  5. rana            🐸 Rana                7.8
+  6. polpo           🐙 Polpo               8.2
+  7. pinguino        🐧 Pinguino            5.3
+  8. cigno           🦢 Cigno               6.1
+  9. fenicottero     🦩 Fenicottero         6.3
+ 10. pescetropicale  🐠 Pesce tropicale     6.1
+ 11. calamaro        🦑 Calamaro            7.0
+ 12. leopardo        🐆 Leopardo            7.0
+ 13. pantera         🐈‍⬛ Pantera             6.8
+ 14. tigre           🐅 Tigre               6.4
+ 15. cane            🐕 Cane                6.5
+ 16. cervo           🦌 Cervo               6.5
  17. anatra          🦆 Anatra              5.9
  18. oca             🪿 Oca                 5.8
- 19. granchio        🦀 Granchio            5.8
- 20. serpente        🐍 Serpente            5.7
- 21. gambero         🦐 Gambero             5.7
- 22. castoro         🦫 Castoro             5.6
- 23. foca            🦭 Foca                5.5
- 24. pinguino        🐧 Pinguino            5.3
- 25. tasso           🦡 Tasso               5.0
- 26. squalo          🦈 Squalo              4.9
- 27. aragosta        🦞 Aragosta            4.7
- 28. pescepalla      🐡 Pesce palla         4.5
- 29. cinghiale       🐗 Cinghiale           3.9
+ 19. lupo            🐺 Lupo                6.2
+ 20. ratto           🐀 Ratto               7.5
+ 21. serpente        🐍 Serpente            5.7
+ 22. squalo          🦈 Squalo              4.9
+ 23. castoro         🦫 Castoro             5.6
+ 24. gambero         🦐 Gambero             5.7
+ 25. granchio        🦀 Granchio            5.8
+ 26. aragosta        🦞 Aragosta            4.7
+ 27. tasso           🦡 Tasso               5.0
+ 28. coccodrillo     🐊 Coccodrillo         3.4
+ 29. tartaruga       🐢 Tartaruga           3.3
  30. orso            🐻 Orso                3.7
- 31. panda           🐼 Panda               3.6
- 32. bradipo         🦥 Bradipo             3.6
- 33. coccodrillo     🐊 Coccodrillo         3.4
- 34. alce            🫎 Alce                3.3
- 35. tartaruga       🐢 Tartaruga           3.3
+ 31. pescepalla      🐡 Pesce palla         4.5
+ 32. alce            🫎 Alce                3.3
+ 33. cinghiale       🐗 Cinghiale           3.9
+ 34. panda           🐼 Panda               3.6
+ 35. bradipo         🦥 Bradipo             3.6
  36. maiale          🐖 Maiale              3.2
- 37. elefante        🐘 Elefante            2.9
- 38. lumaca          🐌 Lumaca              2.9
+ 37. ippopotamo      🦛 Ippopotamo          2.1
+ 38. elefante        🐘 Elefante            2.9
  39. bufalo          🐃 Bufalo              2.9
- 40. balena          🐋 Balena              2.5
+ 40. lumaca          🐌 Lumaca              2.9
  41. capodoglio      🐳 Capodoglio          2.5
- 42. brontosauro     🦕 Brontosauro         2.3
- 43. ippopotamo      🦛 Ippopotamo          2.1
+ 42. balena          🐋 Balena              2.5
+ 43. brontosauro     🦕 Brontosauro         2.3
 
 === nuoto · 🏊 Staffetta in acqua ===
 #   accesso: Acqua>=7
 #   premia : Velocita x4, Fiato x3, Forza x1
 #   23 ammessi, tutti e 23. Squadra da 4.
-  1. squalo          🦈 Squalo              8.6
-  2. delfino         🐬 Delfino             8.4
-  3. balena          🐋 Balena              7.1
+  1. delfino         🐬 Delfino             8.4
+  2. squalo          🦈 Squalo              8.6
+  3. foca            🦭 Foca                5.4
   4. capodoglio      🐳 Capodoglio          7.1
-  5. bufalo          🐃 Bufalo              6.6
-  6. coccodrillo     🐊 Coccodrillo         5.9
-  7. calamaro        🦑 Calamaro            5.9
-  8. cigno           🦢 Cigno               5.8
-  9. lontra          🦦 Lontra              5.6
- 10. foca            🦭 Foca                5.4
- 11. oca             🪿 Oca                 5.1
- 12. ippopotamo      🦛 Ippopotamo          5.0
- 13. pinguino        🐧 Pinguino            4.6
- 14. polpo           🐙 Polpo               4.6
- 15. anatra          🦆 Anatra              4.5
- 16. castoro         🦫 Castoro             4.4
- 17. rana            🐸 Rana                4.4
- 18. pescetropicale  🐠 Pesce tropicale     4.1
+  5. balena          🐋 Balena              7.1
+  6. calamaro        🦑 Calamaro            5.9
+  7. lontra          🦦 Lontra              5.6
+  8. pinguino        🐧 Pinguino            4.6
+  9. coccodrillo     🐊 Coccodrillo         5.9
+ 10. polpo           🐙 Polpo               4.6
+ 11. cigno           🦢 Cigno               5.8
+ 12. anatra          🦆 Anatra              4.5
+ 13. oca             🪿 Oca                 5.1
+ 14. pescetropicale  🐠 Pesce tropicale     4.1
+ 15. castoro         🦫 Castoro             4.4
+ 16. rana            🐸 Rana                4.4
+ 17. ippopotamo      🦛 Ippopotamo          5.0
+ 18. bufalo          🐃 Bufalo              6.6
  19. tartaruga       🐢 Tartaruga           4.1
  20. granchio        🦀 Granchio            4.0
  21. aragosta        🦞 Aragosta            3.5
@@ -602,19 +611,19 @@
 #   accesso: Volo>=6
 #   premia : Volo x4, Agilita x3, Velocita x3, Fiato x1
 #   14 ammessi, tutti e 14. Squadra da 2.
-  1. aquila          🦅 Aquila              9.2
-  2. drago           🐉 Drago               8.8
+  1. drago           🐉 Drago               8.8
+  2. aquila          🦅 Aquila              9.2
   3. pipistrello     🦇 Pipistrello         8.2
   4. colomba         🕊️ Colomba             7.9
-  5. ape             🐝 Ape                 7.8
-  6. gufo            🦉 Gufo                7.5
-  7. pappagallo      🦜 Pappagallo          7.2
+  5. gufo            🦉 Gufo                7.5
+  6. pappagallo      🦜 Pappagallo          7.2
+  7. ape             🐝 Ape                 7.8
   8. zanzara         🦟 Zanzara             6.7
   9. cigno           🦢 Cigno               5.9
- 10. oca             🪿 Oca                 5.6
+ 10. fenicottero     🦩 Fenicottero         5.5
  11. anatra          🦆 Anatra              5.5
- 12. farfalla        🦋 Farfalla            5.5
- 13. fenicottero     🦩 Fenicottero         5.5
+ 12. oca             🪿 Oca                 5.6
+ 13. farfalla        🦋 Farfalla            5.5
  14. coccinella      🐞 Coccinella          4.6
 
 === bob · 🛷 Bob a quattro ===
@@ -623,77 +632,77 @@
 #   74 ammessi, tutti e 74. Squadra da 4.
   1. drago           🐉 Drago               8.9
   2. tigre           🐅 Tigre               8.6
-  3. trex            🦖 T-Rex               8.4
-  4. leone           🦁 Leone               8.1
-  5. orso            🐻 Orso                8.0
-  6. gorilla         🦍 Gorilla             7.9
-  7. leopardo        🐆 Leopardo            7.9
-  8. cavallo         🐎 Cavallo             7.8
-  9. unicorno        🦄 Unicorno            7.7
- 10. rinoceronte     🦏 Rinoceronte         7.6
- 11. bisonte         🦬 Bisonte             7.5
- 12. elefante        🐘 Elefante            7.2
- 13. mammut          🦣 Mammut              7.2
- 14. toro            🐂 Toro                7.2
- 15. canguro         🦘 Canguro             7.2
- 16. pantera         🐈‍⬛ Pantera             7.1
- 17. bufalo          🐃 Bufalo              7.1
- 18. iena            🐺 Iena                7.0
- 19. ippopotamo      🦛 Ippopotamo          6.9
+  3. leone           🦁 Leone               8.1
+  4. orso            🐻 Orso                8.0
+  5. gorilla         🦍 Gorilla             7.9
+  6. leopardo        🐆 Leopardo            7.9
+  7. rinoceronte     🦏 Rinoceronte         7.6
+  8. bisonte         🦬 Bisonte             7.5
+  9. bufalo          🐃 Bufalo              7.1
+ 10. toro            🐂 Toro                7.2
+ 11. cavallo         🐎 Cavallo             7.8
+ 12. unicorno        🦄 Unicorno            7.7
+ 13. iena            🐺 Iena                7.0
+ 14. pantera         🐈‍⬛ Pantera             7.1
+ 15. trex            🦖 T-Rex               8.4
+ 16. ippopotamo      🦛 Ippopotamo          6.9
+ 17. elefante        🐘 Elefante            7.2
+ 18. mammut          🦣 Mammut              7.2
+ 19. cinghiale       🐗 Cinghiale           6.5
  20. alce            🫎 Alce                6.9
- 21. brontosauro     🦕 Brontosauro         6.8
+ 21. lupo            🐺 Lupo                6.6
  22. ghepardo        🐆 Ghepardo            6.6
- 23. lupo            🐺 Lupo                6.6
- 24. cinghiale       🐗 Cinghiale           6.5
- 25. giraffa         🦒 Giraffa             6.3
- 26. aquila          🦅 Aquila              6.3
- 27. orango          🦧 Orango              6.2
- 28. zebra           🦓 Zebra               6.2
- 29. panda           🐼 Panda               6.2
- 30. cammello        🐫 Cammello            6.1
- 31. cervo           🦌 Cervo               6.0
- 32. mucca           🐄 Mucca               6.0
+ 23. canguro         🦘 Canguro             7.2
+ 24. brontosauro     🦕 Brontosauro         6.8
+ 25. zebra           🦓 Zebra               6.2
+ 26. giraffa         🦒 Giraffa             6.3
+ 27. panda           🐼 Panda               6.2
+ 28. cammello        🐫 Cammello            6.1
+ 29. cervo           🦌 Cervo               6.0
+ 30. mucca           🐄 Mucca               6.0
+ 31. asino           🫏 Asino               5.6
+ 32. maiale          🐖 Maiale              5.5
  33. scimpanze       🐒 Scimpanzé           5.7
- 34. asino           🫏 Asino               5.6
- 35. maiale          🐖 Maiale              5.5
- 36. gibbone         🐵 Gibbone             5.4
- 37. gazzella        🦌 Gazzella            5.4
- 38. capra           🐐 Capra               5.3
- 39. cane            🐕 Cane                5.2
- 40. serpente        🐍 Serpente            4.9
- 41. lama            🦙 Lama                4.8
- 42. volpe           🦊 Volpe               4.8
+ 34. orango          🦧 Orango              6.2
+ 35. cane            🐕 Cane                5.2
+ 36. gazzella        🦌 Gazzella            5.4
+ 37. capra           🐐 Capra               5.3
+ 38. aquila          🦅 Aquila              6.3
+ 39. gibbone         🐵 Gibbone             5.4
+ 40. volpe           🦊 Volpe               4.8
+ 41. tasso           🦡 Tasso               4.5
+ 42. lama            🦙 Lama                4.8
  43. cigno           🦢 Cigno               4.7
- 44. formica         🐜 Formica             4.7
- 45. gatto           🐈 Gatto               4.6
- 46. lontra          🦦 Lontra              4.6
- 47. gufo            🦉 Gufo                4.6
- 48. tasso           🦡 Tasso               4.5
- 49. scoiattolo      🐿️ Scoiattolo          4.3
- 50. ragno           🕷️ Ragno               4.0
- 51. castoro         🦫 Castoro             4.0
+ 44. serpente        🐍 Serpente            4.9
+ 45. lontra          🦦 Lontra              4.6
+ 46. gatto           🐈 Gatto               4.6
+ 47. castoro         🦫 Castoro             4.0
+ 48. scoiattolo      🐿️ Scoiattolo          4.3
+ 49. gufo            🦉 Gufo                4.6
+ 50. formica         🐜 Formica             4.7
+ 51. coniglio        🐇 Coniglio            3.9
  52. tacchino        🦃 Tacchino            4.0
- 53. grillo          🦗 Grillo              4.0
- 54. coniglio        🐇 Coniglio            3.9
- 55. oca             🪿 Oca                 3.9
- 56. pecora          🐑 Pecora              3.8
- 57. rana            🐸 Rana                3.8
- 58. scarabeo        🪲 Scarabeo            3.8
- 59. lucertola       🦎 Lucertola           3.7
- 60. ratto           🐀 Ratto               3.7
- 61. pappagallo      🦜 Pappagallo          3.7
- 62. gallo           🐓 Gallo               3.7
- 63. pavone          🦚 Pavone              3.7
+ 53. oca             🪿 Oca                 3.9
+ 54. pecora          🐑 Pecora              3.8
+ 55. ratto           🐀 Ratto               3.7
+ 56. lucertola       🦎 Lucertola           3.7
+ 57. gallo           🐓 Gallo               3.7
+ 58. pavone          🦚 Pavone              3.7
+ 59. ragno           🕷️ Ragno               4.0
+ 60. rana            🐸 Rana                3.8
+ 61. scarabeo        🪲 Scarabeo            3.8
+ 62. grillo          🦗 Grillo              4.0
+ 63. pappagallo      🦜 Pappagallo          3.7
  64. granchio        🦀 Granchio            3.7
  65. scorpione       🦂 Scorpione           3.6
- 66. topo            🐁 Topo                3.2
- 67. koala           🐨 Koala               3.0
+ 66. koala           🐨 Koala               3.0
+ 67. topo            🐁 Topo                3.2
  68. fenicottero     🦩 Fenicottero         3.0
  69. anatra          🦆 Anatra              3.0
- 70. dodo            🦤 Dodo                2.9
- 71. puzzola         🦨 Puzzola             2.7
- 72. coccinella      🐞 Coccinella          2.2
- 73. riccio          🦔 Riccio              1.9
+ 70. puzzola         🦨 Puzzola             2.7
+ 71. dodo            🦤 Dodo                2.9
+ 72. riccio          🦔 Riccio              1.9
+ 73. coccinella      🐞 Coccinella          2.2
  74. lumaca          🐌 Lumaca              0.8
 
 === ciclismo · 🚴 Ciclismo a squadre ===
@@ -701,105 +710,105 @@
 #   premia : Fiato x4, Velocita x3, Equilibrio x1
 #   66 ammessi, tutti e 66. Squadra da 4.
   1. drago           🐉 Drago               9.1
-  2. unicorno        🦄 Unicorno            8.5
-  3. cavallo         🐎 Cavallo             8.4
+  2. cavallo         🐎 Cavallo             8.4
+  3. unicorno        🦄 Unicorno            8.5
   4. lupo            🐺 Lupo                8.4
   5. iena            🐺 Iena                8.2
-  6. gibbone         🐵 Gibbone             7.8
-  7. asino           🫏 Asino               7.6
+  6. gazzella        🦌 Gazzella            7.4
+  7. zebra           🦓 Zebra               7.2
   8. cervo           🦌 Cervo               7.4
-  9. cammello        🐫 Cammello            7.4
- 10. gazzella        🦌 Gazzella            7.4
- 11. zebra           🦓 Zebra               7.2
+  9. cane            🐕 Cane                7.0
+ 10. cammello        🐫 Cammello            7.4
+ 11. asino           🫏 Asino               7.6
  12. tigre           🐅 Tigre               7.0
- 13. cane            🐕 Cane                7.0
- 14. pantera         🐈‍⬛ Pantera             7.0
- 15. canguro         🦘 Canguro             6.8
- 16. ghepardo        🐆 Ghepardo            6.6
- 17. volpe           🦊 Volpe               6.6
- 18. lontra          🦦 Lontra              6.5
- 19. leopardo        🐆 Leopardo            6.5
- 20. bufalo          🐃 Bufalo              6.5
- 21. scimpanze       🐒 Scimpanzé           6.4
- 22. leone           🦁 Leone               6.4
- 23. gatto           🐈 Gatto               6.4
- 24. scoiattolo      🐿️ Scoiattolo          6.4
- 25. formica         🐜 Formica             6.4
- 26. bisonte         🦬 Bisonte             6.2
- 27. alce            🫎 Alce                6.2
- 28. coniglio        🐇 Coniglio            6.2
- 29. trex            🦖 T-Rex               6.1
- 30. lama            🦙 Lama                6.0
- 31. capra           🐐 Capra               6.0
- 32. giraffa         🦒 Giraffa             5.9
- 33. cinghiale       🐗 Cinghiale           5.9
- 34. orso            🐻 Orso                5.9
- 35. oca             🪿 Oca                 5.9
- 36. ratto           🐀 Ratto               5.8
- 37. gorilla         🦍 Gorilla             5.6
- 38. rinoceronte     🦏 Rinoceronte         5.6
- 39. toro            🐂 Toro                5.6
- 40. elefante        🐘 Elefante            5.5
- 41. ragno           🕷️ Ragno               5.5
- 42. mammut          🦣 Mammut              5.4
- 43. lucertola       🦎 Lucertola           5.2
- 44. grillo          🦗 Grillo              5.2
- 45. serpente        🐍 Serpente            5.1
- 46. tasso           🦡 Tasso               5.1
- 47. castoro         🦫 Castoro             5.0
- 48. rana            🐸 Rana                5.0
- 49. brontosauro     🦕 Brontosauro         5.0
- 50. maiale          🐖 Maiale              4.9
- 51. fenicottero     🦩 Fenicottero         4.9
- 52. topo            🐁 Topo                4.8
- 53. pavone          🦚 Pavone              4.8
- 54. gallo           🐓 Gallo               4.6
- 55. orango          🦧 Orango              4.5
- 56. pecora          🐑 Pecora              4.5
+ 13. pantera         🐈‍⬛ Pantera             7.0
+ 14. leopardo        🐆 Leopardo            6.5
+ 15. ghepardo        🐆 Ghepardo            6.6
+ 16. gibbone         🐵 Gibbone             7.8
+ 17. canguro         🦘 Canguro             6.8
+ 18. volpe           🦊 Volpe               6.6
+ 19. scimpanze       🐒 Scimpanzé           6.4
+ 20. leone           🦁 Leone               6.4
+ 21. bisonte         🦬 Bisonte             6.2
+ 22. bufalo          🐃 Bufalo              6.5
+ 23. alce            🫎 Alce                6.2
+ 24. lontra          🦦 Lontra              6.5
+ 25. gatto           🐈 Gatto               6.4
+ 26. lama            🦙 Lama                6.0
+ 27. capra           🐐 Capra               6.0
+ 28. scoiattolo      🐿️ Scoiattolo          6.4
+ 29. coniglio        🐇 Coniglio            6.2
+ 30. giraffa         🦒 Giraffa             5.9
+ 31. cinghiale       🐗 Cinghiale           5.9
+ 32. orso            🐻 Orso                5.9
+ 33. gorilla         🦍 Gorilla             5.6
+ 34. toro            🐂 Toro                5.6
+ 35. rinoceronte     🦏 Rinoceronte         5.6
+ 36. formica         🐜 Formica             6.4
+ 37. ratto           🐀 Ratto               5.8
+ 38. oca             🪿 Oca                 5.9
+ 39. trex            🦖 T-Rex               6.1
+ 40. tasso           🦡 Tasso               5.1
+ 41. castoro         🦫 Castoro             5.0
+ 42. elefante        🐘 Elefante            5.5
+ 43. mammut          🦣 Mammut              5.4
+ 44. ragno           🕷️ Ragno               5.5
+ 45. lucertola       🦎 Lucertola           5.2
+ 46. rana            🐸 Rana                5.0
+ 47. maiale          🐖 Maiale              4.9
+ 48. grillo          🦗 Grillo              5.2
+ 49. serpente        🐍 Serpente            5.1
+ 50. topo            🐁 Topo                4.8
+ 51. pecora          🐑 Pecora              4.5
+ 52. orango          🦧 Orango              4.5
+ 53. fenicottero     🦩 Fenicottero         4.9
+ 54. pavone          🦚 Pavone              4.8
+ 55. gallo           🐓 Gallo               4.6
+ 56. mucca           🐄 Mucca               4.4
  57. ippopotamo      🦛 Ippopotamo          4.4
- 58. mucca           🐄 Mucca               4.4
- 59. scorpione       🦂 Scorpione           4.4
- 60. scarabeo        🪲 Scarabeo            4.4
+ 58. brontosauro     🦕 Brontosauro         5.0
+ 59. scarabeo        🪲 Scarabeo            4.4
+ 60. scorpione       🦂 Scorpione           4.4
  61. puzzola         🦨 Puzzola             4.1
  62. tacchino        🦃 Tacchino            4.1
- 63. riccio          🦔 Riccio              3.4
- 64. coccinella      🐞 Coccinella          3.4
- 65. panda           🐼 Panda               3.1
+ 63. panda           🐼 Panda               3.1
+ 64. riccio          🦔 Riccio              3.4
+ 65. coccinella      🐞 Coccinella          3.4
  66. dodo            🦤 Dodo                2.6
 
 === ginnastica · 🤸 Ginnastica a squadre ===
 #   accesso: Terra>=5
 #   premia : Agilita x4, Equilibrio x3, Forza x2
 #   74 ammessi, tutti e 74. Squadra da 4.
-  1. gibbone         🐵 Gibbone             8.7
-  2. drago           🐉 Drago               8.7
-  3. tigre           🐅 Tigre               8.4
+  1. drago           🐉 Drago               8.7
+  2. gibbone         🐵 Gibbone             8.7
+  3. scimpanze       🐒 Scimpanzé           8.3
   4. gatto           🐈 Gatto               8.4
   5. leopardo        🐆 Leopardo            8.4
-  6. scimpanze       🐒 Scimpanzé           8.3
-  7. canguro         🦘 Canguro             8.3
-  8. aquila          🦅 Aquila              8.3
-  9. scoiattolo      🐿️ Scoiattolo          8.2
- 10. unicorno        🦄 Unicorno            7.9
+  6. scoiattolo      🐿️ Scoiattolo          8.2
+  7. tigre           🐅 Tigre               8.4
+  8. pantera         🐈‍⬛ Pantera             8.8
+  9. canguro         🦘 Canguro             8.3
+ 10. capra           🐐 Capra               7.7
  11. lontra          🦦 Lontra              7.9
- 12. pantera         🐈‍⬛ Pantera             7.8
- 13. capra           🐐 Capra               7.7
- 14. ragno           🕷️ Ragno               7.7
+ 12. aquila          🦅 Aquila              8.3
+ 13. unicorno        🦄 Unicorno            7.9
+ 14. orango          🦧 Orango              7.2
  15. leone           🦁 Leone               7.4
- 16. gufo            🦉 Gufo                7.4
- 17. gazzella        🦌 Gazzella            7.3
- 18. orango          🦧 Orango              7.2
- 19. ghepardo        🐆 Ghepardo            7.2
- 20. rana            🐸 Rana                7.2
- 21. cavallo         🐎 Cavallo             7.1
+ 16. gazzella        🦌 Gazzella            7.3
+ 17. ghepardo        🐆 Ghepardo            7.2
+ 18. rana            🐸 Rana                7.2
+ 19. gufo            🦉 Gufo                7.4
+ 20. ragno           🕷️ Ragno               7.7
+ 21. coniglio        🐇 Coniglio            7.0
  22. volpe           🦊 Volpe               7.1
  23. lupo            🐺 Lupo                7.0
- 24. coniglio        🐇 Coniglio            7.0
- 25. gorilla         🦍 Gorilla             6.9
- 26. grillo          🦗 Grillo              6.9
- 27. formica         🐜 Formica             6.8
- 28. lucertola       🦎 Lucertola           6.7
- 29. ratto           🐀 Ratto               6.7
+ 24. gorilla         🦍 Gorilla             6.9
+ 25. cavallo         🐎 Cavallo             7.1
+ 26. lucertola       🦎 Lucertola           6.7
+ 27. ratto           🐀 Ratto               6.7
+ 28. grillo          🦗 Grillo              6.9
+ 29. formica         🐜 Formica             6.8
  30. pappagallo      🦜 Pappagallo          6.7
  31. cervo           🦌 Cervo               6.6
  32. cane            🐕 Cane                6.6
@@ -807,42 +816,42 @@
  34. topo            🐁 Topo                6.1
  35. serpente        🐍 Serpente            6.0
  36. cigno           🦢 Cigno               6.0
- 37. asino           🫏 Asino               5.9
- 38. trex            🦖 T-Rex               5.8
- 39. orso            🐻 Orso                5.7
- 40. scorpione       🦂 Scorpione           5.7
- 41. castoro         🦫 Castoro             5.7
- 42. pavone          🦚 Pavone              5.7
- 43. granchio        🦀 Granchio            5.7
- 44. zebra           🦓 Zebra               5.6
- 45. oca             🪿 Oca                 5.4
- 46. gallo           🐓 Gallo               5.3
- 47. scarabeo        🪲 Scarabeo            5.3
- 48. cinghiale       🐗 Cinghiale           5.2
- 49. tasso           🦡 Tasso               5.2
- 50. fenicottero     🦩 Fenicottero         5.0
- 51. anatra          🦆 Anatra              5.0
+ 37. tasso           🦡 Tasso               5.2
+ 38. castoro         🦫 Castoro             5.7
+ 39. asino           🫏 Asino               5.9
+ 40. orso            🐻 Orso                5.7
+ 41. pavone          🦚 Pavone              5.7
+ 42. gallo           🐓 Gallo               5.3
+ 43. oca             🪿 Oca                 5.4
+ 44. trex            🦖 T-Rex               5.8
+ 45. zebra           🦓 Zebra               5.6
+ 46. cinghiale       🐗 Cinghiale           5.2
+ 47. fenicottero     🦩 Fenicottero         5.0
+ 48. anatra          🦆 Anatra              5.0
+ 49. scorpione       🦂 Scorpione           5.7
+ 50. granchio        🦀 Granchio            5.7
+ 51. scarabeo        🪲 Scarabeo            5.3
  52. panda           🐼 Panda               4.9
- 53. bisonte         🦬 Bisonte             4.7
- 54. giraffa         🦒 Giraffa             4.6
- 55. lama            🦙 Lama                4.6
+ 53. lama            🦙 Lama                4.6
+ 54. bisonte         🦬 Bisonte             4.7
+ 55. alce            🫎 Alce                4.4
  56. bufalo          🐃 Bufalo              4.6
- 57. elefante        🐘 Elefante            4.4
- 58. alce            🫎 Alce                4.4
- 59. coccinella      🐞 Coccinella          4.4
- 60. toro            🐂 Toro                4.3
+ 57. toro            🐂 Toro                4.3
+ 58. giraffa         🦒 Giraffa             4.6
+ 59. elefante        🐘 Elefante            4.4
+ 60. coccinella      🐞 Coccinella          4.4
  61. puzzola         🦨 Puzzola             4.3
  62. tacchino        🦃 Tacchino            4.3
  63. cammello        🐫 Cammello            4.2
- 64. mammut          🦣 Mammut              4.1
- 65. rinoceronte     🦏 Rinoceronte         4.1
- 66. maiale          🐖 Maiale              4.0
- 67. koala           🐨 Koala               4.0
+ 64. maiale          🐖 Maiale              4.0
+ 65. koala           🐨 Koala               4.0
+ 66. rinoceronte     🦏 Rinoceronte         4.1
+ 67. mammut          🦣 Mammut              4.1
  68. ippopotamo      🦛 Ippopotamo          3.9
- 69. brontosauro     🦕 Brontosauro         3.7
- 70. pecora          🐑 Pecora              3.6
- 71. mucca           🐄 Mucca               3.4
- 72. riccio          🦔 Riccio              3.4
+ 69. pecora          🐑 Pecora              3.6
+ 70. mucca           🐄 Mucca               3.4
+ 71. riccio          🦔 Riccio              3.4
+ 72. brontosauro     🦕 Brontosauro         3.7
  73. dodo            🦤 Dodo                2.6
  74. lumaca          🐌 Lumaca              1.3
 
@@ -854,30 +863,30 @@
   2. aquila          🦅 Aquila              9.0
   3. gufo            🦉 Gufo                9.0
   4. scimpanze       🐒 Scimpanzé           8.3
-  5. ragno           🕷️ Ragno               8.3
-  6. lontra          🦦 Lontra              8.3
-  7. tigre           🐅 Tigre               8.0
-  8. gibbone         🐵 Gibbone             7.9
-  9. gatto           🐈 Gatto               7.9
- 10. scoiattolo      🐿️ Scoiattolo          7.9
- 11. castoro         🦫 Castoro             7.7
- 12. formica         🐜 Formica             7.7
- 13. rana            🐸 Rana                7.6
+  5. gibbone         🐵 Gibbone             7.9
+  6. ragno           🕷️ Ragno               8.3
+  7. gatto           🐈 Gatto               7.9
+  8. tigre           🐅 Tigre               8.0
+  9. lontra          🦦 Lontra              8.3
+ 10. pantera         🐈‍⬛ Pantera             7.3
+ 11. leopardo        🐆 Leopardo            6.6
+ 12. scoiattolo      🐿️ Scoiattolo          7.9
+ 13. castoro         🦫 Castoro             7.7
  14. pappagallo      🦜 Pappagallo          7.3
- 15. pantera         🐈‍⬛ Pantera             7.3
- 16. scorpione       🦂 Scorpione           7.0
- 17. granchio        🦀 Granchio            7.0
- 18. canguro         🦘 Canguro             6.9
+ 15. formica         🐜 Formica             7.7
+ 16. rana            🐸 Rana                7.6
+ 17. canguro         🦘 Canguro             6.9
+ 18. orango          🦧 Orango              6.3
  19. ratto           🐀 Ratto               6.6
- 20. grillo          🦗 Grillo              6.6
- 21. leopardo        🐆 Leopardo            6.6
- 22. orango          🦧 Orango              6.3
- 23. topo            🐁 Topo                5.6
- 24. gorilla         🦍 Gorilla             5.3
- 25. scarabeo        🪲 Scarabeo            5.3
+ 20. gorilla         🦍 Gorilla             5.3
+ 21. grillo          🦗 Grillo              6.6
+ 22. scorpione       🦂 Scorpione           7.0
+ 23. granchio        🦀 Granchio            7.0
+ 24. topo            🐁 Topo                5.6
+ 25. orso            🐻 Orso                5.0
  26. iena            🐺 Iena                5.3
- 27. orso            🐻 Orso                5.0
- 28. tasso           🦡 Tasso               5.0
+ 27. tasso           🦡 Tasso               5.0
+ 28. scarabeo        🪲 Scarabeo            5.3
  29. elefante        🐘 Elefante            4.7
  30. panda           🐼 Panda               4.0
  31. koala           🐨 Koala               4.0
@@ -887,75 +896,75 @@
 #   accesso: Terra>=5
 #   premia : Forza x5, Stazza x3
 #   74 ammessi, tutti e 74. Squadra da 3.
-  1. elefante        🐘 Elefante           10.0
-  2. mammut          🦣 Mammut             10.0
-  3. rinoceronte     🦏 Rinoceronte        10.0
-  4. orso            🐻 Orso               10.0
-  5. trex            🦖 T-Rex              10.0
-  6. brontosauro     🦕 Brontosauro        10.0
-  7. gorilla         🦍 Gorilla             9.6
-  8. drago           🐉 Drago               9.6
-  9. ippopotamo      🦛 Ippopotamo          9.4
- 10. bisonte         🦬 Bisonte             9.4
- 11. bufalo          🐃 Bufalo              9.4
- 12. tigre           🐅 Tigre               9.2
- 13. toro            🐂 Toro                9.0
+  1. drago           🐉 Drago               9.6
+  2. elefante        🐘 Elefante           10.0
+  3. mammut          🦣 Mammut             10.0
+  4. gorilla         🦍 Gorilla             9.6
+  5. orso            🐻 Orso               10.0
+  6. rinoceronte     🦏 Rinoceronte        10.0
+  7. trex            🦖 T-Rex              10.0
+  8. bisonte         🦬 Bisonte             9.4
+  9. bufalo          🐃 Bufalo              9.4
+ 10. ippopotamo      🦛 Ippopotamo          9.4
+ 11. toro            🐂 Toro                9.0
+ 12. brontosauro     🦕 Brontosauro        10.0
+ 13. tigre           🐅 Tigre               9.2
  14. leone           🦁 Leone               8.6
  15. alce            🫎 Alce                8.4
  16. cavallo         🐎 Cavallo             8.0
  17. panda           🐼 Panda               8.0
  18. mucca           🐄 Mucca               7.8
- 19. unicorno        🦄 Unicorno            7.6
- 20. cinghiale       🐗 Cinghiale           7.6
- 21. leopardo        🐆 Leopardo            7.6
- 22. giraffa         🦒 Giraffa             7.4
- 23. cammello        🐫 Cammello            7.4
- 24. orango          🦧 Orango              7.2
- 25. canguro         🦘 Canguro             7.2
+ 19. cinghiale       🐗 Cinghiale           7.6
+ 20. orango          🦧 Orango              7.2
+ 21. unicorno        🦄 Unicorno            7.6
+ 22. cammello        🐫 Cammello            7.4
+ 23. giraffa         🦒 Giraffa             7.4
+ 24. leopardo        🐆 Leopardo            7.6
+ 25. asino           🫏 Asino               7.0
  26. iena            🐺 Iena                7.2
- 27. asino           🫏 Asino               7.0
+ 27. canguro         🦘 Canguro             7.2
  28. pantera         🐈‍⬛ Pantera             6.6
  29. maiale          🐖 Maiale              6.4
- 30. lupo            🐺 Lupo                6.2
- 31. zebra           🦓 Zebra               6.0
- 32. formica         🐜 Formica             5.4
- 33. ghepardo        🐆 Ghepardo            5.2
- 34. cervo           🦌 Cervo               5.0
- 35. lama            🦙 Lama                5.0
- 36. scimpanze       🐒 Scimpanzé           4.9
- 37. serpente        🐍 Serpente            4.9
- 38. tasso           🦡 Tasso               4.9
- 39. aquila          🦅 Aquila              4.9
- 40. scarabeo        🪲 Scarabeo            4.8
- 41. capra           🐐 Capra               4.6
- 42. cigno           🦢 Cigno               4.6
- 43. cane            🐕 Cane                4.2
- 44. castoro         🦫 Castoro             4.2
- 45. pecora          🐑 Pecora              4.0
- 46. tacchino        🦃 Tacchino            4.0
+ 30. zebra           🦓 Zebra               6.0
+ 31. lupo            🐺 Lupo                6.2
+ 32. scimpanze       🐒 Scimpanzé           4.9
+ 33. cervo           🦌 Cervo               5.0
+ 34. lama            🦙 Lama                5.0
+ 35. tasso           🦡 Tasso               4.9
+ 36. ghepardo        🐆 Ghepardo            5.2
+ 37. capra           🐐 Capra               4.6
+ 38. formica         🐜 Formica             5.4
+ 39. cane            🐕 Cane                4.2
+ 40. castoro         🦫 Castoro             4.2
+ 41. pecora          🐑 Pecora              4.0
+ 42. scarabeo        🪲 Scarabeo            4.8
+ 43. serpente        🐍 Serpente            4.9
+ 44. aquila          🦅 Aquila              4.9
+ 45. gibbone         🐵 Gibbone             3.2
+ 46. cigno           🦢 Cigno               4.6
  47. granchio        🦀 Granchio            3.9
- 48. oca             🪿 Oca                 3.6
- 49. scorpione       🦂 Scorpione           3.5
- 50. dodo            🦤 Dodo                3.4
- 51. gibbone         🐵 Gibbone             3.2
- 52. volpe           🦊 Volpe               3.2
- 53. lontra          🦦 Lontra              3.2
- 54. koala           🐨 Koala               3.2
- 55. gufo            🦉 Gufo                3.2
- 56. gazzella        🦌 Gazzella            3.0
- 57. gallo           🐓 Gallo               2.6
- 58. pavone          🦚 Pavone              2.6
- 59. gatto           🐈 Gatto               2.2
- 60. ragno           🕷️ Ragno               2.2
- 61. rana            🐸 Rana                2.2
- 62. grillo          🦗 Grillo              2.2
+ 48. scorpione       🦂 Scorpione           3.5
+ 49. koala           🐨 Koala               3.2
+ 50. lontra          🦦 Lontra              3.2
+ 51. tacchino        🦃 Tacchino            4.0
+ 52. oca             🪿 Oca                 3.6
+ 53. volpe           🦊 Volpe               3.2
+ 54. dodo            🦤 Dodo                3.4
+ 55. gazzella        🦌 Gazzella            3.0
+ 56. gufo            🦉 Gufo                3.2
+ 57. gatto           🐈 Gatto               2.2
+ 58. coniglio        🐇 Coniglio            1.6
+ 59. scoiattolo      🐿️ Scoiattolo          1.6
+ 60. ratto           🐀 Ratto               1.6
+ 61. gallo           🐓 Gallo               2.6
+ 62. pavone          🦚 Pavone              2.6
  63. fenicottero     🦩 Fenicottero         2.0
  64. anatra          🦆 Anatra              2.0
- 65. lucertola       🦎 Lucertola           1.6
- 66. coniglio        🐇 Coniglio            1.6
- 67. scoiattolo      🐿️ Scoiattolo          1.6
- 68. riccio          🦔 Riccio              1.6
- 69. ratto           🐀 Ratto               1.6
+ 65. rana            🐸 Rana                2.2
+ 66. ragno           🕷️ Ragno               2.2
+ 67. grillo          🦗 Grillo              2.2
+ 68. lucertola       🦎 Lucertola           1.6
+ 69. riccio          🦔 Riccio              1.6
  70. puzzola         🦨 Puzzola             1.6
  71. pappagallo      🦜 Pappagallo          1.6
  72. topo            🐁 Topo                1.0
@@ -967,93 +976,93 @@
 #   premia : Forza x3, Agilita x3, Intelligenza x2
 #   32 ammessi, tutti e 32. Squadra da 2.
   1. drago           🐉 Drago               8.9
-  2. tigre           🐅 Tigre               8.8
-  3. scimpanze       🐒 Scimpanzé           8.1
-  4. leopardo        🐆 Leopardo            8.1
-  5. gorilla         🦍 Gorilla             8.0
-  6. orango          🦧 Orango              7.9
-  7. aquila          🦅 Aquila              7.6
+  2. gorilla         🦍 Gorilla             8.0
+  3. tigre           🐅 Tigre               8.8
+  4. scimpanze       🐒 Scimpanzé           8.1
+  5. orango          🦧 Orango              7.9
+  6. leopardo        🐆 Leopardo            8.1
+  7. orso            🐻 Orso                7.0
   8. pantera         🐈‍⬛ Pantera             7.6
-  9. canguro         🦘 Canguro             7.5
- 10. iena            🐺 Iena                7.5
- 11. lontra          🦦 Lontra              7.1
- 12. gibbone         🐵 Gibbone             7.0
- 13. orso            🐻 Orso                7.0
+  9. gibbone         🐵 Gibbone             7.0
+ 10. canguro         🦘 Canguro             7.5
+ 11. iena            🐺 Iena                7.5
+ 12. aquila          🦅 Aquila              7.6
+ 13. lontra          🦦 Lontra              7.1
  14. elefante        🐘 Elefante            6.8
- 15. gufo            🦉 Gufo                6.8
- 16. gatto           🐈 Gatto               6.6
- 17. formica         🐜 Formica             6.5
- 18. panda           🐼 Panda               6.2
- 19. scoiattolo      🐿️ Scoiattolo          6.0
- 20. pappagallo      🦜 Pappagallo          6.0
- 21. mammut          🦣 Mammut              5.8
- 22. castoro         🦫 Castoro             5.8
- 23. tasso           🦡 Tasso               5.6
- 24. ragno           🕷️ Ragno               5.5
- 25. ratto           🐀 Ratto               5.5
- 26. rana            🐸 Rana                5.1
- 27. grillo          🦗 Grillo              5.1
- 28. scarabeo        🪲 Scarabeo            5.1
- 29. granchio        🦀 Granchio            5.0
- 30. topo            🐁 Topo                4.9
- 31. scorpione       🦂 Scorpione           4.8
- 32. koala           🐨 Koala               4.2
+ 15. gatto           🐈 Gatto               6.6
+ 16. panda           🐼 Panda               6.2
+ 17. gufo            🦉 Gufo                6.8
+ 18. mammut          🦣 Mammut              5.8
+ 19. tasso           🦡 Tasso               5.6
+ 20. formica         🐜 Formica             6.5
+ 21. castoro         🦫 Castoro             5.8
+ 22. scoiattolo      🐿️ Scoiattolo          6.0
+ 23. pappagallo      🦜 Pappagallo          6.0
+ 24. ratto           🐀 Ratto               5.5
+ 25. ragno           🕷️ Ragno               5.5
+ 26. granchio        🦀 Granchio            5.0
+ 27. rana            🐸 Rana                5.1
+ 28. scorpione       🦂 Scorpione           4.8
+ 29. scarabeo        🪲 Scarabeo            5.1
+ 30. grillo          🦗 Grillo              5.1
+ 31. koala           🐨 Koala               4.2
+ 32. topo            🐁 Topo                4.9
 
 === taekwondo · 🥋 Taekwondo a coppie ===
 #   accesso: Terra>=5
 #   premia : Agilita x4, Riflessi x3, Velocita x2
 #   74 ammessi, tutti e 74. Squadra da 2.
-  1. gibbone         🐵 Gibbone             9.6
-  2. aquila          🦅 Aquila              9.0
-  3. gazzella        🦌 Gazzella            9.0
+  1. drago           🐉 Drago               8.4
+  2. canguro         🦘 Canguro             7.4
+  3. gibbone         🐵 Gibbone             9.6
   4. gatto           🐈 Gatto               8.7
-  5. scoiattolo      🐿️ Scoiattolo          8.7
-  6. unicorno        🦄 Unicorno            8.4
+  5. scimpanze       🐒 Scimpanzé           8.3
+  6. leopardo        🐆 Leopardo            8.4
   7. ghepardo        🐆 Ghepardo            8.4
-  8. drago           🐉 Drago               8.4
-  9. leopardo        🐆 Leopardo            8.4
- 10. scimpanze       🐒 Scimpanzé           8.3
- 11. tigre           🐅 Tigre               8.3
- 12. pantera         🐈‍⬛ Pantera             8.3
- 13. lontra          🦦 Lontra              8.1
- 14. lupo            🐺 Lupo                7.9
- 15. gufo            🦉 Gufo                7.9
- 16. pappagallo      🦜 Pappagallo          7.9
+  8. tigre           🐅 Tigre               8.3
+  9. pantera         🐈‍⬛ Pantera             8.3
+ 10. gazzella        🦌 Gazzella            9.0
+ 11. aquila          🦅 Aquila              9.0
+ 12. scoiattolo      🐿️ Scoiattolo          8.7
+ 13. unicorno        🦄 Unicorno            8.4
+ 14. lontra          🦦 Lontra              8.1
+ 15. leone           🦁 Leone               7.6
+ 16. lupo            🐺 Lupo                7.9
  17. volpe           🦊 Volpe               7.8
- 18. cervo           🦌 Cervo               7.6
- 19. leone           🦁 Leone               7.6
- 20. ratto           🐀 Ratto               7.6
- 21. canguro         🦘 Canguro             7.4
- 22. cavallo         🐎 Cavallo             7.3
- 23. cane            🐕 Cane                7.3
- 24. ragno           🕷️ Ragno               7.1
- 25. coniglio        🐇 Coniglio            7.1
- 26. capra           🐐 Capra               7.0
- 27. topo            🐁 Topo                7.0
- 28. lucertola       🦎 Lucertola           6.9
- 29. rana            🐸 Rana                6.7
- 30. grillo          🦗 Grillo              6.6
+ 18. cane            🐕 Cane                7.3
+ 19. cervo           🦌 Cervo               7.6
+ 20. capra           🐐 Capra               7.0
+ 21. coniglio        🐇 Coniglio            7.1
+ 22. gufo            🦉 Gufo                7.9
+ 23. pappagallo      🦜 Pappagallo          7.9
+ 24. ratto           🐀 Ratto               7.6
+ 25. cavallo         🐎 Cavallo             7.3
+ 26. rana            🐸 Rana                6.7
+ 27. lucertola       🦎 Lucertola           6.9
+ 28. grillo          🦗 Grillo              6.6
+ 29. ragno           🕷️ Ragno               7.1
+ 30. topo            🐁 Topo                7.0
  31. iena            🐺 Iena                6.4
  32. zebra           🦓 Zebra               6.3
- 33. formica         🐜 Formica             5.9
- 34. gorilla         🦍 Gorilla             5.8
- 35. orango          🦧 Orango              5.8
- 36. serpente        🐍 Serpente            5.8
- 37. castoro         🦫 Castoro             5.6
- 38. orso            🐻 Orso                5.4
- 39. gallo           🐓 Gallo               5.4
- 40. pavone          🦚 Pavone              5.4
- 41. trex            🦖 T-Rex               5.4
+ 33. gorilla         🦍 Gorilla             5.8
+ 34. orango          🦧 Orango              5.8
+ 35. serpente        🐍 Serpente            5.8
+ 36. formica         🐜 Formica             5.9
+ 37. gallo           🐓 Gallo               5.4
+ 38. tasso           🦡 Tasso               5.1
+ 39. castoro         🦫 Castoro             5.6
+ 40. orso            🐻 Orso                5.4
+ 41. pavone          🦚 Pavone              5.4
  42. cigno           🦢 Cigno               5.3
  43. cinghiale       🐗 Cinghiale           5.1
- 44. tasso           🦡 Tasso               5.1
+ 44. trex            🦖 T-Rex               5.4
  45. fenicottero     🦩 Fenicottero         5.1
  46. anatra          🦆 Anatra              5.1
  47. oca             🪿 Oca                 5.1
  48. lama            🦙 Lama                4.9
- 49. granchio        🦀 Granchio            4.9
- 50. scorpione       🦂 Scorpione           4.8
- 51. giraffa         🦒 Giraffa             4.7
+ 49. giraffa         🦒 Giraffa             4.7
+ 50. granchio        🦀 Granchio            4.9
+ 51. scorpione       🦂 Scorpione           4.8
  52. puzzola         🦨 Puzzola             4.4
  53. bisonte         🦬 Bisonte             4.3
  54. alce            🫎 Alce                4.3
@@ -1064,10 +1073,10 @@
  59. scarabeo        🪲 Scarabeo            4.1
  60. toro            🐂 Toro                4.0
  61. tacchino        🦃 Tacchino            4.0
- 62. rinoceronte     🦏 Rinoceronte         3.9
- 63. pecora          🐑 Pecora              3.6
- 64. koala           🐨 Koala               3.6
- 65. asino           🫏 Asino               3.6
+ 62. asino           🫏 Asino               3.6
+ 63. rinoceronte     🦏 Rinoceronte         3.9
+ 64. pecora          🐑 Pecora              3.6
+ 65. koala           🐨 Koala               3.6
  66. elefante        🐘 Elefante            3.4
  67. bufalo          🐃 Bufalo              3.3
  68. mammut          🦣 Mammut              3.1
@@ -1083,37 +1092,37 @@
 #   premia : Riflessi x5, Precisione x3
 #   32 ammessi, tutti e 32. Squadra da 2.
   1. drago           🐉 Drago              10.0
-  2. aquila          🦅 Aquila              9.0
-  3. gufo            🦉 Gufo                9.0
-  4. gibbone         🐵 Gibbone             8.9
-  5. scimpanze       🐒 Scimpanzé           8.6
-  6. tigre           🐅 Tigre               8.6
-  7. lontra          🦦 Lontra              8.6
-  8. pappagallo      🦜 Pappagallo          8.2
-  9. pantera         🐈‍⬛ Pantera             8.2
- 10. castoro         🦫 Castoro             8.0
- 11. gatto           🐈 Gatto               7.6
- 12. scoiattolo      🐿️ Scoiattolo          7.6
- 13. formica         🐜 Formica             7.4
- 14. ratto           🐀 Ratto               7.2
- 15. leopardo        🐆 Leopardo            7.2
- 16. ragno           🕷️ Ragno               6.8
- 17. canguro         🦘 Canguro             6.6
- 18. granchio        🦀 Granchio            6.4
- 19. rana            🐸 Rana                6.4
- 20. orso            🐻 Orso                6.2
- 21. topo            🐁 Topo                6.2
- 22. orango          🦧 Orango              6.0
- 23. scorpione       🦂 Scorpione           5.8
- 24. gorilla         🦍 Gorilla             5.6
- 25. tasso           🦡 Tasso               5.6
- 26. iena            🐺 Iena                5.6
- 27. grillo          🦗 Grillo              5.4
- 28. elefante        🐘 Elefante            5.0
- 29. scarabeo        🪲 Scarabeo            5.0
- 30. panda           🐼 Panda               4.6
- 31. mammut          🦣 Mammut              4.0
- 32. koala           🐨 Koala               4.0
+  2. gibbone         🐵 Gibbone             8.9
+  3. scimpanze       🐒 Scimpanzé           8.6
+  4. gatto           🐈 Gatto               7.6
+  5. lontra          🦦 Lontra              8.6
+  6. aquila          🦅 Aquila              9.0
+  7. tigre           🐅 Tigre               8.6
+  8. pantera         🐈‍⬛ Pantera             8.2
+  9. leopardo        🐆 Leopardo            7.2
+ 10. scoiattolo      🐿️ Scoiattolo          7.6
+ 11. gufo            🦉 Gufo                9.0
+ 12. pappagallo      🦜 Pappagallo          8.2
+ 13. ratto           🐀 Ratto               7.2
+ 14. canguro         🦘 Canguro             6.6
+ 15. castoro         🦫 Castoro             8.0
+ 16. orango          🦧 Orango              6.0
+ 17. gorilla         🦍 Gorilla             5.6
+ 18. formica         🐜 Formica             7.4
+ 19. topo            🐁 Topo                6.2
+ 20. ragno           🕷️ Ragno               6.8
+ 21. rana            🐸 Rana                6.4
+ 22. iena            🐺 Iena                5.6
+ 23. tasso           🦡 Tasso               5.6
+ 24. orso            🐻 Orso                6.2
+ 25. grillo          🦗 Grillo              5.4
+ 26. granchio        🦀 Granchio            6.4
+ 27. scorpione       🦂 Scorpione           5.8
+ 28. panda           🐼 Panda               4.6
+ 29. elefante        🐘 Elefante            5.0
+ 30. koala           🐨 Koala               4.0
+ 31. scarabeo        🪲 Scarabeo            5.0
+ 32. mammut          🦣 Mammut              4.0
 
 === lenta · 🐢 Marcia lentissima ===
 #   accesso: Terra>=4
@@ -1121,80 +1130,80 @@
 #   79 ammessi, tutti e 79. Squadra da 3.
   1. lumaca          🐌 Lumaca              8.0
   2. tartaruga       🐢 Tartaruga           7.9
-  3. formica         🐜 Formica             7.6
-  4. asino           🫏 Asino               7.1
-  5. pinguino        🐧 Pinguino            7.0
-  6. oca             🪿 Oca                 6.7
-  7. aragosta        🦞 Aragosta            6.7
-  8. cammello        🐫 Cammello            6.6
-  9. castoro         🦫 Castoro             6.6
- 10. lontra          🦦 Lontra              6.6
- 11. scarabeo        🪲 Scarabeo            6.6
- 12. riccio          🦔 Riccio              6.4
- 13. anatra          🦆 Anatra              6.4
- 14. granchio        🦀 Granchio            6.3
- 15. tasso           🦡 Tasso               6.2
- 16. cigno           🦢 Cigno               6.1
- 17. fenicottero     🦩 Fenicottero         6.0
- 18. lama            🦙 Lama                5.9
- 19. ragno           🕷️ Ragno               5.9
- 20. lupo            🐺 Lupo                5.8
- 21. scorpione       🦂 Scorpione           5.8
- 22. puzzola         🦨 Puzzola             5.8
- 23. koala           🐨 Koala               5.8
- 24. capra           🐐 Capra               5.7
- 25. cane            🐕 Cane                5.7
- 26. colomba         🕊️ Colomba             5.7
- 27. coccinella      🐞 Coccinella          5.7
- 28. scimpanze       🐒 Scimpanzé           5.6
- 29. gibbone         🐵 Gibbone             5.6
- 30. pecora          🐑 Pecora              5.6
- 31. ratto           🐀 Ratto               5.6
- 32. pappagallo      🦜 Pappagallo          5.6
- 33. iena            🐺 Iena                5.6
- 34. orango          🦧 Orango              5.4
- 35. volpe           🦊 Volpe               5.4
- 36. serpente        🐍 Serpente            5.4
- 37. topo            🐁 Topo                5.4
- 38. rana            🐸 Rana                5.4
- 39. brontosauro     🦕 Brontosauro         5.4
- 40. gufo            🦉 Gufo                5.3
- 41. dodo            🦤 Dodo                5.3
- 42. gatto           🐈 Gatto               5.2
- 43. coniglio        🐇 Coniglio            5.2
- 44. scoiattolo      🐿️ Scoiattolo          5.2
- 45. gallo           🐓 Gallo               5.2
- 46. pavone          🦚 Pavone              5.2
- 47. bufalo          🐃 Bufalo              5.2
- 48. elefante        🐘 Elefante            5.1
- 49. mammut          🦣 Mammut              5.1
- 50. lucertola       🦎 Lucertola           5.1
- 51. tacchino        🦃 Tacchino            5.1
- 52. grillo          🦗 Grillo              5.1
+  3. riccio          🦔 Riccio              6.4
+  4. formica         🐜 Formica             7.6
+  5. scarabeo        🪲 Scarabeo            6.6
+  6. ragno           🕷️ Ragno               5.9
+  7. scorpione       🦂 Scorpione           5.8
+  8. koala           🐨 Koala               5.8
+  9. tasso           🦡 Tasso               6.2
+ 10. asino           🫏 Asino               7.1
+ 11. pinguino        🐧 Pinguino            7.0
+ 12. cammello        🐫 Cammello            6.6
+ 13. oca             🪿 Oca                 6.7
+ 14. castoro         🦫 Castoro             6.6
+ 15. lontra          🦦 Lontra              6.6
+ 16. anatra          🦆 Anatra              6.4
+ 17. granchio        🦀 Granchio            6.3
+ 18. aragosta        🦞 Aragosta            6.7
+ 19. lama            🦙 Lama                5.9
+ 20. puzzola         🦨 Puzzola             5.8
+ 21. coccinella      🐞 Coccinella          5.7
+ 22. colomba         🕊️ Colomba             5.7
+ 23. cigno           🦢 Cigno               6.1
+ 24. fenicottero     🦩 Fenicottero         6.0
+ 25. capra           🐐 Capra               5.7
+ 26. pecora          🐑 Pecora              5.6
+ 27. topo            🐁 Topo                5.4
+ 28. ratto           🐀 Ratto               5.6
+ 29. rana            🐸 Rana                5.4
+ 30. grillo          🦗 Grillo              5.1
+ 31. lucertola       🦎 Lucertola           5.1
+ 32. serpente        🐍 Serpente            5.4
+ 33. scoiattolo      🐿️ Scoiattolo          5.2
+ 34. dodo            🦤 Dodo                5.3
+ 35. coniglio        🐇 Coniglio            5.2
+ 36. cane            🐕 Cane                5.7
+ 37. scimpanze       🐒 Scimpanzé           5.6
+ 38. gibbone         🐵 Gibbone             5.6
+ 39. orango          🦧 Orango              5.4
+ 40. pappagallo      🦜 Pappagallo          5.6
+ 41. gufo            🦉 Gufo                5.3
+ 42. gallo           🐓 Gallo               5.2
+ 43. tacchino        🦃 Tacchino            5.1
+ 44. pavone          🦚 Pavone              5.2
+ 45. iena            🐺 Iena                5.6
+ 46. volpe           🦊 Volpe               5.4
+ 47. gatto           🐈 Gatto               5.2
+ 48. lupo            🐺 Lupo                5.8
+ 49. maiale          🐖 Maiale              4.6
+ 50. cinghiale       🐗 Cinghiale           4.7
+ 51. gorilla         🦍 Gorilla             4.6
+ 52. canguro         🦘 Canguro             4.6
  53. aquila          🦅 Aquila              5.0
  54. cervo           🦌 Cervo               4.9
- 55. coccodrillo     🐊 Coccodrillo         4.8
+ 55. zebra           🦓 Zebra               4.7
  56. alce            🫎 Alce                4.7
- 57. zebra           🦓 Zebra               4.7
- 58. cinghiale       🐗 Cinghiale           4.7
- 59. gorilla         🦍 Gorilla             4.6
- 60. unicorno        🦄 Unicorno            4.6
- 61. maiale          🐖 Maiale              4.6
- 62. canguro         🦘 Canguro             4.6
- 63. drago           🐉 Drago               4.6
- 64. gazzella        🦌 Gazzella            4.6
- 65. giraffa         🦒 Giraffa             4.4
- 66. bisonte         🦬 Bisonte             4.4
- 67. mucca           🐄 Mucca               4.4
- 68. cavallo         🐎 Cavallo             4.3
- 69. ippopotamo      🦛 Ippopotamo          4.2
- 70. toro            🐂 Toro                4.2
- 71. pantera         🐈‍⬛ Pantera             4.2
- 72. panda           🐼 Panda               4.1
- 73. rinoceronte     🦏 Rinoceronte         4.0
- 74. orso            🐻 Orso                4.0
- 75. tigre           🐅 Tigre               3.8
- 76. trex            🦖 T-Rex               3.7
+ 57. mucca           🐄 Mucca               4.4
+ 58. cavallo         🐎 Cavallo             4.3
+ 59. giraffa         🦒 Giraffa             4.4
+ 60. panda           🐼 Panda               4.1
+ 61. coccodrillo     🐊 Coccodrillo         4.8
+ 62. bufalo          🐃 Bufalo              5.2
+ 63. bisonte         🦬 Bisonte             4.4
+ 64. toro            🐂 Toro                4.2
+ 65. ippopotamo      🦛 Ippopotamo          4.2
+ 66. orso            🐻 Orso                4.0
+ 67. rinoceronte     🦏 Rinoceronte         4.0
+ 68. unicorno        🦄 Unicorno            4.6
+ 69. pantera         🐈‍⬛ Pantera             4.2
+ 70. tigre           🐅 Tigre               3.8
+ 71. drago           🐉 Drago               4.6
+ 72. gazzella        🦌 Gazzella            4.6
+ 73. elefante        🐘 Elefante            5.1
+ 74. mammut          🦣 Mammut              5.1
+ 75. trex            🦖 T-Rex               3.7
+ 76. brontosauro     🦕 Brontosauro         5.4
  77. leopardo        🐆 Leopardo            3.6
  78. leone           🦁 Leone               3.3
  79. ghepardo        🐆 Ghepardo            3.1
@@ -1205,76 +1214,76 @@
 #   74 ammessi, tutti e 74. Squadra da 4.
   1. drago           🐉 Drago               8.9
   2. aquila          🦅 Aquila              8.8
-  3. tigre           🐅 Tigre               8.2
-  4. leone           🦁 Leone               7.9
-  5. gatto           🐈 Gatto               7.9
-  6. lontra          🦦 Lontra              7.9
-  7. gufo            🦉 Gufo                7.9
-  8. scimpanze       🐒 Scimpanzé           7.8
-  9. gibbone         🐵 Gibbone             7.8
- 10. unicorno        🦄 Unicorno            7.8
- 11. lupo            🐺 Lupo                7.8
- 12. formica         🐜 Formica             7.8
- 13. cane            🐕 Cane                7.5
- 14. pantera         🐈‍⬛ Pantera             7.5
- 15. canguro         🦘 Canguro             7.4
- 16. scoiattolo      🐿️ Scoiattolo          7.4
- 17. tasso           🦡 Tasso               7.2
- 18. capra           🐐 Capra               7.1
- 19. pappagallo      🦜 Pappagallo          7.1
- 20. volpe           🦊 Volpe               7.0
- 21. ragno           🕷️ Ragno               7.0
- 22. rana            🐸 Rana                7.0
- 23. gorilla         🦍 Gorilla             6.9
- 24. ghepardo        🐆 Ghepardo            6.9
- 25. leopardo        🐆 Leopardo            6.9
+  3. gufo            🦉 Gufo                7.9
+  4. gatto           🐈 Gatto               7.9
+  5. scoiattolo      🐿️ Scoiattolo          7.4
+  6. gibbone         🐵 Gibbone             7.8
+  7. scimpanze       🐒 Scimpanzé           7.8
+  8. tigre           🐅 Tigre               8.2
+  9. leopardo        🐆 Leopardo            6.9
+ 10. leone           🦁 Leone               7.9
+ 11. pantera         🐈‍⬛ Pantera             7.5
+ 12. unicorno        🦄 Unicorno            7.8
+ 13. lupo            🐺 Lupo                7.8
+ 14. canguro         🦘 Canguro             7.4
+ 15. capra           🐐 Capra               7.1
+ 16. lontra          🦦 Lontra              7.9
+ 17. ghepardo        🐆 Ghepardo            6.9
+ 18. gazzella        🦌 Gazzella            6.4
+ 19. cervo           🦌 Cervo               6.2
+ 20. cane            🐕 Cane                7.5
+ 21. volpe           🦊 Volpe               7.0
+ 22. tasso           🦡 Tasso               7.2
+ 23. coniglio        🐇 Coniglio            6.5
+ 24. pappagallo      🦜 Pappagallo          7.1
+ 25. gallo           🐓 Gallo               6.8
  26. cavallo         🐎 Cavallo             6.8
- 27. cigno           🦢 Cigno               6.8
- 28. gallo           🐓 Gallo               6.8
- 29. iena            🐺 Iena                6.8
- 30. asino           🫏 Asino               6.8
- 31. ratto           🐀 Ratto               6.6
- 32. granchio        🦀 Granchio            6.6
- 33. coniglio        🐇 Coniglio            6.5
- 34. castoro         🦫 Castoro             6.5
- 35. oca             🪿 Oca                 6.5
- 36. orso            🐻 Orso                6.4
- 37. scarabeo        🪲 Scarabeo            6.4
- 38. gazzella        🦌 Gazzella            6.4
- 39. cervo           🦌 Cervo               6.2
- 40. cinghiale       🐗 Cinghiale           6.2
- 41. scorpione       🦂 Scorpione           6.2
- 42. orango          🦧 Orango              6.1
- 43. serpente        🐍 Serpente            6.1
- 44. lucertola       🦎 Lucertola           6.1
- 45. fenicottero     🦩 Fenicottero         6.1
- 46. pavone          🦚 Pavone              6.1
+ 27. iena            🐺 Iena                6.8
+ 28. gorilla         🦍 Gorilla             6.9
+ 29. orso            🐻 Orso                6.4
+ 30. cigno           🦢 Cigno               6.8
+ 31. oca             🪿 Oca                 6.5
+ 32. anatra          🦆 Anatra              5.6
+ 33. rana            🐸 Rana                7.0
+ 34. ratto           🐀 Ratto               6.6
+ 35. castoro         🦫 Castoro             6.5
+ 36. ragno           🕷️ Ragno               7.0
+ 37. formica         🐜 Formica             7.8
+ 38. asino           🫏 Asino               6.8
+ 39. cinghiale       🐗 Cinghiale           6.2
+ 40. zebra           🦓 Zebra               5.8
+ 41. orango          🦧 Orango              6.1
+ 42. pavone          🦚 Pavone              6.1
+ 43. fenicottero     🦩 Fenicottero         6.1
+ 44. granchio        🦀 Granchio            6.6
+ 45. scarabeo        🪲 Scarabeo            6.4
+ 46. scorpione       🦂 Scorpione           6.2
  47. grillo          🦗 Grillo              6.1
- 48. trex            🦖 T-Rex               6.0
- 49. bufalo          🐃 Bufalo              5.9
- 50. zebra           🦓 Zebra               5.8
- 51. toro            🐂 Toro                5.8
- 52. rinoceronte     🦏 Rinoceronte         5.6
- 53. anatra          🦆 Anatra              5.6
- 54. elefante        🐘 Elefante            5.5
- 55. bisonte         🦬 Bisonte             5.5
- 56. lama            🦙 Lama                5.5
- 57. riccio          🦔 Riccio              5.5
- 58. cammello        🐫 Cammello            5.2
- 59. topo            🐁 Topo                5.2
- 60. giraffa         🦒 Giraffa             5.1
- 61. alce            🫎 Alce                5.1
- 62. tacchino        🦃 Tacchino            5.1
- 63. puzzola         🦨 Puzzola             5.0
- 64. coccinella      🐞 Coccinella          4.9
- 65. mammut          🦣 Mammut              4.6
- 66. ippopotamo      🦛 Ippopotamo          4.6
- 67. koala           🐨 Koala               4.5
- 68. panda           🐼 Panda               4.2
- 69. brontosauro     🦕 Brontosauro         4.1
- 70. maiale          🐖 Maiale              3.9
- 71. mucca           🐄 Mucca               3.8
- 72. pecora          🐑 Pecora              3.8
+ 48. lucertola       🦎 Lucertola           6.1
+ 49. topo            🐁 Topo                5.2
+ 50. serpente        🐍 Serpente            6.1
+ 51. alce            🫎 Alce                5.1
+ 52. bisonte         🦬 Bisonte             5.5
+ 53. bufalo          🐃 Bufalo              5.9
+ 54. toro            🐂 Toro                5.8
+ 55. lama            🦙 Lama                5.5
+ 56. cammello        🐫 Cammello            5.2
+ 57. trex            🦖 T-Rex               6.0
+ 58. giraffa         🦒 Giraffa             5.1
+ 59. rinoceronte     🦏 Rinoceronte         5.6
+ 60. tacchino        🦃 Tacchino            5.1
+ 61. puzzola         🦨 Puzzola             5.0
+ 62. riccio          🦔 Riccio              5.5
+ 63. coccinella      🐞 Coccinella          4.9
+ 64. koala           🐨 Koala               4.5
+ 65. panda           🐼 Panda               4.2
+ 66. maiale          🐖 Maiale              3.9
+ 67. pecora          🐑 Pecora              3.8
+ 68. mucca           🐄 Mucca               3.8
+ 69. elefante        🐘 Elefante            5.5
+ 70. mammut          🦣 Mammut              4.6
+ 71. ippopotamo      🦛 Ippopotamo          4.6
+ 72. brontosauro     🦕 Brontosauro         4.1
  73. dodo            🦤 Dodo                3.4
  74. lumaca          🐌 Lumaca              2.9
 
@@ -1283,76 +1292,76 @@
 #   premia : Coraggio x4, Stazza x2, Equilibrio x2
 #   74 ammessi, tutti e 74. Squadra da 2.
   1. drago           🐉 Drago               9.8
-  2. tigre           🐅 Tigre               9.0
-  3. leone           🦁 Leone               8.8
-  4. gorilla         🦍 Gorilla             8.2
-  5. orso            🐻 Orso                8.2
+  2. orso            🐻 Orso                8.2
+  3. tigre           🐅 Tigre               9.0
+  4. leone           🦁 Leone               8.8
+  5. gorilla         🦍 Gorilla             8.2
   6. unicorno        🦄 Unicorno            8.0
-  7. trex            🦖 T-Rex               8.0
-  8. rinoceronte     🦏 Rinoceronte         7.8
-  9. bufalo          🐃 Bufalo              7.8
- 10. elefante        🐘 Elefante            7.5
- 11. bisonte         🦬 Bisonte             7.5
- 12. cavallo         🐎 Cavallo             7.5
+  7. lupo            🐺 Lupo                7.5
+  8. pantera         🐈‍⬛ Pantera             7.5
+  9. leopardo        🐆 Leopardo            7.2
+ 10. bisonte         🦬 Bisonte             7.5
+ 11. bufalo          🐃 Bufalo              7.8
+ 12. rinoceronte     🦏 Rinoceronte         7.8
  13. toro            🐂 Toro                7.5
- 14. lupo            🐺 Lupo                7.5
- 15. aquila          🦅 Aquila              7.5
- 16. pantera         🐈‍⬛ Pantera             7.5
- 17. canguro         🦘 Canguro             7.2
- 18. leopardo        🐆 Leopardo            7.2
- 19. cinghiale       🐗 Cinghiale           7.0
- 20. iena            🐺 Iena                7.0
- 21. asino           🫏 Asino               7.0
- 22. mammut          🦣 Mammut              6.8
- 23. ippopotamo      🦛 Ippopotamo          6.8
- 24. alce            🫎 Alce                6.8
- 25. scimpanze       🐒 Scimpanzé           6.5
- 26. cammello        🐫 Cammello            6.5
- 27. cane            🐕 Cane                6.5
- 28. tasso           🦡 Tasso               6.5
- 29. orango          🦧 Orango              6.2
- 30. giraffa         🦒 Giraffa             6.2
+ 14. cavallo         🐎 Cavallo             7.5
+ 15. cinghiale       🐗 Cinghiale           7.0
+ 16. alce            🫎 Alce                6.8
+ 17. iena            🐺 Iena                7.0
+ 18. trex            🦖 T-Rex               8.0
+ 19. elefante        🐘 Elefante            7.5
+ 20. mammut          🦣 Mammut              6.8
+ 21. canguro         🦘 Canguro             7.2
+ 22. aquila          🦅 Aquila              7.5
+ 23. cane            🐕 Cane                6.5
+ 24. ippopotamo      🦛 Ippopotamo          6.8
+ 25. tasso           🦡 Tasso               6.5
+ 26. asino           🫏 Asino               7.0
+ 27. scimpanze       🐒 Scimpanzé           6.5
+ 28. orango          🦧 Orango              6.2
+ 29. cammello        🐫 Cammello            6.5
+ 30. panda           🐼 Panda               5.5
  31. capra           🐐 Capra               6.2
- 32. ghepardo        🐆 Ghepardo            6.2
- 33. lontra          🦦 Lontra              6.2
- 34. gufo            🦉 Gufo                6.2
- 35. brontosauro     🦕 Brontosauro         6.2
- 36. gibbone         🐵 Gibbone             6.0
- 37. cervo           🦌 Cervo               6.0
- 38. zebra           🦓 Zebra               6.0
- 39. cigno           🦢 Cigno               6.0
- 40. formica         🐜 Formica             6.0
- 41. gatto           🐈 Gatto               5.8
- 42. lama            🦙 Lama                5.5
- 43. mucca           🐄 Mucca               5.5
- 44. volpe           🦊 Volpe               5.5
- 45. panda           🐼 Panda               5.5
- 46. castoro         🦫 Castoro             5.5
+ 32. cervo           🦌 Cervo               6.0
+ 33. zebra           🦓 Zebra               6.0
+ 34. ghepardo        🐆 Ghepardo            6.2
+ 35. lontra          🦦 Lontra              6.2
+ 36. giraffa         🦒 Giraffa             6.2
+ 37. gufo            🦉 Gufo                6.2
+ 38. brontosauro     🦕 Brontosauro         6.2
+ 39. gibbone         🐵 Gibbone             6.0
+ 40. gatto           🐈 Gatto               5.8
+ 41. volpe           🦊 Volpe               5.5
+ 42. castoro         🦫 Castoro             5.5
+ 43. cigno           🦢 Cigno               6.0
+ 44. mucca           🐄 Mucca               5.5
+ 45. maiale          🐖 Maiale              4.8
+ 46. lama            🦙 Lama                5.5
  47. oca             🪿 Oca                 5.5
  48. gallo           🐓 Gallo               5.5
- 49. serpente        🐍 Serpente            5.2
+ 49. gazzella        🦌 Gazzella            5.2
  50. scoiattolo      🐿️ Scoiattolo          5.2
  51. pappagallo      🦜 Pappagallo          5.2
- 52. granchio        🦀 Granchio            5.2
- 53. gazzella        🦌 Gazzella            5.2
- 54. ragno           🕷️ Ragno               5.0
- 55. rana            🐸 Rana                5.0
- 56. maiale          🐖 Maiale              4.8
- 57. ratto           🐀 Ratto               4.8
- 58. fenicottero     🦩 Fenicottero         4.8
- 59. tacchino        🦃 Tacchino            4.8
- 60. pavone          🦚 Pavone              4.8
- 61. scarabeo        🪲 Scarabeo            4.8
+ 52. formica         🐜 Formica             6.0
+ 53. ratto           🐀 Ratto               4.8
+ 54. tacchino        🦃 Tacchino            4.8
+ 55. pavone          🦚 Pavone              4.8
+ 56. scarabeo        🪲 Scarabeo            4.8
+ 57. serpente        🐍 Serpente            5.2
+ 58. coniglio        🐇 Coniglio            4.5
+ 59. granchio        🦀 Granchio            5.2
+ 60. ragno           🕷️ Ragno               5.0
+ 61. rana            🐸 Rana                5.0
  62. scorpione       🦂 Scorpione           4.5
- 63. coniglio        🐇 Coniglio            4.5
+ 63. fenicottero     🦩 Fenicottero         4.8
  64. lucertola       🦎 Lucertola           4.2
  65. anatra          🦆 Anatra              4.2
  66. grillo          🦗 Grillo              4.2
- 67. riccio          🦔 Riccio              4.0
- 68. pecora          🐑 Pecora              3.5
- 69. topo            🐁 Topo                3.5
- 70. puzzola         🦨 Puzzola             3.5
- 71. koala           🐨 Koala               3.5
+ 67. pecora          🐑 Pecora              3.5
+ 68. riccio          🦔 Riccio              4.0
+ 69. puzzola         🦨 Puzzola             3.5
+ 70. koala           🐨 Koala               3.5
+ 71. topo            🐁 Topo                3.5
  72. dodo            🦤 Dodo                3.2
  73. coccinella      🐞 Coccinella          3.2
  74. lumaca          🐌 Lumaca              1.8
@@ -1361,77 +1370,77 @@
 #   accesso: Terra>=5
 #   premia : Agilita x4, Equilibrio x4
 #   74 ammessi, tutti e 74. Squadra da 2.
-  1. gibbone         🐵 Gibbone            10.0
+  1. drago           🐉 Drago               8.5
   2. gatto           🐈 Gatto              10.0
-  3. scoiattolo      🐿️ Scoiattolo         10.0
-  4. scimpanze       🐒 Scimpanzé           9.0
-  5. ragno           🕷️ Ragno               9.0
+  3. gibbone         🐵 Gibbone            10.0
+  4. scoiattolo      🐿️ Scoiattolo         10.0
+  5. scimpanze       🐒 Scimpanzé           9.0
   6. lontra          🦦 Lontra              9.0
-  7. aquila          🦅 Aquila              9.0
-  8. capra           🐐 Capra               8.5
-  9. canguro         🦘 Canguro             8.5
- 10. coniglio        🐇 Coniglio            8.5
- 11. gufo            🦉 Gufo                8.5
- 12. rana            🐸 Rana                8.5
- 13. drago           🐉 Drago               8.5
- 14. leopardo        🐆 Leopardo            8.5
- 15. gazzella        🦌 Gazzella            8.5
- 16. unicorno        🦄 Unicorno            8.0
- 17. tigre           🐅 Tigre               8.0
- 18. volpe           🦊 Volpe               8.0
- 19. lucertola       🦎 Lucertola           8.0
- 20. ratto           🐀 Ratto               8.0
- 21. pappagallo      🦜 Pappagallo          8.0
- 22. grillo          🦗 Grillo              8.0
- 23. pantera         🐈‍⬛ Pantera             8.0
- 24. ghepardo        🐆 Ghepardo            7.5
- 25. topo            🐁 Topo                7.5
- 26. orango          🦧 Orango              7.0
- 27. cervo           🦌 Cervo               7.0
+  7. leopardo        🐆 Leopardo            8.5
+  8. gazzella        🦌 Gazzella            8.5
+  9. pantera         🐈‍⬛ Pantera             8.0
+ 10. tigre           🐅 Tigre               8.0
+ 11. capra           🐐 Capra               8.5
+ 12. canguro         🦘 Canguro             8.5
+ 13. unicorno        🦄 Unicorno            8.0
+ 14. volpe           🦊 Volpe               8.0
+ 15. coniglio        🐇 Coniglio            8.5
+ 16. aquila          🦅 Aquila              9.0
+ 17. gufo            🦉 Gufo                8.5
+ 18. ragno           🕷️ Ragno               9.0
+ 19. rana            🐸 Rana                8.5
+ 20. ghepardo        🐆 Ghepardo            7.5
+ 21. cervo           🦌 Cervo               7.0
+ 22. ratto           🐀 Ratto               8.0
+ 23. lucertola       🦎 Lucertola           8.0
+ 24. pappagallo      🦜 Pappagallo          8.0
+ 25. grillo          🦗 Grillo              8.0
+ 26. lupo            🐺 Lupo                7.0
+ 27. cane            🐕 Cane                7.0
  28. cavallo         🐎 Cavallo             7.0
  29. leone           🦁 Leone               7.0
- 30. lupo            🐺 Lupo                7.0
- 31. cane            🐕 Cane                7.0
- 32. cigno           🦢 Cigno               6.5
+ 30. orango          🦧 Orango              7.0
+ 31. cigno           🦢 Cigno               6.5
+ 32. fenicottero     🦩 Fenicottero         6.0
  33. pavone          🦚 Pavone              6.5
- 34. formica         🐜 Formica             6.5
- 35. gorilla         🦍 Gorilla             6.0
- 36. serpente        🐍 Serpente            6.0
- 37. scorpione       🦂 Scorpione           6.0
- 38. castoro         🦫 Castoro             6.0
- 39. fenicottero     🦩 Fenicottero         6.0
- 40. anatra          🦆 Anatra              6.0
- 41. oca             🪿 Oca                 6.0
- 42. gallo           🐓 Gallo               6.0
- 43. granchio        🦀 Granchio            6.0
- 44. iena            🐺 Iena                6.0
- 45. asino           🫏 Asino               6.0
- 46. zebra           🦓 Zebra               5.5
- 47. coccinella      🐞 Coccinella          5.5
- 48. tasso           🦡 Tasso               5.0
- 49. puzzola         🦨 Puzzola             5.0
- 50. scarabeo        🪲 Scarabeo            5.0
- 51. lama            🦙 Lama                4.5
- 52. cinghiale       🐗 Cinghiale           4.5
- 53. orso            🐻 Orso                4.5
- 54. tacchino        🦃 Tacchino            4.5
- 55. trex            🦖 T-Rex               4.5
- 56. giraffa         🦒 Giraffa             4.0
- 57. panda           🐼 Panda               4.0
- 58. riccio          🦔 Riccio              4.0
- 59. koala           🐨 Koala               4.0
- 60. bisonte         🦬 Bisonte             3.5
- 61. alce            🫎 Alce                3.5
+ 34. topo            🐁 Topo                7.5
+ 35. formica         🐜 Formica             6.5
+ 36. castoro         🦫 Castoro             6.0
+ 37. gorilla         🦍 Gorilla             6.0
+ 38. tasso           🦡 Tasso               5.0
+ 39. zebra           🦓 Zebra               5.5
+ 40. asino           🫏 Asino               6.0
+ 41. iena            🐺 Iena                6.0
+ 42. anatra          🦆 Anatra              6.0
+ 43. oca             🪿 Oca                 6.0
+ 44. gallo           🐓 Gallo               6.0
+ 45. serpente        🐍 Serpente            6.0
+ 46. scorpione       🦂 Scorpione           6.0
+ 47. granchio        🦀 Granchio            6.0
+ 48. coccinella      🐞 Coccinella          5.5
+ 49. lama            🦙 Lama                4.5
+ 50. puzzola         🦨 Puzzola             5.0
+ 51. scarabeo        🪲 Scarabeo            5.0
+ 52. orso            🐻 Orso                4.5
+ 53. cinghiale       🐗 Cinghiale           4.5
+ 54. panda           🐼 Panda               4.0
+ 55. giraffa         🦒 Giraffa             4.0
+ 56. tacchino        🦃 Tacchino            4.5
+ 57. trex            🦖 T-Rex               4.5
+ 58. koala           🐨 Koala               4.0
+ 59. riccio          🦔 Riccio              4.0
+ 60. alce            🫎 Alce                3.5
+ 61. bisonte         🦬 Bisonte             3.5
  62. cammello        🐫 Cammello            3.5
- 63. maiale          🐖 Maiale              3.5
- 64. pecora          🐑 Pecora              3.5
+ 63. pecora          🐑 Pecora              3.5
+ 64. maiale          🐖 Maiale              3.5
  65. bufalo          🐃 Bufalo              3.5
- 66. elefante        🐘 Elefante            3.0
- 67. toro            🐂 Toro                3.0
- 68. mammut          🦣 Mammut              2.5
- 69. rinoceronte     🦏 Rinoceronte         2.5
- 70. ippopotamo      🦛 Ippopotamo          2.5
- 71. mucca           🐄 Mucca               2.5
+ 66. toro            🐂 Toro                3.0
+ 67. elefante        🐘 Elefante            3.0
+ 68. mucca           🐄 Mucca               2.5
+ 69. mammut          🦣 Mammut              2.5
+ 70. rinoceronte     🦏 Rinoceronte         2.5
+ 71. ippopotamo      🦛 Ippopotamo          2.5
  72. dodo            🦤 Dodo                2.5
  73. brontosauro     🦕 Brontosauro         2.0
  74. lumaca          🐌 Lumaca              1.5
@@ -1440,62 +1449,62 @@
 #   accesso: Terra>=6
 #   premia : Fiato x5, Velocita x1
 #   66 ammessi, tutti e 66. Squadra da 4.
-  1. cammello        🐫 Cammello            9.2
-  2. drago           🐉 Drago               9.0
-  3. asino           🫏 Asino               9.0
-  4. lupo            🐺 Lupo                8.8
+  1. drago           🐉 Drago               9.0
+  2. lupo            🐺 Lupo                8.8
+  3. cavallo         🐎 Cavallo             8.2
+  4. cammello        🐫 Cammello            9.2
   5. iena            🐺 Iena                8.8
-  6. cavallo         🐎 Cavallo             8.2
+  6. asino           🫏 Asino               9.0
   7. unicorno        🦄 Unicorno            8.2
-  8. bufalo          🐃 Bufalo              7.5
-  9. formica         🐜 Formica             7.3
- 10. gibbone         🐵 Gibbone             7.2
- 11. cervo           🦌 Cervo               7.2
- 12. zebra           🦓 Zebra               7.2
- 13. cane            🐕 Cane                7.0
- 14. bisonte         🦬 Bisonte             6.8
- 15. alce            🫎 Alce                6.8
- 16. lama            🦙 Lama                6.7
- 17. lontra          🦦 Lontra              6.7
- 18. elefante        🐘 Elefante            6.5
- 19. mammut          🦣 Mammut              6.5
- 20. oca             🪿 Oca                 6.5
- 21. gazzella        🦌 Gazzella            6.5
- 22. tigre           🐅 Tigre               6.3
- 23. brontosauro     🦕 Brontosauro         6.3
+  8. cane            🐕 Cane                7.0
+  9. cervo           🦌 Cervo               7.2
+ 10. alce            🫎 Alce                6.8
+ 11. zebra           🦓 Zebra               7.2
+ 12. gazzella        🦌 Gazzella            6.5
+ 13. bisonte         🦬 Bisonte             6.8
+ 14. lama            🦙 Lama                6.7
+ 15. bufalo          🐃 Bufalo              7.5
+ 16. tigre           🐅 Tigre               6.3
+ 17. orso            🐻 Orso                6.0
+ 18. volpe           🦊 Volpe               6.2
+ 19. canguro         🦘 Canguro             6.2
+ 20. gibbone         🐵 Gibbone             7.2
+ 21. lontra          🦦 Lontra              6.7
+ 22. scimpanze       🐒 Scimpanzé           6.0
+ 23. capra           🐐 Capra               5.8
  24. pantera         🐈‍⬛ Pantera             6.3
- 25. canguro         🦘 Canguro             6.2
- 26. volpe           🦊 Volpe               6.2
- 27. trex            🦖 T-Rex               6.2
- 28. scimpanze       🐒 Scimpanzé           6.0
- 29. rinoceronte     🦏 Rinoceronte         6.0
+ 25. leopardo        🐆 Leopardo            5.5
+ 26. leone           🦁 Leone               5.5
+ 27. formica         🐜 Formica             7.3
+ 28. cinghiale       🐗 Cinghiale           6.0
+ 29. gorilla         🦍 Gorilla             5.8
  30. giraffa         🦒 Giraffa             6.0
  31. toro            🐂 Toro                6.0
- 32. cinghiale       🐗 Cinghiale           6.0
- 33. orso            🐻 Orso                6.0
- 34. gorilla         🦍 Gorilla             5.8
- 35. capra           🐐 Capra               5.8
+ 32. rinoceronte     🦏 Rinoceronte         6.0
+ 33. elefante        🐘 Elefante            6.5
+ 34. mammut          🦣 Mammut              6.5
+ 35. oca             🪿 Oca                 6.5
  36. tasso           🦡 Tasso               5.7
- 37. leone           🦁 Leone               5.5
- 38. castoro         🦫 Castoro             5.5
- 39. leopardo        🐆 Leopardo            5.5
- 40. gatto           🐈 Gatto               5.3
- 41. coniglio        🐇 Coniglio            5.3
- 42. scoiattolo      🐿️ Scoiattolo          5.3
- 43. ratto           🐀 Ratto               5.2
- 44. maiale          🐖 Maiale              5.0
- 45. ghepardo        🐆 Ghepardo            5.0
- 46. serpente        🐍 Serpente            5.0
- 47. ragno           🕷️ Ragno               5.0
+ 37. castoro         🦫 Castoro             5.5
+ 38. gatto           🐈 Gatto               5.3
+ 39. coniglio        🐇 Coniglio            5.3
+ 40. ghepardo        🐆 Ghepardo            5.0
+ 41. scoiattolo      🐿️ Scoiattolo          5.3
+ 42. ratto           🐀 Ratto               5.2
+ 43. maiale          🐖 Maiale              5.0
+ 44. trex            🦖 T-Rex               6.2
+ 45. brontosauro     🦕 Brontosauro         6.3
+ 46. pecora          🐑 Pecora              4.8
+ 47. mucca           🐄 Mucca               4.8
  48. ippopotamo      🦛 Ippopotamo          4.8
- 49. mucca           🐄 Mucca               4.8
- 50. pecora          🐑 Pecora              4.8
- 51. fenicottero     🦩 Fenicottero         4.8
- 52. orango          🦧 Orango              4.7
+ 49. orango          🦧 Orango              4.7
+ 50. serpente        🐍 Serpente            5.0
+ 51. ragno           🕷️ Ragno               5.0
+ 52. fenicottero     🦩 Fenicottero         4.8
  53. scarabeo        🪲 Scarabeo            4.7
- 54. lucertola       🦎 Lucertola           4.3
- 55. grillo          🦗 Grillo              4.3
- 56. topo            🐁 Topo                4.2
+ 54. topo            🐁 Topo                4.2
+ 55. lucertola       🦎 Lucertola           4.3
+ 56. grillo          🦗 Grillo              4.3
  57. gallo           🐓 Gallo               4.2
  58. pavone          🦚 Pavone              4.2
  59. rana            🐸 Rana                4.2
@@ -1511,77 +1520,77 @@
 #   accesso: Terra>=5
 #   premia : Equilibrio x4, Agilita x3, Coraggio x2
 #   74 ammessi, tutti e 74. Squadra da 3.
-  1. gibbone         🐵 Gibbone             9.1
+  1. drago           🐉 Drago               9.0
   2. gatto           🐈 Gatto               9.1
-  3. aquila          🦅 Aquila              9.0
-  4. drago           🐉 Drago               9.0
-  5. scoiattolo      🐿️ Scoiattolo          8.9
-  6. scimpanze       🐒 Scimpanzé           8.6
-  7. lontra          🦦 Lontra              8.6
+  3. gibbone         🐵 Gibbone             9.1
+  4. scoiattolo      🐿️ Scoiattolo          8.9
+  5. scimpanze       🐒 Scimpanzé           8.6
+  6. leopardo        🐆 Leopardo            8.1
+  7. pantera         🐈‍⬛ Pantera             8.0
   8. tigre           🐅 Tigre               8.4
-  9. canguro         🦘 Canguro             8.2
- 10. gufo            🦉 Gufo                8.2
- 11. unicorno        🦄 Unicorno            8.1
- 12. ragno           🕷️ Ragno               8.1
- 13. leopardo        🐆 Leopardo            8.1
- 14. capra           🐐 Capra               8.0
- 15. pantera         🐈‍⬛ Pantera             8.0
- 16. rana            🐸 Rana                7.8
- 17. leone           🦁 Leone               7.7
- 18. gazzella        🦌 Gazzella            7.7
- 19. volpe           🦊 Volpe               7.6
+  9. capra           🐐 Capra               8.0
+ 10. canguro         🦘 Canguro             8.2
+ 11. lontra          🦦 Lontra              8.6
+ 12. aquila          🦅 Aquila              9.0
+ 13. gufo            🦉 Gufo                8.2
+ 14. unicorno        🦄 Unicorno            8.1
+ 15. lupo            🐺 Lupo                7.4
+ 16. leone           🦁 Leone               7.7
+ 17. volpe           🦊 Volpe               7.6
+ 18. ghepardo        🐆 Ghepardo            7.3
+ 19. gazzella        🦌 Gazzella            7.7
  20. coniglio        🐇 Coniglio            7.6
- 21. pappagallo      🦜 Pappagallo          7.6
- 22. lupo            🐺 Lupo                7.4
- 23. ghepardo        🐆 Ghepardo            7.3
- 24. ratto           🐀 Ratto               7.3
- 25. cane            🐕 Cane                7.2
- 26. cavallo         🐎 Cavallo             7.1
- 27. lucertola       🦎 Lucertola           7.1
- 28. grillo          🦗 Grillo              7.1
- 29. formica         🐜 Formica             6.9
- 30. orango          🦧 Orango              6.8
- 31. cervo           🦌 Cervo               6.8
- 32. gorilla         🦍 Gorilla             6.7
- 33. cigno           🦢 Cigno               6.6
- 34. topo            🐁 Topo                6.4
- 35. iena            🐺 Iena                6.4
- 36. asino           🫏 Asino               6.3
- 37. gallo           🐓 Gallo               6.2
- 38. pavone          🦚 Pavone              6.2
- 39. castoro         🦫 Castoro             6.1
- 40. oca             🪿 Oca                 6.1
- 41. granchio        🦀 Granchio            6.1
- 42. serpente        🐍 Serpente            6.0
- 43. scorpione       🦂 Scorpione           5.9
- 44. tasso           🦡 Tasso               5.9
- 45. fenicottero     🦩 Fenicottero         5.9
- 46. zebra           🦓 Zebra               5.7
- 47. anatra          🦆 Anatra              5.7
- 48. orso            🐻 Orso                5.6
- 49. trex            🦖 T-Rex               5.4
- 50. cinghiale       🐗 Cinghiale           5.3
- 51. scarabeo        🪲 Scarabeo            5.3
- 52. coccinella      🐞 Coccinella          5.0
- 53. lama            🦙 Lama                4.9
- 54. puzzola         🦨 Puzzola             4.8
- 55. tacchino        🦃 Tacchino            4.7
- 56. bufalo          🐃 Bufalo              4.7
- 57. giraffa         🦒 Giraffa             4.6
- 58. bisonte         🦬 Bisonte             4.6
- 59. alce            🫎 Alce                4.3
- 60. cammello        🐫 Cammello            4.3
- 61. toro            🐂 Toro                4.3
- 62. riccio          🦔 Riccio              4.3
- 63. elefante        🐘 Elefante            4.2
- 64. panda           🐼 Panda               4.2
- 65. rinoceronte     🦏 Rinoceronte         4.0
- 66. koala           🐨 Koala               4.0
- 67. maiale          🐖 Maiale              3.7
- 68. mammut          🦣 Mammut              3.6
- 69. ippopotamo      🦛 Ippopotamo          3.6
- 70. pecora          🐑 Pecora              3.4
- 71. mucca           🐄 Mucca               3.1
+ 21. cane            🐕 Cane                7.2
+ 22. orango          🦧 Orango              6.8
+ 23. gorilla         🦍 Gorilla             6.7
+ 24. cervo           🦌 Cervo               6.8
+ 25. cavallo         🐎 Cavallo             7.1
+ 26. ragno           🕷️ Ragno               8.1
+ 27. pappagallo      🦜 Pappagallo          7.6
+ 28. ratto           🐀 Ratto               7.3
+ 29. rana            🐸 Rana                7.8
+ 30. iena            🐺 Iena                6.4
+ 31. tasso           🦡 Tasso               5.9
+ 32. orso            🐻 Orso                5.6
+ 33. cinghiale       🐗 Cinghiale           5.3
+ 34. lucertola       🦎 Lucertola           7.1
+ 35. castoro         🦫 Castoro             6.1
+ 36. cigno           🦢 Cigno               6.6
+ 37. zebra           🦓 Zebra               5.7
+ 38. asino           🫏 Asino               6.3
+ 39. grillo          🦗 Grillo              7.1
+ 40. formica         🐜 Formica             6.9
+ 41. topo            🐁 Topo                6.4
+ 42. pavone          🦚 Pavone              6.2
+ 43. gallo           🐓 Gallo               6.2
+ 44. oca             🪿 Oca                 6.1
+ 45. anatra          🦆 Anatra              5.7
+ 46. lama            🦙 Lama                4.9
+ 47. alce            🫎 Alce                4.3
+ 48. bisonte         🦬 Bisonte             4.6
+ 49. bufalo          🐃 Bufalo              4.7
+ 50. serpente        🐍 Serpente            6.0
+ 51. trex            🦖 T-Rex               5.4
+ 52. fenicottero     🦩 Fenicottero         5.9
+ 53. granchio        🦀 Granchio            6.1
+ 54. scorpione       🦂 Scorpione           5.9
+ 55. scarabeo        🪲 Scarabeo            5.3
+ 56. toro            🐂 Toro                4.3
+ 57. cammello        🐫 Cammello            4.3
+ 58. giraffa         🦒 Giraffa             4.6
+ 59. panda           🐼 Panda               4.2
+ 60. puzzola         🦨 Puzzola             4.8
+ 61. tacchino        🦃 Tacchino            4.7
+ 62. coccinella      🐞 Coccinella          5.0
+ 63. maiale          🐖 Maiale              3.7
+ 64. koala           🐨 Koala               4.0
+ 65. elefante        🐘 Elefante            4.2
+ 66. rinoceronte     🦏 Rinoceronte         4.0
+ 67. mammut          🦣 Mammut              3.6
+ 68. ippopotamo      🦛 Ippopotamo          3.6
+ 69. pecora          🐑 Pecora              3.4
+ 70. mucca           🐄 Mucca               3.1
+ 71. riccio          🦔 Riccio              4.3
  72. brontosauro     🦕 Brontosauro         3.0
  73. dodo            🦤 Dodo                2.7
  74. lumaca          🐌 Lumaca              1.7
@@ -1591,74 +1600,74 @@
 #   premia : Velocita x4, Coraggio x3, Equilibrio x2
 #   74 ammessi, tutti e 74. Squadra da 3.
   1. drago           🐉 Drago               9.6
-  2. aquila          🦅 Aquila              9.0
-  3. unicorno        🦄 Unicorno            8.7
-  4. tigre           🐅 Tigre               8.7
-  5. leone           🦁 Leone               8.4
-  6. ghepardo        🐆 Ghepardo            8.3
+  2. ghepardo        🐆 Ghepardo            8.3
+  3. tigre           🐅 Tigre               8.7
+  4. leone           🦁 Leone               8.4
+  5. leopardo        🐆 Leopardo            7.7
+  6. lupo            🐺 Lupo                8.1
   7. cavallo         🐎 Cavallo             8.1
-  8. lupo            🐺 Lupo                8.1
+  8. unicorno        🦄 Unicorno            8.7
   9. pantera         🐈‍⬛ Pantera             8.0
- 10. gibbone         🐵 Gibbone             7.8
- 11. leopardo        🐆 Leopardo            7.7
- 12. iena            🐺 Iena                7.6
- 13. canguro         🦘 Canguro             7.4
- 14. gazzella        🦌 Gazzella            7.4
+ 10. aquila          🦅 Aquila              9.0
+ 11. gazzella        🦌 Gazzella            7.4
+ 12. cervo           🦌 Cervo               7.1
+ 13. iena            🐺 Iena                7.6
+ 14. canguro         🦘 Canguro             7.4
  15. cane            🐕 Cane                7.3
- 16. gatto           🐈 Gatto               7.3
- 17. cervo           🦌 Cervo               7.1
- 18. scimpanze       🐒 Scimpanzé           7.0
- 19. scoiattolo      🐿️ Scoiattolo          7.0
- 20. gufo            🦉 Gufo                7.0
- 21. trex            🦖 T-Rex               7.0
- 22. zebra           🦓 Zebra               6.9
- 23. volpe           🦊 Volpe               6.9
- 24. orso            🐻 Orso                6.8
- 25. gorilla         🦍 Gorilla             6.6
- 26. lontra          🦦 Lontra              6.6
- 27. cinghiale       🐗 Cinghiale           6.4
- 28. coniglio        🐇 Coniglio            6.4
- 29. pappagallo      🦜 Pappagallo          6.4
- 30. rinoceronte     🦏 Rinoceronte         6.3
- 31. toro            🐂 Toro                6.3
- 32. bisonte         🦬 Bisonte             6.2
- 33. capra           🐐 Capra               6.2
- 34. ratto           🐀 Ratto               6.1
- 35. cigno           🦢 Cigno               6.0
- 36. formica         🐜 Formica             6.0
- 37. bufalo          🐃 Bufalo              6.0
- 38. alce            🫎 Alce                5.9
- 39. ragno           🕷️ Ragno               5.9
- 40. tasso           🦡 Tasso               5.9
- 41. gallo           🐓 Gallo               5.9
- 42. rana            🐸 Rana                5.9
- 43. giraffa         🦒 Giraffa             5.8
- 44. lucertola       🦎 Lucertola           5.8
- 45. grillo          🦗 Grillo              5.8
- 46. asino           🫏 Asino               5.8
- 47. serpente        🐍 Serpente            5.6
- 48. cammello        🐫 Cammello            5.4
- 49. pavone          🦚 Pavone              5.4
- 50. elefante        🐘 Elefante            5.3
- 51. lama            🦙 Lama                5.3
- 52. oca             🪿 Oca                 5.3
- 53. scorpione       🦂 Scorpione           5.0
- 54. fenicottero     🦩 Fenicottero         5.0
- 55. orango          🦧 Orango              4.9
- 56. castoro         🦫 Castoro             4.9
+ 16. orso            🐻 Orso                6.8
+ 17. gibbone         🐵 Gibbone             7.8
+ 18. gatto           🐈 Gatto               7.3
+ 19. zebra           🦓 Zebra               6.9
+ 20. volpe           🦊 Volpe               6.9
+ 21. capra           🐐 Capra               6.2
+ 22. scoiattolo      🐿️ Scoiattolo          7.0
+ 23. scimpanze       🐒 Scimpanzé           7.0
+ 24. gorilla         🦍 Gorilla             6.6
+ 25. cinghiale       🐗 Cinghiale           6.4
+ 26. bisonte         🦬 Bisonte             6.2
+ 27. toro            🐂 Toro                6.3
+ 28. rinoceronte     🦏 Rinoceronte         6.3
+ 29. trex            🦖 T-Rex               7.0
+ 30. alce            🫎 Alce                5.9
+ 31. bufalo          🐃 Bufalo              6.0
+ 32. coniglio        🐇 Coniglio            6.4
+ 33. lontra          🦦 Lontra              6.6
+ 34. gufo            🦉 Gufo                7.0
+ 35. tasso           🦡 Tasso               5.9
+ 36. ratto           🐀 Ratto               6.1
+ 37. asino           🫏 Asino               5.8
+ 38. giraffa         🦒 Giraffa             5.8
+ 39. cammello        🐫 Cammello            5.4
+ 40. lama            🦙 Lama                5.3
+ 41. pappagallo      🦜 Pappagallo          6.4
+ 42. cigno           🦢 Cigno               6.0
+ 43. oca             🪿 Oca                 5.3
+ 44. gallo           🐓 Gallo               5.9
+ 45. pavone          🦚 Pavone              5.4
+ 46. formica         🐜 Formica             6.0
+ 47. orango          🦧 Orango              4.9
+ 48. rana            🐸 Rana                5.9
+ 49. lucertola       🦎 Lucertola           5.8
+ 50. grillo          🦗 Grillo              5.8
+ 51. serpente        🐍 Serpente            5.6
+ 52. ragno           🕷️ Ragno               5.9
+ 53. elefante        🐘 Elefante            5.3
+ 54. mammut          🦣 Mammut              4.8
+ 55. castoro         🦫 Castoro             4.9
+ 56. scorpione       🦂 Scorpione           5.0
  57. granchio        🦀 Granchio            4.9
- 58. mammut          🦣 Mammut              4.8
- 59. ippopotamo      🦛 Ippopotamo          4.8
- 60. topo            🐁 Topo                4.8
- 61. anatra          🦆 Anatra              4.7
- 62. scarabeo        🪲 Scarabeo            4.7
- 63. tacchino        🦃 Tacchino            4.6
- 64. maiale          🐖 Maiale              4.4
- 65. puzzola         🦨 Puzzola             4.2
- 66. mucca           🐄 Mucca               4.1
- 67. brontosauro     🦕 Brontosauro         4.0
- 68. panda           🐼 Panda               3.9
- 69. pecora          🐑 Pecora              3.7
+ 58. fenicottero     🦩 Fenicottero         5.0
+ 59. topo            🐁 Topo                4.8
+ 60. anatra          🦆 Anatra              4.7
+ 61. tacchino        🦃 Tacchino            4.6
+ 62. maiale          🐖 Maiale              4.4
+ 63. ippopotamo      🦛 Ippopotamo          4.8
+ 64. mucca           🐄 Mucca               4.1
+ 65. pecora          🐑 Pecora              3.7
+ 66. panda           🐼 Panda               3.9
+ 67. puzzola         🦨 Puzzola             4.2
+ 68. scarabeo        🪲 Scarabeo            4.7
+ 69. brontosauro     🦕 Brontosauro         4.0
  70. riccio          🦔 Riccio              3.7
  71. coccinella      🐞 Coccinella          3.7
  72. koala           🐨 Koala               3.1
@@ -1669,78 +1678,77 @@
 #   accesso: Terra>=5
 #   premia : Agilita x4, Riflessi x3
 #   74 ammessi, tutti e 74. Squadra da 4.
-  1. gibbone         🐵 Gibbone            10.0
+  1. drago           🐉 Drago               8.3
   2. gatto           🐈 Gatto               9.1
-  3. scoiattolo      🐿️ Scoiattolo          9.1
-  4. scimpanze       🐒 Scimpanzé           9.0
-  5. lontra          🦦 Lontra              9.0
-  6. aquila          🦅 Aquila              9.0
-  7. gazzella        🦌 Gazzella            9.0
-  8. leopardo        🐆 Leopardo            8.6
+  3. gibbone         🐵 Gibbone            10.0
+  4. scoiattolo      🐿️ Scoiattolo          9.1
+  5. leopardo        🐆 Leopardo            8.6
+  6. ghepardo        🐆 Ghepardo            8.0
+  7. lontra          🦦 Lontra              9.0
+  8. pantera         🐈‍⬛ Pantera             8.4
   9. tigre           🐅 Tigre               8.4
- 10. gufo            🦉 Gufo                8.4
- 11. pappagallo      🦜 Pappagallo          8.4
- 12. pantera         🐈‍⬛ Pantera             8.4
- 13. unicorno        🦄 Unicorno            8.3
- 14. drago           🐉 Drago               8.3
- 15. ghepardo        🐆 Ghepardo            8.0
- 16. volpe           🦊 Volpe               8.0
- 17. ratto           🐀 Ratto               8.0
- 18. lupo            🐺 Lupo                7.9
- 19. ragno           🕷️ Ragno               7.7
- 20. capra           🐐 Capra               7.6
- 21. canguro         🦘 Canguro             7.6
- 22. topo            🐁 Topo                7.6
- 23. cervo           🦌 Cervo               7.4
- 24. leone           🦁 Leone               7.4
- 25. cane            🐕 Cane                7.4
- 26. lucertola       🦎 Lucertola           7.1
- 27. coniglio        🐇 Coniglio            7.1
- 28. rana            🐸 Rana                7.1
+ 10. scimpanze       🐒 Scimpanzé           9.0
+ 11. volpe           🦊 Volpe               8.0
+ 12. capra           🐐 Capra               7.6
+ 13. gazzella        🦌 Gazzella            9.0
+ 14. aquila          🦅 Aquila              9.0
+ 15. lupo            🐺 Lupo                7.9
+ 16. cane            🐕 Cane                7.4
+ 17. unicorno        🦄 Unicorno            8.3
+ 18. gufo            🦉 Gufo                8.4
+ 19. coniglio        🐇 Coniglio            7.1
+ 20. canguro         🦘 Canguro             7.6
+ 21. cervo           🦌 Cervo               7.4
+ 22. leone           🦁 Leone               7.4
+ 23. ratto           🐀 Ratto               8.0
+ 24. pappagallo      🦜 Pappagallo          8.4
+ 25. ragno           🕷️ Ragno               7.7
+ 26. topo            🐁 Topo                7.6
+ 27. rana            🐸 Rana                7.1
+ 28. lucertola       🦎 Lucertola           7.1
  29. cavallo         🐎 Cavallo             6.9
- 30. grillo          🦗 Grillo              6.7
- 31. orango          🦧 Orango              6.6
- 32. formica         🐜 Formica             6.4
- 33. castoro         🦫 Castoro             6.3
- 34. gorilla         🦍 Gorilla             6.0
- 35. serpente        🐍 Serpente            6.0
- 36. iena            🐺 Iena                6.0
+ 30. iena            🐺 Iena                6.0
+ 31. grillo          🦗 Grillo              6.7
+ 32. orango          🦧 Orango              6.6
+ 33. tasso           🦡 Tasso               5.4
+ 34. castoro         🦫 Castoro             6.3
+ 35. gorilla         🦍 Gorilla             6.0
+ 36. serpente        🐍 Serpente            6.0
  37. zebra           🦓 Zebra               5.9
- 38. gallo           🐓 Gallo               5.6
- 39. pavone          🦚 Pavone              5.6
- 40. tasso           🦡 Tasso               5.4
- 41. fenicottero     🦩 Fenicottero         5.4
- 42. cigno           🦢 Cigno               5.4
- 43. anatra          🦆 Anatra              5.4
- 44. oca             🪿 Oca                 5.4
- 45. granchio        🦀 Granchio            5.4
+ 38. formica         🐜 Formica             6.4
+ 39. gallo           🐓 Gallo               5.6
+ 40. pavone          🦚 Pavone              5.6
+ 41. cigno           🦢 Cigno               5.4
+ 42. anatra          🦆 Anatra              5.4
+ 43. oca             🪿 Oca                 5.4
+ 44. fenicottero     🦩 Fenicottero         5.4
+ 45. cinghiale       🐗 Cinghiale           4.9
  46. orso            🐻 Orso                5.3
  47. scorpione       🦂 Scorpione           5.0
- 48. trex            🦖 T-Rex               5.0
+ 48. granchio        🦀 Granchio            5.4
  49. lama            🦙 Lama                4.9
- 50. cinghiale       🐗 Cinghiale           4.9
+ 50. trex            🦖 T-Rex               5.0
  51. puzzola         🦨 Puzzola             4.6
  52. coccinella      🐞 Coccinella          4.6
- 53. panda           🐼 Panda               4.4
- 54. scarabeo        🪲 Scarabeo            4.4
- 55. giraffa         🦒 Giraffa             4.3
- 56. koala           🐨 Koala               4.0
- 57. tacchino        🦃 Tacchino            4.0
- 58. bisonte         🦬 Bisonte             3.9
+ 53. scarabeo        🪲 Scarabeo            4.4
+ 54. giraffa         🦒 Giraffa             4.3
+ 55. panda           🐼 Panda               4.4
+ 56. tacchino        🦃 Tacchino            4.0
+ 57. asino           🫏 Asino               3.4
+ 58. koala           🐨 Koala               4.0
  59. alce            🫎 Alce                3.9
- 60. cammello        🐫 Cammello            3.9
- 61. maiale          🐖 Maiale              3.9
- 62. toro            🐂 Toro                3.4
+ 60. bisonte         🦬 Bisonte             3.9
+ 61. cammello        🐫 Cammello            3.9
+ 62. maiale          🐖 Maiale              3.9
  63. pecora          🐑 Pecora              3.4
- 64. riccio          🦔 Riccio              3.4
- 65. asino           🫏 Asino               3.4
+ 64. toro            🐂 Toro                3.4
+ 65. riccio          🦔 Riccio              3.4
  66. elefante        🐘 Elefante            3.3
  67. rinoceronte     🦏 Rinoceronte         3.3
- 68. mammut          🦣 Mammut              2.9
- 69. ippopotamo      🦛 Ippopotamo          2.9
- 70. mucca           🐄 Mucca               2.9
- 71. bufalo          🐃 Bufalo              2.9
+ 68. bufalo          🐃 Bufalo              2.9
+ 69. mucca           🐄 Mucca               2.9
+ 70. mammut          🦣 Mammut              2.9
+ 71. ippopotamo      🦛 Ippopotamo          2.9
  72. dodo            🦤 Dodo                2.4
  73. brontosauro     🦕 Brontosauro         1.9
  74. lumaca          🐌 Lumaca              1.4
-
