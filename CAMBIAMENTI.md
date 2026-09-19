@@ -115,6 +115,22 @@ Simulando 2000 gare per sport e guardando chi è davvero il migliore in campo
 | animali diversi migliori almeno una volta | — | **81** |
 | animali che non entrano in nessuna gara | 3 | **0** |
 
+### Lo schedario animali diventa una scheda vera
+
+La schermata **Informazioni → Animali** aveva le barre delle quindici doti e
+basta. Toccando la testata di un animale ora si apre la sua scheda: il radar
+delle doti con sovrapposta la media di tutti in tratteggio, le gare dove rende
+di più con il voto, quelle dove **non entra e perché** ("manca Presa 2/4"), e
+l'intesa spiegata per lui — "Altezza 10: sta sopra la soglia, accanto servono
+compagni sotto 6".
+
+Sono gli stessi numeri con cui il gioco assegna i punti a fine round, mostrati
+prima di comprare invece che dopo aver perso. Nessun dato nuovo: tutto si
+ricava da `ANIMALI`, `SPORT` e `fit()`. Una scheda per volta, perché
+novantaquattro radar insieme sarebbero novantaquattro SVG a ogni ricerca.
+
+Costa 6,4 KB sul file compilato, il 3%.
+
 ### Il ranking comunitario è predisposto, non acceso
 
 `src/24-comunita.js` tiene i voti e sa produrne una classifica, ma nessun
