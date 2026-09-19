@@ -53,6 +53,7 @@ Things to know about `BUILD`:
 | `src/21-punteggi.js` | 138 | 7 KB | `fit`, `costruisciPool`, `intesa`, `punteggio`, `MODIFICATORI`, `classifica` |
 | `src/22-stato.js` | 11 | 1 KB | all module-level game state |
 | `src/23-ai.js` | 36 | 2 KB | `motoreAPI().chiedi()`, `estraiJSON` |
+| `src/24-comunita.js` | 88 | 3 KB | `gradimento` — voti della comunità, **struttura pronta, spenta** |
 | `src/30-rete.js` | 148 | 6 KB | PeerJS host/guest, handshake, message handlers |
 | `src/31-lobby.js` | 44 | 3 KB | host settings panel, seat list |
 | `src/32-partita.js` | 43 | 2 KB | match & round lifecycle |

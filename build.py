@@ -32,6 +32,7 @@ ORDINE = [
     ("f", "src/21-punteggi.js"),
     ("f", "src/22-stato.js"),
     ("f", "src/23-ai.js"),
+    ("f", "src/24-comunita.js"),
     ("f", "src/30-rete.js"),
     ("f", "src/31-lobby.js"),
     ("f", "src/32-partita.js"),
