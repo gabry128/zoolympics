@@ -1,8 +1,8 @@
 # Zoolympics — architecture map
 
 Upload **this file** (plus the one or two modules a task touches) instead of the
-whole `index.html`. The single file is ~193 KB, half of it vendor code; this map
-is ~8 KB.
+whole `index.html`. The built file is ~195 KB, nearly half of it vendor code;
+this map is ~10 KB.
 
 ---
 
@@ -41,29 +41,37 @@ Things to know about `BUILD`:
 
 ## File map
 
-| file | lines (orig.) | size | what's in it |
+| file | lines | size | what's in it |
 |---|---|---|---|
-| `src/01-testa.html` | 1–15 | 1 KB | `<head>`, meta, manifest, icons |
-| `src/02-stile.css` | 17–176 | 13 KB | all CSS, design tokens in `:root` |
-| `src/03-corpo.html` | 178–310 | 7 KB | the 8 `.schermo` sections |
-| `vendor/peerjs.js` | 312–320 | 93 KB | PeerJS 1.5.4 + WebRTC adapter — **never read this** |
-| `src/10-dati.js` | 323–454 | 9 KB | `K` (10 stats), `ANIMALI` (88), `SPORT_TUTTI`, `STAT`, `GARE` |
-| `src/11-testi.js` | 455–628 | 15 KB | `S` — every UI string as `[it, en]` |
-| `src/20-base.js` | 629–665 | 2 KB | `vai()`, `BUILD`, `ICE`, `DURATA`, `$`, `MEM`, `t()` |
-| `src/21-punteggi.js` | 666–736 | 3 KB | `fit`, `costruisciPool`, `intesa`, `punteggio`, `classifica` |
-| `src/22-stato.js` | 737–748 | 0.5 KB | all module-level game state |
-| `src/23-ai.js` | 749–785 | 2 KB | `motoreAPI().chiedi()`, `estraiJSON` |
-| `src/30-rete.js` | 786–934 | 7 KB | PeerJS host/guest, handshake, message handlers |
-| `src/31-lobby.js` | 935–979 | 3 KB | host settings panel, seat list |
-| `src/32-partita.js` | 980–1023 | 2 KB | match & round lifecycle |
-| `src/33-asta.js` | 1024–1148 | 5 KB | **auction engine**, `eseguiAzione`, `salvaPartita` |
-| `src/40-disegno.js` | 1149–1393 | 15 KB | all rendering + AI verdict |
-| `src/41-info.js` | 1394–1475 | 4 KB | info screen, event cards, animal browser |
-| `src/42-avvio.js` | 1476–1652 | 10 KB | i18n apply, event wiring, boot, service worker |
-| `src/04-coda.html` | 1654–1656 | — | closing tags |
+| `src/01-testa.html` | 18 | 1 KB | `<head>`, meta, manifest, icons |
+| `src/02-stile.css` | 179 | 15 KB | all CSS, design tokens in `:root`, per-arena palettes |
+| `src/03-corpo.html` | 132 | 7 KB | the 8 `.schermo` sections |
+| `vendor/peerjs.js` | 8 | 91 KB | PeerJS 1.5.4 + WebRTC adapter, minified — **never read this** |
+| `src/10-dati.js` | 150 | 10 KB | `K` (10 stats), `ANIMALI` (88), `SPORT_TUTTI`, `STAT`, `GARE`, `ARENE` |
+| `src/11-testi.js` | 173 | 15 KB | `S` — every UI string as `[it, en]` |
+| `src/20-base.js` | 36 | 2 KB | `vai()`, `BUILD`, `PREFISSO`, `ICE`, `DURATA`, `$`, `MEM`, `t()` |
+| `src/21-punteggi.js` | 138 | 7 KB | `fit`, `costruisciPool`, `intesa`, `punteggio`, `MODIFICATORI`, `classifica` |
+| `src/22-stato.js` | 11 | 1 KB | all module-level game state |
+| `src/23-ai.js` | 36 | 2 KB | `motoreAPI().chiedi()`, `estraiJSON` |
+| `src/30-rete.js` | 148 | 6 KB | PeerJS host/guest, handshake, message handlers |
+| `src/31-lobby.js` | 44 | 3 KB | host settings panel, seat list |
+| `src/32-partita.js` | 43 | 2 KB | match & round lifecycle |
+| `src/33-asta.js` | 124 | 5 KB | **auction engine**, `eseguiAzione`, `salvaPartita` |
+| `src/40-disegno.js` | 247 | 15 KB | all rendering + AI verdict |
+| `src/41-info.js` | 81 | 4 KB | info screen, event cards, animal browser |
+| `src/42-avvio.js` | 176 | 10 KB | i18n apply, event wiring, boot, service worker registration |
+| `src/04-coda.html` | 2 | — | closing tags |
 
-`src/sw.js` is **not** part of the concatenation: it is copied to `docs/sw.js`
-as its own file, with `BUILD` stamped into it.
+Two more source files that are **not** concatenated into the page:
+
+| file | lines | size | what's in it |
+|---|---|---|---|
+| `src/sw.js` | 50 | 2 KB | service worker; `BUILD` stamped by the build, cache named after it |
+| `statico/` | — | 25 KB | `manifest.json` + the three PNG icons, copied to `docs/` verbatim |
+
+The `lines` column is each module's own length — the number you see when you
+open it — not an offset into the built file. Treat it as an order of magnitude:
+it drifts as soon as anyone edits.
 
 Everything is one concatenated `<script>`, so there are no modules or imports:
 all top-level names are global and **load order is the order in `build.py`**.
@@ -170,5 +178,6 @@ design decision first.
 - Every user-facing string needs an `[it, en]` pair in `S` (`11-testi.js`); the
   language is an array index, so a third language means changing `t()`.
 - `buttaTutto()` and `controllaVersione()` are defined **inside** the language-flag
-  click handler in `42-avvio.js` (lines ~1498–1523 of the original). It works, but
-  it's the odd corner of the file — don't refactor it by accident.
+  click handler in `42-avvio.js` (the handler opens at line 22, the two
+  functions sit at 27 and 32). It works, but it's the odd corner of the file —
+  don't refactor it by accident.
