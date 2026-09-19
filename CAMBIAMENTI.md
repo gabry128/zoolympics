@@ -174,3 +174,8 @@ singolo dispositivo, e `classifica()` gira sia sull'host sia su ogni client.
 Sta in **`VERIFICHE.md`**: la PWA su un telefono vero, la resa a schermo del
 tema per arena, l'handshake del multigiocatore dopo un cambio di `BUILD`. E le
 domande a cui non è stato risposto stanno in **`DOMANDE.md`**.
+
+Una cosa è decisa ma rimandata di proposito: **archiviare le partite finite**
+in un backend, per sapere se il bilanciamento regge davvero invece di
+simularlo. Il disegno completo — quando inviare, cosa mandare, cosa non
+mandare e perché — è scritto in testa a `src/24-comunita.js`.

@@ -1017,6 +1017,39 @@ async function avviaMotore(){
 
    Le scommesse interne, se mai, vengono dopo il punto 3: hanno bisogno di
    uno storico attendibile, che un archivio locale non può dare.
+
+   ─── Il punto 3 è stato deciso (2026-09-19), ma è rimandato ───
+
+   La strada scelta è un archivio vero — Supabase o Firebase, il piano
+   gratuito basta — con una riga per partita finita. Non è ancora scritta
+   una riga di codice: quando si riprenderà, il disegno è questo.
+
+   QUANDO. Una volta sola, quando M.chiuso diventa true in chiudiRound()
+   (32-partita.js), e soltanto dall'host: è l'unico che ha M completo, e
+   così una partita in cinque non diventa cinque righe uguali.
+
+   COSA. M.storico è già pronto e contiene quello che serve: per ogni
+   round la gara, l'indice del vincitore e i punteggi. Più la data, il
+   numero di giocatori e BUILD, che dice con quale bilanciamento si
+   giocava.
+
+   COSA NO. I nomi dei giocatori. Li scrivono gli utenti e sono spesso
+   nomi veri: mandare numeri anonimi tiene la cosa fuori dai guai, mandare
+   nomi la ci porta dentro. È una riga in meno, ma va decisa adesso e non
+   quando l'archivio è già pieno.
+
+   COME. La chiave finisce nel file pubblico, come tutto il resto: serve
+   una chiave che sappia solo scrivere, con un limite di frequenza,
+   altrimenti chiunque legga il sorgente può riempire la tabella. E
+   l'invio va fatto senza aspettarlo e senza mostrare errori: il gioco
+   funziona offline apposta, e una partita non deve finire male perché
+   manca la rete.
+
+   PERCHÉ CONVIENE. Con le partite vere in archivio, il ranking qui sotto
+   smette di essere un sondaggio e diventa una misura: quale animale fa
+   vincere davvero, non quale piace. E i punti 1 e 2 restano necessari
+   lo stesso — il punteggio continua a dover essere uguale su host e
+   client, quindi quei numeri dovranno passare da V.
 */
 const VOTO_MIN=1, VOTO_MAX=5;
 
