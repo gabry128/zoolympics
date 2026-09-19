@@ -25,6 +25,17 @@ rifiuterebbe il service worker e non mostrerebbe il tasto di installazione).
 **Se fallisce:** la console del browser dice quasi sempre perché. Un errore
 su `sw.js` o sul manifest si vede lì al primo caricamento.
 
+**Da guardare nella stessa occasione**, perché sono correzioni per iOS fatte
+leggendo il codice e mai viste all'opera:
+
+- tieni il dito premuto su un bottone: **non** deve comparire il menu
+  copia/condividi di iOS;
+- ruota il telefono in orizzontale: i titoli non devono gonfiarsi;
+- tocca due volte in fretta un bottone: non deve zoomare né esserci ritardo
+  fra il tocco e la reazione;
+- su un iPhone vecchio (iOS sotto la 15.4, se ne hai uno sottomano) la
+  schermata deve comunque riempire l'altezza.
+
 ---
 
 ## 2. Il tema per arena, guardato con gli occhi
