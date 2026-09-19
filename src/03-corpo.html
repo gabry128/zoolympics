@@ -1,0 +1,132 @@
+</head>
+<body>
+<div id="app">
+<button class="ingranaggio" id="apri-impostazioni" aria-label="Settings">⚙︎</button>
+<button class="ingranaggio secondo" id="apri-info" aria-label="Info">ℹ︎</button>
+
+<section class="schermo attivo" id="s-home">
+  <div><div class="marchio">Zoolympics</div><p class="nota" id="x-tagline" style="margin-top:8px"></p></div>
+  <div class="card" id="box-riprendi" style="display:none;flex-direction:column;gap:10px">
+    <div style="font-weight:600" id="x-partitameta"></div>
+    <p class="mini" id="riprendi-desc"></p>
+    <div class="riga"><button class="btn piccolo" id="btn-riprendi" style="flex:2"></button>
+      <button class="btn fantasma piccolo" id="btn-scarta"></button></div></div>
+  <div style="flex:1"></div>
+  <div class="bandiere"><button data-lg="0">🇮🇹 Italiano</button><button data-lg="1">🇬🇧 English</button></div>
+  <div style="display:flex;flex-direction:column;gap:10px">
+    <div><label class="mini" id="x-tuonome" for="mio-nome"></label>
+      <input type="text" id="mio-nome" maxlength="12" style="margin-top:6px"></div>
+    <button class="btn" id="btn-crea"></button>
+    <button class="btn fantasma" id="btn-entra"></button>
+    <button class="btn fantasma" id="btn-locale"></button></div>
+  <p class="mini" id="nota-rete" style="text-align:center"></p>
+</section>
+
+<section class="schermo" id="s-entra">
+  <div class="top"><div class="titolo" id="x-entratitolo"></div>
+    <button class="tornaindietro" data-indietro="s-home" aria-label="Indietro">←</button></div>
+  <p class="nota" id="x-chiedicodice"></p>
+  <input type="text" id="codice-in" maxlength="4" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="ABCD">
+  <button class="btn" id="btn-collega"></button>
+  <div id="esito-entra"></div><div style="flex:1"></div>
+</section>
+
+<section class="schermo" id="s-lobby">
+  <div class="top"><div class="titolo" id="x-stanza"></div>
+    <button class="btn fantasma piccolo" id="esci-lobby"></button></div>
+  <div class="card" id="card-codice" style="padding:14px">
+    <p class="mini" style="text-align:center" id="x-codicealtri"></p>
+    <div class="codice" id="mostra-codice">· · · ·</div>
+    <p class="mini" style="text-align:center" id="stato-stanza"></p></div>
+  <div class="scroll" style="gap:14px">
+    <div style="display:flex;flex-direction:column;gap:8px" id="sedie"></div>
+    <div id="pannello-host" style="display:none;flex-direction:column;gap:14px">
+      <div class="card" style="display:flex;flex-direction:column;gap:12px">
+        <div class="titolo" id="x-numerogiocatori"></div><div class="riga" id="conta-giocatori"></div></div>
+      <div class="card" style="display:flex;flex-direction:column;gap:12px">
+        <div class="titolo" id="x-creditiatesta"></div>
+        <div class="riga" id="modo-crediti"></div>
+        <div class="riga" id="conta-crediti"></div>
+        <div style="display:flex;gap:9px;align-items:center">
+          <input type="number" id="crediti-altro" min="5" max="3000" inputmode="numeric">
+          <button class="btn fantasma piccolo" id="usa-crediti-altro" style="flex:0 0 auto"></button></div>
+        <p class="mini" id="nota-crediti"></p></div>
+      <div class="card" style="display:flex;flex-direction:column;gap:12px">
+        <div class="titolo" id="x-puntipervincere"></div><div class="riga" id="conta-punti"></div></div>
+      <div class="card" style="display:flex;flex-direction:column;gap:12px">
+        <div class="titolo" id="x-valori"></div>
+        <div class="riga" id="modo-valori"></div>
+        <p class="mini" id="nota-valori"></p></div>
+      <div class="card" style="display:flex;flex-direction:column;gap:12px">
+        <div class="titolo" id="x-sceltagara"></div><div style="display:flex;flex-direction:column;gap:9px" id="modo-scelta"></div></div>
+    </div>
+    <div id="attesa-ospite" class="attesa" style="display:none"></div>
+  </div>
+  <button class="btn" id="btn-inizia" disabled></button>
+</section>
+
+<section class="schermo" id="s-scelta">
+  <p class="mini" id="scelta-round" style="text-align:center"></p>
+  <div id="scelta-punti"></div>
+  <div class="titolo" id="scelta-titolo" style="text-align:center"></div>
+  <div class="scroll"><div class="griglia" id="scelta-griglia"></div>
+    <details class="card ai-only" id="scelta-extra" style="margin-top:4px">
+      <summary id="x-altragara"></summary>
+      <div style="display:flex;flex-direction:column;gap:10px;margin-top:11px">
+        <button class="btn fantasma" id="btn-ai-gara"></button><div id="esito-ai-gara"></div></div></details>
+  </div>
+</section>
+
+<section class="schermo" id="s-asta">
+  <div><div class="top" style="margin-bottom:7px;padding-right:34px">
+      <span class="pill" id="etichetta-gara"></span>
+      <span class="mini" id="etichetta-round"></span>
+      <span class="mini" id="progresso-testo"></span></div>
+    <div class="barra"><i id="progresso-barra" style="width:0%"></i></div></div>
+  <div class="plance" id="plance"></div>
+  <div id="rose-vive" class="tocca-rose"></div>
+  <div class="lotto" id="lotto"></div>
+  <div id="azioni" style="display:flex;flex-direction:column;gap:10px"></div>
+</section>
+
+<section class="schermo" id="s-fine">
+  <div><div class="titolone" id="fine-titolo" style="font-size:clamp(26px,8vw,36px)"></div>
+    <p class="nota" id="fine-sottotitolo" style="margin-top:6px"></p></div>
+  <div id="fine-punti"></div>
+  <div class="scroll">
+    <div class="card" id="fine-campione" style="display:none"></div>
+    <div id="rose-finali" style="display:flex;flex-direction:column;gap:11px"></div>
+    <p class="mini" id="spiega"></p>
+    <div id="zona-verdetto" style="display:flex;flex-direction:column;gap:10px"></div>
+  </div>
+  <div id="fine-azioni" style="display:flex;flex-direction:column;gap:10px"></div>
+</section>
+
+<section class="schermo" id="s-impostazioni">
+  <div class="top"><div class="titolo" id="x-impostazioni"></div>
+    <button class="tornaindietro" id="chiudi-impostazioni" aria-label="Indietro">←</button></div>
+  <div class="card" style="display:flex;flex-direction:column;gap:11px">
+    <div style="font-weight:600" id="x-lingua"></div>
+    <div class="bandiere"><button data-lg="0">🇮🇹 Italiano</button><button data-lg="1">🇬🇧 English</button></div></div>
+  <div style="flex:1"></div>
+  <p class="mini" id="riga-versione" style="text-align:center"></p>
+  <button class="btn fantasma" id="aggiorna"></button>
+  <button class="btn fantasma" id="azzera"></button>
+</section>
+
+<section class="schermo" id="s-info">
+  <div class="top"><div class="titolo" id="x-info"></div>
+    <button class="tornaindietro" id="chiudi-info" aria-label="Indietro">←</button></div>
+  <div id="info-menu" style="display:flex;flex-direction:column;gap:10px"></div>
+  <div class="scroll" id="info-corpo" style="display:none"></div>
+  <div id="info-ai" class="card" style="display:none;flex-direction:column;gap:11px">
+    <div style="font-weight:600" id="x-commentoai"></div>
+    <p class="mini" id="stato-ai"></p>
+    <div id="zona-chiave" style="display:none;flex-direction:column;gap:10px">
+      <input type="password" id="chiave" placeholder="sk-ant-..." autocomplete="off" spellcheck="false">
+      <p class="mini" id="x-notachiave"></p>
+      <div class="riga"><button class="btn piccolo" id="salva-chiave" style="flex:2"></button>
+        <button class="btn fantasma piccolo" id="togli-chiave"></button></div>
+      <div id="esito-chiave"></div></div></div>
+</section>
+</div>

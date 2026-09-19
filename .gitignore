@@ -1,0 +1,7 @@
+# dist/ NON va ignorato: la pubblicazione e' GitHub Pages dal repo,
+# quindi dist/index.html e dist/versione.txt devono essere committati.
+
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db

@@ -1,0 +1,3 @@
+# Il build concatena i sorgenti e deve riprodurre dist/index.html byte per byte:
+# le fini riga restano LF ovunque, anche su Windows.
+* text eol=lf
