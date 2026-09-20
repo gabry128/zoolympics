@@ -12,3 +12,7 @@ Thumbs.db
 #   node   strumenti/costruisci-dossier.js   -> la pagina
 /dossier.html
 /animali.csv
+
+# La pagina compilata sta in docs/ e la scrive build.py. Una copia in radice
+# non la aggiorna nessuno: entrata per sbaglio in b152e29, tolta dal repo.
+/index.html
