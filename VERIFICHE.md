@@ -13,7 +13,11 @@ risponde 200 con i `Content-Type` giusti (`application/javascript` per
 `sw.js`, `application/json` per il manifest: se fossero sbagliati il browser
 rifiuterebbe il service worker e non mostrerebbe il tasto di installazione).
 
-**Come provare**, su <https://gabry128.github.io/zoolympics/> da telefono:
+**Come provare**, su <https://svikjiod.github.io/zoolympics/> da telefono
+— l'indirizzo è cambiato con il nome dell'account, e Pages al momento è
+spenta: finché non la si riaccende (Settings → Pages, `main` + `/docs`)
+questa prova non si può nemmeno cominciare, perché il service worker
+vuole un `https`.
 
 1. Apri il sito. Nel menu del browser deve comparire **"Installa app"** o
    **"Aggiungi a schermata Home"**, con la giraffa su fondo scuro come icona.
@@ -59,8 +63,10 @@ arena un testo o un colore giocatore sparisce nel fondo, è lì che va corretto.
 
 ## 3. Il multigiocatore dopo un cambio di BUILD
 
-**Stato:** `BUILD` è passato da `2026-09-19b` a `2026-09-19d` in questa
-sessione. La conseguenza sull'handshake non è stata provata.
+**Stato:** mai provata. `BUILD` si alza a ogni build, quindi due
+dispositivi che non si aggiornano insieme finiscono disallineati da sé:
+è proprio la situazione che il rifiuto all'handshake deve gestire, e che
+nessuno ha ancora visto succedere.
 
 **Come provare:** due dispositivi, uno che ospita e uno che entra, **su reti
 diverse** (uno in WiFi e uno in 4G) — è la condizione in cui serve il TURN, e
